@@ -1,10 +1,15 @@
 import express from "express";
-import Controllers from "../controllers/index.js";
+import adminRoute from "./adminRoute.js";
+import userRoute from "./userRoute.js";
+import tailorRoute from "./tailorsRoute.js";
 
 const router = express.Router();
 
 const Route = () => {
-  router.use("/api", Controllers());
+  router.use("/admin", adminRoute());
+  router.use("/user", userRoute());
+  router.use("/tailors", tailorRoute());
+
   return router;
 };
 
