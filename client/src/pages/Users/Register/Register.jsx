@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./register.css";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  const [values, setValues] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+  });
   return (
     <div className="userRegister">
       <div className="userRegisterLeft">
@@ -27,15 +33,15 @@ const Register = () => {
           <div className="inputs">
             <p>
               Password{" "}
-              <span>
+              {/* <span>
                 <Link to="/">Forgot Password?</Link>
-              </span>
+              </span> */}
             </p>
             <input type="password" placeholder="Your Password" />
           </div>
           <button>Register</button>
           <p className="account">
-            Already have an account? <Link>Log in</Link>
+            Already have an account? <Link to="/user/login">Log in</Link>
           </p>
         </div>
       </div>
