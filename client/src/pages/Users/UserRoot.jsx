@@ -4,7 +4,6 @@ import { Outlet } from "react-router-dom";
 const UserRoot = () => {
   return (
     <>
-      <p>arslan</p>
       <Outlet />
     </>
   );
