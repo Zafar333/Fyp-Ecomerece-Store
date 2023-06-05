@@ -83,6 +83,10 @@
     align-self: center;
     border: none;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
 }
 
 .userRegisterLeft .form .account {
