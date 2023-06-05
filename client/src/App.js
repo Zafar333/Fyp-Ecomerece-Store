@@ -9,11 +9,14 @@ import TailorRoot from "./pages/Tailors/TailorRoot";
 import UserRoot from "./pages/Users/UserRoot";
 import UserLogin from "./pages/Users/Login/Login";
 import UserRegister from "./pages/Users/Register/Register";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
+        <ToastContainer />
         <Routes>
           <Route path="/" element="root path" />
           <Route path="/admin" element={<Root />}>
