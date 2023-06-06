@@ -1,4 +1,5 @@
 import UserAuthModel from "../database/models/usersModels/usersAuth.js";
+import { GenerateToken } from "../middlewares/Token.js";
 import ErrorResponse from "../utils/error.js";
 
 export const login = async (req, resp, next) => {
@@ -14,11 +15,16 @@ export const login = async (req, resp, next) => {
     if (!matchPass) {
       next({ message: "Invalid Email or Password", statusCode: 401 });
     }
-    return resp.json({
-      success: true,
-      status: 200,
-      message: "Login Successfull",
-    });
+    GenerateToken(
+      checkEmail._id,
+      {
+        success: true,
+        status: 200,
+        message: "Login Successfull",
+      },
+      resp,
+      next
+    );
   } catch (error) {
     next(error);
   }
@@ -33,8 +39,7 @@ export const register = async (req, resp, next) => {
       email,
       password,
     });
-
-    return resp.json({
+    resp.json({
       success: true,
       status: 200,
       message: "data saved successfully",

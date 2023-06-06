@@ -23,6 +23,7 @@ const Login = () => {
       if (emailCheck) {
         let res = await UserLogin(values);
         if (res?.data?.status === 200) {
+          localStorage.setItem("userToken", JSON.stringify(res.data.user));
           toast.success(res.data.message);
           navigate("/products");
         } else {
