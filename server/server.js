@@ -13,7 +13,6 @@ app.use(cors());
 app.use(express.json());
 app.use(Route());
 app.use((err, req, resp, next) => {
-  console.log("errrrrr", err);
   let error = { ...err };
   if (err.code === 11000) {
     const message = "Duplicate field value";
