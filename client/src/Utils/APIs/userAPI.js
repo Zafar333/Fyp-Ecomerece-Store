@@ -10,3 +10,12 @@ export const UserRegister = async (data) => {
     return error.message;
   }
 };
+
+export const UserLogin = async (data) => {
+  try {
+    let result = await axios.post(`${base}/login`, data);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};

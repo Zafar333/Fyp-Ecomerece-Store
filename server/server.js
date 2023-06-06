@@ -18,7 +18,6 @@ app.use((err, req, resp, next) => {
     const message = "Duplicate field value";
     error = new ErrorResponse(message, 400);
   }
-
   return resp.json({
     success: false,
     status: error.statusCode || 500,

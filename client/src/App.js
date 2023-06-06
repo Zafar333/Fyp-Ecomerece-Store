@@ -11,6 +11,7 @@ import UserLogin from "./pages/Users/Login/Login";
 import UserRegister from "./pages/Users/Register/Register";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Products from "./pages/Users/Products/AllProducts/Products";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/user/login" element={<UserLogin />} />
             <Route path="/user/register" element={<UserRegister />} />
           </Route>
+          <Route path="/products" element={<Products />} />
         </Routes>
       </BrowserRouter>
     </div>
