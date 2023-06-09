@@ -10,6 +10,7 @@ const userAuthSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide lastname"],
   },
+  type: String,
   email: {
     type: String,
     required: [true, "Please provide an email"],

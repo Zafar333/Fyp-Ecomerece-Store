@@ -38,6 +38,7 @@ export const register = async (req, resp, next) => {
       lastname,
       email,
       password,
+      type: "user",
     });
     resp.json({
       success: true,

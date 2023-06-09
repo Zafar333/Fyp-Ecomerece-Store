@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { UserLogin } from "../../../Utils/APIs/userAPI";
 
 const Login = () => {
+  const [spin, setSpin] = useState(false);
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -21,13 +22,16 @@ const Login = () => {
     let emailCheck = EmailValidator(email);
     if (check) {
       if (emailCheck) {
+        setSpin(true);
         let res = await UserLogin(values);
         if (res?.data?.status === 200) {
+          setSpin(false);
           localStorage.setItem("userToken", JSON.stringify(res.data.user));
           toast.success(res.data.message);
           navigate("/products");
         } else {
-          toast.error(res?.data?.message);
+          setSpin(false);
+          toast.error(res?.data?.message || res);
         }
       } else {
         toast.error("email is not valid");
@@ -68,7 +72,7 @@ const Login = () => {
               name="password"
             />
           </div>
-          <button onClick={Login}>Login</button>
+          <button onClick={Login}>{!spin ? "Login" : "Loading..."}</button>
           <p className="account">
             Don't have an account? <Link to="/user/register">Sign up</Link>
           </p>

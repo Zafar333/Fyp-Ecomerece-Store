@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const Register = () => {
   const [profile, setProfile] = useState("");
   const [values, setValues] = useState({
+    profile: "",
     name: "",
     email: "",
     password: "",
@@ -15,7 +16,17 @@ const Register = () => {
     setValues({ ...values, [name]: value });
   };
   const Profile = (e) => {
-    setProfile(URL.createObjectURL(e.target.files[0]));
+    let image = e.target.files[0];
+    if (!image) return;
+    const filereader = new FileReader();
+    filereader.readAsDataURL(image);
+    filereader.onload = () => {
+      let imageResult = filereader.result;
+      setProfile(imageResult);
+    };
+    filereader.onerror = (error) => {
+      console.log(error);
+    };
   };
   return (
     <div className="AdminRegister">
