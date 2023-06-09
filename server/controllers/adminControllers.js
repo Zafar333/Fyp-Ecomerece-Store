@@ -1,7 +1,7 @@
 import AdminAuthModel from "../database/models/adminModels/adminAuth.js";
 
 export const login = (req, resp) => {
-  resp.json("login worked");
+  resp.json({ message: "login worked", status: 200 });
 };
 export const register = async (req, resp, next) => {
   let { profile, name, email, password } = req.body;

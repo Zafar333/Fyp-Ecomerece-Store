@@ -1,7 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import "./login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AdminLoginAPI } from "../../../Utils/APIs/adminAPI";
+import { toast } from "react-toastify";
+import { EmailValidator, isEmpty } from "../../../Utils/Validation";
 const Login = () => {
+  const [spin, setSpin] = useState(false);
+  const navigate = useNavigate();
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+  const FormData = (e) => {
+    let { value, name } = e.target;
+    setValues({ ...values, [name]: value });
+  };
+  const AdminLogin = async () => {
+    let { email } = values;
+    let check = isEmpty(values);
+    let emailCheck = EmailValidator(email);
+    if (check) {
+      if (emailCheck) {
+        setSpin(true);
+        let res = await AdminLoginAPI(values);
+        if (res?.data?.status === 200) {
+          setSpin(false);
+          toast.success(res?.data?.message || "Login Successfully!!!");
+          navigate("/admin/login");
+        } else {
+          setSpin(false);
+          toast.error(res?.data?.message || res);
+        }
+      } else {
+        toast.error("email is not valid");
+      }
+    } else {
+      toast.error("please fill all fields");
+    }
+  };
+
   return (
     <div className="AdminRegister">
       <div className="main">
@@ -25,10 +62,12 @@ const Login = () => {
               <Link to="/">Forgot Password?</Link>
             </span>
           </div>
-          <button>Sign up</button>
+          <button onClick={AdminLogin}>
+            {!spin ? "Log in" : "Loading..."}
+          </button>
         </div>
         <p className="account">
-          Dont't have an account? <Link to="/admin/register">Sign up</Link>
+          Already have an account? <Link to="/admin/login">Log in</Link>
         </p>
       </div>
     </div>
