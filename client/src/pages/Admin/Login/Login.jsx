@@ -67,7 +67,7 @@ const Login = () => {
           </button>
         </div>
         <p className="account">
-          Already have an account? <Link to="/admin/login">Log in</Link>
+          Don't have an account? <Link to="/admin/register">Sign up</Link>
         </p>
       </div>
     </div>
