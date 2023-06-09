@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./register.css";
 import Avatar from "../../../assets/avatar.jpg";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [profile, setProfile] = useState("");
@@ -52,6 +53,9 @@ const Register = () => {
           />
           <button>Sign up</button>
         </div>
+        <p className="account">
+          Already have an account? <Link to="/admin/login">Log in</Link>
+        </p>
       </div>
     </div>
   );
