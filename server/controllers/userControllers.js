@@ -9,11 +9,13 @@ export const login = async (req, resp, next) => {
     let checkEmail = await UserAuthModel.findOne({ email });
     if (!checkEmail) {
       next({ message: "Invalid Email or Password", statusCode: 401 });
+      return;
     }
 
     let matchPass = await checkEmail.checkPassword(password);
     if (!matchPass) {
       next({ message: "Invalid Email or Password", statusCode: 401 });
+      return;
     }
     GenerateToken(
       checkEmail._id,
@@ -27,6 +29,7 @@ export const login = async (req, resp, next) => {
     );
   } catch (error) {
     next(error);
+    return;
   }
 };
 export const register = async (req, resp, next) => {
