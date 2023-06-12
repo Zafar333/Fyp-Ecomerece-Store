@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import Login from "../Admin/Login/Login";
 
 const Root = () => {
   const [adminToken, setAdminToken] = useState(
-    localStorage.getItem("adminToken")
+    JSON.parse(localStorage.getItem("adminToken"))
   );
-  return <>{adminToken ? <Outlet /> : <Login />}</>;
+  return <>{adminToken ? <Outlet /> : <Navigate to="/admin/login" />}</>;
 };
 
 export default Root;
