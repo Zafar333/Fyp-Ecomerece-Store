@@ -26,7 +26,7 @@ const Login = () => {
         let res = await UserLogin(values);
         if (res?.data?.status === 200) {
           setSpin(false);
-          localStorage.setItem("userToken", JSON.stringify(res.data.user));
+          localStorage.setItem("userToken", JSON.stringify(res?.data?.token));
           toast.success(res.data.message);
           navigate("/products");
         } else {

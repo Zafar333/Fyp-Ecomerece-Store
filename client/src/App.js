@@ -12,6 +12,7 @@ import UserRegister from "./pages/Users/Register/Register";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Products from "./pages/Users/Products/AllProducts/Products";
+import Panel from "./pages/Admin/AdminPanel/Panel/Panel";
 
 function App() {
   return (
@@ -20,9 +21,12 @@ function App() {
         <ToastContainer />
         <Routes>
           <Route path="/" element="root path" />
-          <Route path="/admin" element={<Root />}>
+          <Route path="/admin">
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/register" element={<AdminRegister />} />
+            <Route path="/admin/panel" element={<Root />}>
+              <Route path="/admin/panel" element={<Panel />} />
+            </Route>
           </Route>
           <Route path="/tailor" element={<TailorRoot />}>
             <Route path="/tailor/login" element={<TailorLogin />} />

@@ -8,7 +8,7 @@ export const GenerateToken = (user, data, resp, next) => {
         next(err);
       }
 
-      return resp.json({ ...data, user: token });
+      return resp.json({ ...data, token: token });
     });
   }
 };

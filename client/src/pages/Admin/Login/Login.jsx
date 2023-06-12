@@ -25,8 +25,9 @@ const Login = () => {
         let res = await AdminLoginAPI(values);
         if (res?.data?.status === 200) {
           setSpin(false);
+          localStorage.setItem("adminToken", JSON.stringify(res?.data?.token));
           toast.success(res?.data?.message || "Login Successfully!!!");
-          navigate("/admin/login");
+          navigate("/admin/panel");
         } else {
           setSpin(false);
           toast.error(res?.data?.message || res);

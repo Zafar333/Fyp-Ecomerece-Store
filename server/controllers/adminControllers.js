@@ -1,7 +1,37 @@
+import adminAuth from "../database/models/adminModels/adminAuth.js";
 import AdminAuthModel from "../database/models/adminModels/adminAuth.js";
+import { GenerateToken } from "../middlewares/Token.js";
 
-export const login = (req, resp) => {
-  resp.json({ message: "login worked", status: 200 });
+export const login = async (req, resp, next) => {
+  let { email, password } = req.body;
+  if ((!email, !password)) {
+    return resp.json({ message: "Please provide data" });
+  }
+  try {
+    let adminLogin = await AdminAuthModel.findOne({ email });
+    if (!adminLogin) {
+      next({ message: "Invalid Email or Password", statusCode: 401 });
+      return;
+    }
+    let matchPass = await adminLogin.checkPassword(password);
+    if (!matchPass) {
+      next({ message: "Invalid Email or Password", statusCode: 401 });
+      return;
+    }
+    GenerateToken(
+      adminLogin._id,
+      {
+        success: true,
+        status: 200,
+        message: "Login Successfull",
+      },
+      resp,
+      next
+    );
+  } catch (error) {
+    next(error);
+    return;
+  }
 };
 export const register = async (req, resp, next) => {
   let { profile, name, email, password } = req.body;
