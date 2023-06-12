@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./register.css";
 import Avatar from "../../../assets/avatar.jpg";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,6 +12,9 @@ import { AdminRegisterAPI } from "../../../Utils/APIs/adminAPI";
 import { toast } from "react-toastify";
 
 const Register = () => {
+  const [adminToken, setAdminToken] = useState(
+    localStorage.getItem("adminToken")
+  );
   const [spin, setSpin] = useState(false);
   const navigate = useNavigate();
   const [profile, setProfile] = useState("");
@@ -72,6 +75,13 @@ const Register = () => {
       toast.error("please fill all fields");
     }
   };
+  useEffect(() => {
+    if (adminToken) {
+      navigate("/admin/panel");
+    } else {
+      return;
+    }
+  }, [adminToken, navigate]);
   return (
     <div className="AdminRegister">
       <div className="main">

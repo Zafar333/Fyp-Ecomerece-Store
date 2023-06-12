@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Login from "../Admin/Login/Login";
 
 const Root = () => {
-  let adminToken = localStorage.getItem("adminToken");
+  const [adminToken, setAdminToken] = useState(
+    localStorage.getItem("adminToken")
+  );
   return <>{adminToken ? <Outlet /> : <Login />}</>;
 };
 

@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { AdminLoginAPI } from "../../../Utils/APIs/adminAPI";
 import { toast } from "react-toastify";
 import { EmailValidator, isEmpty } from "../../../Utils/Validation";
 const Login = () => {
+  const [adminToken, setAdminToken] = useState(
+    localStorage.getItem("adminToken")
+  );
   const [spin, setSpin] = useState(false);
   const navigate = useNavigate();
   const [values, setValues] = useState({
@@ -39,6 +42,13 @@ const Login = () => {
       toast.error("please fill all fields");
     }
   };
+  useEffect(() => {
+    if (adminToken) {
+      navigate("/admin/panel");
+    } else {
+      return;
+    }
+  }, [adminToken, navigate]);
 
   return (
     <div className="AdminRegister">
