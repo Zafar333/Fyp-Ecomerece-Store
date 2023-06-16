@@ -9,13 +9,14 @@ import TailorRoot from "./pages/Tailors/TailorRoot";
 import UserRoot from "./pages/Users/UserRoot";
 import UserLogin from "./pages/Users/Login/Login";
 import UserRegister from "./pages/Users/Register/Register";
+import HomePage from "./pages/Users/HomePageDesign/HomePage";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element="root path" />
+          <Route path="/" element={<HomePage />} />
           <Route path="/admin" element={<Root />}>
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/register" element={<AdminRegister />} />
