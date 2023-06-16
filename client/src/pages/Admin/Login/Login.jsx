@@ -4,10 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { AdminLoginAPI } from "../../../Utils/APIs/adminAPI";
 import { toast } from "react-toastify";
 import { EmailValidator, isEmpty } from "../../../Utils/Validation";
+import { useDispatch } from "react-redux";
+import { setProfile } from "../../../store/Slices/Admin/adminProfileSlice";
 const Login = () => {
   const [adminToken, setAdminToken] = useState(
     localStorage.getItem("adminToken")
   );
+  const dispatch = useDispatch();
   const [spin, setSpin] = useState(false);
   const navigate = useNavigate();
   const [values, setValues] = useState({
@@ -29,8 +32,9 @@ const Login = () => {
         if (res?.data?.status === 200) {
           setSpin(false);
           localStorage.setItem("adminToken", JSON.stringify(res?.data?.token));
+          dispatch(setProfile(res?.data?.data));
           toast.success(res?.data?.message || "Login Successfully!!!");
-          navigate("/admin/panel");
+          navigate("/admin/panel/dashboard");
         } else {
           setSpin(false);
           toast.error(res?.data?.message || res);

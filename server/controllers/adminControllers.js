@@ -18,12 +18,14 @@ export const login = async (req, resp, next) => {
       next({ message: "Invalid Email or Password", statusCode: 401 });
       return;
     }
+    adminLogin.password = "";
     GenerateToken(
       adminLogin._id,
       {
         success: true,
         status: 200,
         message: "Login Successfull",
+        data: adminLogin,
       },
       resp,
       next
