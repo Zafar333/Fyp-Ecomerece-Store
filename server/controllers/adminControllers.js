@@ -72,3 +72,11 @@ export const AdminProductAdd = async (req, resp, next) => {
     next(error);
   }
 };
+export const AdminProductGet = async (req, resp, next) => {
+  try {
+    let products = await AdminProductModel.find({});
+    resp.json({ success: true, status: 200, data: products });
+  } catch (error) {
+    next(error);
+  }
+};

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Avatar from "../../../assets/avatar.jpg";
+import Avatar from "../../../../assets/avatar.jpg";
 import "./newProductAdmin.css";
 import { useNavigate } from "react-router-dom";
-import { isEmpty } from "../../../Utils/Validation";
+import { isEmpty } from "../../../../Utils/Validation";
 import { toast } from "react-toastify";
-import { AdminProductAPI } from "../../../Utils/APIs/adminAPI";
+import { AdminProductAPI } from "../../../../Utils/APIs/adminAPI";
 
 const NewProductAdmin = () => {
   const [values, setValues] = useState({
@@ -43,10 +43,13 @@ const NewProductAdmin = () => {
     }
     setSpin(true);
     let res = await AdminProductAPI(values);
-    if (res.data.status === 200) {
+    if (res?.data?.status === 200) {
+      setSpin(false);
       toast.success(res?.data?.message || "Product Added Successfully!!!");
+      navigate("/admin/panel/products");
     } else {
-      toast.error(res.data.message || res);
+      setSpin(false);
+      toast.error(res?.data?.message || res);
     }
   };
   return (
@@ -91,7 +94,9 @@ const NewProductAdmin = () => {
         ></textarea>
         <div className="adminproductbtns">
           <button onClick={Cancel}>Cancel</button>
-          <button onClick={AddProduct}>Add Product</button>
+          <button onClick={AddProduct}>
+            {spin ? "Adding..." : "Add Product"}
+          </button>
         </div>
       </div>
     </div>
