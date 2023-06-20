@@ -1,5 +1,6 @@
 import adminAuth from "../database/models/adminModels/adminAuth.js";
 import AdminAuthModel from "../database/models/adminModels/adminAuth.js";
+import AdminProductModel from "../database/models/usersModels/productsModel.js";
 import { GenerateToken } from "../middlewares/Token.js";
 
 export const login = async (req, resp, next) => {
@@ -56,5 +57,18 @@ export const register = async (req, resp, next) => {
   } catch (error) {
     next(error);
     return;
+  }
+};
+
+export const AdminProductAdd = async (req, resp, next) => {
+  let { profile, name, price, desc, category } = req.body;
+  try {
+    if (!profile && !name && !price && !desc && category) {
+      return next({ message: "please provide data", statusCode: 401 });
+    }
+    await AdminProductModel.create({ profile, name, price, desc, category });
+    return resp.json({ success: true, status: 200, message: "product Added" });
+  } catch (error) {
+    next(error);
   }
 };

@@ -19,3 +19,11 @@ export const AdminLoginAPI = async (data) => {
     return error.message;
   }
 };
+export const AdminProductAPI = async (data) => {
+  try {
+    let result = await axios.post(`${base}/adminproducts`, data);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
