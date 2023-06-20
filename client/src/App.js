@@ -16,7 +16,7 @@ import Products from "./pages/Users/Products/AllProducts/Products";
 import Panel from "./pages/Admin/AdminPanel/Panel/Panel";
 import Dashboard from "./pages/Admin/AdminPanel/Dashboard/Dashboard";
 import AdminProducts from "./pages/Admin/AdminPanel/Products/AdminProducts";
-import NewProductAdmin from "./pages/Admin/NewProduct/NewProductAdmin";
+import NewProductAdmin from "./pages/Admin/AdminPanel/NewProduct/NewProductAdmin";
 
 function App() {
   return (

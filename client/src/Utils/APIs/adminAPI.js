@@ -27,3 +27,11 @@ export const AdminProductAPI = async (data) => {
     return error.message;
   }
 };
+export const AdminProductFetchAPI = async (data) => {
+  try {
+    let result = await axios.get(`${base}/adminproducts`);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
