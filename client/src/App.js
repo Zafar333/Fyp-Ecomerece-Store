@@ -9,6 +9,7 @@ import TailorRoot from "./pages/Tailors/TailorRoot";
 import UserRoot from "./pages/Users/UserRoot";
 import UserLogin from "./pages/Users/Login/Login";
 import UserRegister from "./pages/Users/Register/Register";
+import HomePage from "./pages/Users/HomePageDesign/HomePage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Products from "./pages/Users/Products/AllProducts/Products";
@@ -23,7 +24,7 @@ function App() {
       <BrowserRouter>
         <ToastContainer />
         <Routes>
-          <Route path="/" element="root path" />
+          <Route path="/" element={<HomePage />} />
           <Route path="/admin">
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/register" element={<AdminRegister />} />
