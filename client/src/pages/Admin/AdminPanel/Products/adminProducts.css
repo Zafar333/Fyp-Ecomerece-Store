@@ -1,0 +1,92 @@
+.adminproduct-main {
+    height: 80vh;
+}
+
+.adminproduct-upper {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px;
+    margin-top: 8px;
+    border-bottom: 1px solid gainsboro;
+}
+
+.adminproduct-upper input {
+    padding: 8px 4px;
+    font-size: 14px;
+    width: 500px;
+    border: none;
+    outline: 1px solid gainsboro;
+}
+
+.adminproduct-upper a {
+    text-decoration: none;
+    padding: 12px;
+    outline: 2px solid rgb(126, 126, 233);
+}
+
+.adminproduct-products {
+    background-color: white;
+    height: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 5px;
+    padding: 12px 4px;
+}
+
+.adminproduct-card {
+    border: 1px solid gainsboro;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.adminproduct-card img {
+    width: 200px;
+    height: 200px;
+    border: none;
+    outline: none;
+    object-fit: fill;
+}
+
+.adminproduct-card .adminproductname {
+    font-size: 14px;
+    font-weight: 500;
+    color: #928f8f;
+}
+
+.adminproductprice {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.admincardbottom {
+    align-self: flex-start;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.adminproductcard-btns {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+}
+
+.adminproductcard-btns button {
+    padding: 8px 12px;
+    flex: 1;
+    background: none;
+    border: none;
+    outline: 1px solid gainsboro;
+    cursor: pointer;
+
+}
+
+.adminproductcard-btns button:nth-child(2) {
+    color: red;
+
+}
