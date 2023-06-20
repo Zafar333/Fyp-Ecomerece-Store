@@ -9,6 +9,9 @@ import TailorRoot from "./pages/Tailors/TailorRoot";
 import UserRoot from "./pages/Users/UserRoot";
 import UserLogin from "./pages/Users/Login/Login";
 import UserRegister from "./pages/Users/Register/Register";
+<<<<<<< HEAD
+import HomePage from "./pages/Users/HomePageDesign/HomePage";
+=======
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Products from "./pages/Users/Products/AllProducts/Products";
@@ -16,6 +19,7 @@ import Panel from "./pages/Admin/AdminPanel/Panel/Panel";
 import Dashboard from "./pages/Admin/AdminPanel/Dashboard/Dashboard";
 import AdminProducts from "./pages/Admin/AdminPanel/Products/AdminProducts";
 import NewProductAdmin from "./pages/Admin/NewProduct/NewProductAdmin";
+>>>>>>> 310b1eabcb04952ebbec62a4546b890814729976
 
 function App() {
   return (
@@ -23,8 +27,13 @@ function App() {
       <BrowserRouter>
         <ToastContainer />
         <Routes>
+<<<<<<< HEAD
+          <Route path="/" element={<HomePage />} />
+          <Route path="/admin" element={<Root />}>
+=======
           <Route path="/" element="root path" />
           <Route path="/admin">
+>>>>>>> 310b1eabcb04952ebbec62a4546b890814729976
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/register" element={<AdminRegister />} />
             <Route path="/admin/panel" element={<Root />}>
