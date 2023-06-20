@@ -1,0 +1,46 @@
+.newadminproduct-main {
+    background-color: white;
+    padding: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
+    column-gap: 20px;
+    margin-top: 20px;
+}
+
+.newadminproduct-main .file {
+    background-color: gray;
+    grid-column: span 2;
+}
+
+.newadminproduct-main input {
+    padding: 8px 5px;
+}
+
+.newadminproduct-main select {
+    padding: 8px;
+}
+
+.newadminproduct-main textarea {
+    grid-column: span 2;
+}
+
+.adminproductbtns {
+    display: flex;
+    gap: 8px;
+    margin-top: 50px;
+}
+
+.adminproductbtns button {
+    padding: 14px 12px;
+    flex: 1;
+    background: none;
+    border: none;
+    outline: 1px solid gainsboro;
+    cursor: pointer;
+}
+
+.adminproductbtns button:nth-child(2) {
+    background-color: #F47458;
+    color: white;
+}
