@@ -35,3 +35,11 @@ export const AdminProductFetchAPI = async (data) => {
     return error.message;
   }
 };
+export const AdminProductDeleteAPI = async (id) => {
+  try {
+    let result = await axios.delete(`${base}/adminproducts/${id}`);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};

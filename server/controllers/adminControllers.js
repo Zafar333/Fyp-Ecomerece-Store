@@ -80,3 +80,20 @@ export const AdminProductGet = async (req, resp, next) => {
     next(error);
   }
 };
+export const AdminProductDelete = async (req, resp, next) => {
+  try {
+    let deletedProduct = await AdminProductModel.deleteOne({
+      _id: req.params.id,
+    });
+    if (deletedProduct?.deletedCount === 0) {
+      return next({ message: "Product not found", statusCode: "404" });
+    }
+    return resp.json({
+      success: true,
+      status: 200,
+      message: "Product Deleted Successfully!",
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
