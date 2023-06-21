@@ -1,0 +1,172 @@
+.userProjectsMain {
+    max-width: 1550px;
+    margin: auto;
+}
+
+.userProduct-upper {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 6px;
+    border-bottom: 1px solid gainsboro;
+    align-self: center;
+}
+
+.userProduct-upper input {
+    padding: 8px 4px;
+    width: 500px;
+}
+
+.userProductsCart {
+    position: relative;
+}
+
+.cartIcon {
+    height: 50px;
+    cursor: pointer;
+}
+
+.userProductCartNum {
+    position: absolute;
+    top: -10px;
+    right: -8px;
+    color: white;
+    background-color: gray;
+    padding: 5px;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userProductsMain-lower {
+    display: flex;
+    gap: 20px;
+    margin-top: 20PX;
+
+}
+
+.userProductsFilters {
+    flex: 1;
+}
+
+.userProductsCards {
+    flex: 4;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    column-gap: 12px;
+    row-gap: 30px;
+
+}
+
+.userProductImg {
+    width: 300px;
+    align-self: center;
+}
+
+.userProductImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.userProductCard {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid gainsboro;
+}
+
+.userProductLower {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    margin-bottom: 8px;
+
+}
+
+.userProductname {
+    font-family: ProximaNova-Regular, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #4a4a4a;
+    margin: 0 0 10px;
+    line-height: 1.2;
+}
+
+.userProductPriceInfo .userProductPrice {
+    color: #4a4a4a;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.userProductCategory {
+    white-space: nowrap;
+    display: block;
+    margin: 5px 0 0;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: unset;
+    color: #4a4a4a;
+}
+
+.userProductLower button {
+    padding: 8px 20px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: #F47458;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.userProductsFilters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.userProductSortPrice {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+    padding: 18px 4px;
+}
+
+.userProductSortPrice input {
+    height: 18px;
+    width: 18px;
+}
+
+.userProductSortPrice .sortItem {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.userProductCategorytype {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+    padding: 18px 4px;
+}
+
+.catItem {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.userProductCategorytype input {
+    height: 18px;
+    width: 18px;
+}

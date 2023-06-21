@@ -40,6 +40,7 @@ const NewProductAdmin = () => {
     let check = isEmpty(values);
     if (!check) {
       toast.error("please fill all fields");
+      return;
     }
     setSpin(true);
     let res = await AdminProductAPI(values);
