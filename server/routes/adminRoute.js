@@ -1,6 +1,7 @@
 import express from "express";
 import {
   AdminProductAdd,
+  AdminProductDelete,
   AdminProductGet,
   login,
   register,
@@ -13,6 +14,7 @@ const adminRoute = () => {
   router.post("/register", register);
   router.post("/adminproducts", AdminProductAdd);
   router.get("/adminproducts", AdminProductGet);
+  router.delete("/adminproducts/:id", AdminProductDelete);
 
   return router;
 };
