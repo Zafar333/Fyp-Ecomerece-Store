@@ -3,11 +3,13 @@ import "./homePage.css";
 import Banner from "./Banner";
 import Footer from "../../../components/Footer";
 import { NavLink } from "react-router-dom";
+import Navbar from "../../../components/Navbar";
 
 const HomePage = () => {
   return (
     <>
-      <header className="navbar"></header>
+      {/* <header className="navbar"></header> */}
+      <Navbar />
       <Banner />
       <div className="main-container">
         <div className="main-wrapper">
