@@ -19,3 +19,11 @@ export const UserLogin = async (data) => {
     return error.message;
   }
 };
+export const ProductsAPI = async (data) => {
+  try {
+    let result = await axios.post(`${base}/products`, data);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
