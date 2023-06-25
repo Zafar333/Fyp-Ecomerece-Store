@@ -66,7 +66,13 @@ export const AdminProductAdd = async (req, resp, next) => {
     if (!profile && !name && !price && !desc && category) {
       return next({ message: "please provide data", statusCode: 401 });
     }
-    await AdminProductModel.create({ profile, name, price, desc, category });
+    await AdminProductModel.create({
+      profile,
+      name,
+      price: price * 1,
+      desc,
+      category,
+    });
     return resp.json({ success: true, status: 200, message: "product Added" });
   } catch (error) {
     next(error);

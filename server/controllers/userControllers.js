@@ -54,9 +54,25 @@ export const register = async (req, resp, next) => {
   }
 };
 export const products = async (req, resp, next) => {
+  console.log(req.body);
   try {
-    let products = await ProductsModel.find({});
-    return resp.json({ success: true, status: 200, data: products });
+    if (req?.body?.search) {
+      let products = await ProductsModel.find({
+        $and: [
+          { name: { $regex: req.body.search } },
+
+          req?.body?.category === "all"
+            ? { $or: [{ category: "women" }, { category: "men" }] }
+            : { category: req?.body?.category },
+        ],
+      }).sort(req.body.pricesort);
+      return resp.json({ success: true, status: 200, data: products });
+    } else {
+      let products = await ProductsModel.find(
+        req?.body?.category === "all" ? {} : { category: req?.body?.category }
+      ).sort(req.body.pricesort);
+      return resp.json({ success: true, status: 200, data: products });
+    }
   } catch (error) {
     next(error);
   }
