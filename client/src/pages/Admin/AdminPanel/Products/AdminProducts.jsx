@@ -58,7 +58,7 @@ const AdminProducts = () => {
                 <img src={item?.profile} alt="" />
                 <div className="admincardbottom">
                   <div className="adminproductname">{item?.name}</div>
-                  <div className="adminproductprice">${item?.price}</div>
+                  <div className="adminproductprice">Rs {item?.price}</div>
                   <div className="adminproductcard-btns">
                     <button>Edit</button>
                     <button onClick={() => DeleteProduct(item?._id)}>

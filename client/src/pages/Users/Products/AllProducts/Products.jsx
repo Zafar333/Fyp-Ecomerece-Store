@@ -137,7 +137,7 @@ const Products = () => {
                     <p className="userProductname">{item?.name}</p>
                     <div className="userProductLower">
                       <div className="userProductPriceInfo">
-                        <p className="userProductPrice">${item?.price}</p>
+                        <p className="userProductPrice">Rs {item?.price}</p>
                         <p className="userProductCategory">{item?.category}</p>
                       </div>
                       <button onClick={() => AddToCart(item)}>Add</button>
