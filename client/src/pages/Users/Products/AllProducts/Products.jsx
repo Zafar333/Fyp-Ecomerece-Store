@@ -12,7 +12,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [values, setValues] = useState({
     search: "",
-    pricesort: "-1",
+    pricesort: "price",
     category: "all",
   });
   useEffect(() => {
@@ -42,13 +42,16 @@ const Products = () => {
       <Navbar />
       <div className="userProjectsMain">
         <div className="userProduct-upper">
-          <input
-            type="text"
-            className="userProductSearch"
-            placeholder="Search Products..."
-            name="search"
-            onChange={ChangeValues}
-          />
+          <div className="searchbar">
+            <input
+              type="text"
+              className="userProductSearch"
+              placeholder="Search Products..."
+              name="search"
+              onChange={ChangeValues}
+            />
+            <button>Search</button>
+          </div>
           <div className="userProductsCart">
             <ShoppingCartIcon className="cartIcon" />
             <span className="userProductCartNum">0</span>
@@ -62,8 +65,8 @@ const Products = () => {
                 <input
                   type="radio"
                   name="pricesort"
-                  value="-1"
-                  checked={values.pricesort === "-1"}
+                  value="price"
+                  checked={values.pricesort === "price"}
                   onChange={ChangeValues}
                 />
                 <span>Low Price</span>
@@ -72,8 +75,8 @@ const Products = () => {
                 <input
                   type="radio"
                   name="pricesort"
-                  value="1"
-                  checked={values.pricesort === "1"}
+                  value="-price"
+                  checked={values.pricesort === "-price"}
                   onChange={ChangeValues}
                 />
                 <span>High Price</span>
