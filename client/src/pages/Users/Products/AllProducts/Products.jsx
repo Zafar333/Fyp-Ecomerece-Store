@@ -5,9 +5,13 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Navbar from "../../../../components/Navbar";
 import "./products.css";
 import { ProductsAPI } from "../../../../Utils/APIs/userAPI";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "../../../../store/Slices/Users/cartSlice";
 
 const Products = () => {
+  const cartData = useSelector((state) => state.cart);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [spin, setSpin] = useState(false);
   const [products, setProducts] = useState([]);
   const [values, setValues] = useState({
@@ -35,6 +39,12 @@ const Products = () => {
       return { ...val, [name]: value };
     });
   };
+  const Cart = () => {
+    navigate("/cart");
+  };
+  const AddToCart = (item) => {
+    dispatch(setCart(item));
+  };
 
   products.length === 0 && <h2>No Products Found</h2>;
   return (
@@ -52,9 +62,9 @@ const Products = () => {
             />
             <button>Search</button>
           </div>
-          <div className="userProductsCart">
+          <div className="userProductsCart" onClick={Cart}>
             <ShoppingCartIcon className="cartIcon" />
-            <span className="userProductCartNum">0</span>
+            <span className="userProductCartNum">{cartData?.length}</span>
           </div>
         </div>
         <div className="userProductsMain-lower">
@@ -130,7 +140,7 @@ const Products = () => {
                         <p className="userProductPrice">${item?.price}</p>
                         <p className="userProductCategory">{item?.category}</p>
                       </div>
-                      <button>Add</button>
+                      <button onClick={() => AddToCart(item)}>Add</button>
                     </div>
                   </div>
                 );
