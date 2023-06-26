@@ -40,6 +40,10 @@ function App() {
                   path="/admin/panel/products/new"
                   element={<NewProductAdmin />}
                 />
+                <Route
+                  path="/admin/panel/products/edit/:id"
+                  element={<NewProductAdmin />}
+                />
               </Route>
             </Route>
           </Route>

@@ -3,6 +3,7 @@ import {
   AdminProductAdd,
   AdminProductDelete,
   AdminProductGet,
+  AdminProductUpdate,
   login,
   register,
 } from "../controllers/adminControllers.js";
@@ -15,6 +16,7 @@ const adminRoute = () => {
   router.post("/adminproducts", AdminProductAdd);
   router.get("/adminproducts", AdminProductGet);
   router.delete("/adminproducts/:id", AdminProductDelete);
+  router.put("/adminproducts/:id", AdminProductUpdate);
 
   return router;
 };

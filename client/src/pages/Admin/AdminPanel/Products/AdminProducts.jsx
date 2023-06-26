@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
 import "./adminProducts.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   AdminProductDeleteAPI,
   AdminProductFetchAPI,
 } from "../../../../Utils/APIs/adminAPI";
 import { toast } from "react-toastify";
 import Pagination from "../../../../components/Pagination/Pagination";
+import { useDispatch } from "react-redux";
+import { setProfile } from "../../../../store/Slices/Admin/adminEditProductSlice";
 
 const AdminProducts = () => {
   const [AdminProducts, setAdminProducts] = useState([]);
   const [spin, setSpin] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     FetchProducts();
   }, []);
@@ -39,6 +43,10 @@ const AdminProducts = () => {
     }
   };
 
+  const EditProduct = (item) => {
+    dispatch(setProfile(item));
+    navigate(`/admin/panel/products/edit/${item._id}`);
+  };
   return spin ? (
     <h3>Loading...</h3>
   ) : (
@@ -61,7 +69,7 @@ const AdminProducts = () => {
                   <div className="adminproductname">{item?.name}</div>
                   <div className="adminproductprice">Rs {item?.price}</div>
                   <div className="adminproductcard-btns">
-                    <button>Edit</button>
+                    <button onClick={() => EditProduct(item)}>Edit</button>
                     <button onClick={() => DeleteProduct(item?._id)}>
                       {isDeleted ? "removing..." : "Delete"}
                     </button>

@@ -43,3 +43,11 @@ export const AdminProductDeleteAPI = async (id) => {
     return error.message;
   }
 };
+export const AdminProductEditAPI = async (id, values) => {
+  try {
+    let result = await axios.put(`${base}/adminproducts/${id}`, values);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
