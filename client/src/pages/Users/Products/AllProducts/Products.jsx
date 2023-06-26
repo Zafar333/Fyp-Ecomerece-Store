@@ -60,7 +60,6 @@ const Products = () => {
               name="search"
               onChange={ChangeValues}
             />
-            <button>Search</button>
           </div>
           <div className="userProductsCart" onClick={Cart}>
             <ShoppingCartIcon className="cartIcon" />

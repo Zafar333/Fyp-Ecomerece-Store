@@ -6,6 +6,7 @@ import {
   AdminProductFetchAPI,
 } from "../../../../Utils/APIs/adminAPI";
 import { toast } from "react-toastify";
+import Pagination from "../../../../components/Pagination/Pagination";
 
 const AdminProducts = () => {
   const [AdminProducts, setAdminProducts] = useState([]);
@@ -71,10 +72,7 @@ const AdminProducts = () => {
           })}
         </div>
         <div className="adminproduct-pagination">
-          <div className="pageNumber">1</div>
-          <div className="pageNumber">2</div>
-          <div className="pageNumber">3</div>
-          <div className="pageNumber">4</div>
+          <Pagination />
         </div>
       </div>
     </div>

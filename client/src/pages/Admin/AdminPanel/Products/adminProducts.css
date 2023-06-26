@@ -98,10 +98,3 @@
     margin-left: auto;
     width: fit-content;
 }
-
-.adminproduct-pagination .pageNumber {
-    background-color: rgb(30, 175, 232);
-    padding: 6px 8px;
-    font-weight: bold;
-    color: white;
-}

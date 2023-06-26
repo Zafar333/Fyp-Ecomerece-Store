@@ -79,8 +79,11 @@ export const AdminProductAdd = async (req, resp, next) => {
   }
 };
 export const AdminProductGet = async (req, resp, next) => {
+  let page = 1 || 1;
+  let limit = 10;
+  let skip = (page - 1) * limit;
   try {
-    let products = await AdminProductModel.find({});
+    let products = await AdminProductModel.find({}).skip(skip).limit(limit);
     resp.json({ success: true, status: 200, data: products });
   } catch (error) {
     next(error);
