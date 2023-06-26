@@ -106,3 +106,25 @@ export const AdminProductDelete = async (req, resp, next) => {
     return next(error);
   }
 };
+export const AdminProductUpdate = async (req, resp, next) => {
+  // console.log(req.body);
+  try {
+    let updateProduct = await AdminProductModel.updateOne(
+      {
+        _id: req.params.id,
+      },
+      { $set: req.body }
+    );
+    console.log(updateProduct);
+    if (updateProduct?.modifiedCount === 0) {
+      return next({ message: "Product not found", statusCode: "404" });
+    }
+    return resp.json({
+      success: true,
+      status: 200,
+      message: "Product Updated Successfully!",
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
