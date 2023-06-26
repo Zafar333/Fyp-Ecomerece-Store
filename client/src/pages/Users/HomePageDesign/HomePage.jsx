@@ -83,7 +83,9 @@ const HomePage = () => {
                 <NavLink className="signupBtn" to="/tailor/register">
                   Signup
                 </NavLink>
-                <NavLink className="loginBtn">Login</NavLink>
+                <NavLink className="loginBtn" to="/tailor/login">
+                  Login
+                </NavLink>
               </div>
             </div>
             <div className="profileImgBlock">

@@ -10,3 +10,11 @@ export const TailorRegisterAPI = async (data) => {
     return error.message;
   }
 };
+export const TailorLoginAPI = async (data) => {
+  try {
+    let result = await axios.post(`${base}/login`, data);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
