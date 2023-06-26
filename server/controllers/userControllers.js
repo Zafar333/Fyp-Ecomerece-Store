@@ -54,7 +54,6 @@ export const register = async (req, resp, next) => {
   }
 };
 export const products = async (req, resp, next) => {
-  console.log(req.body);
   try {
     if (req?.body?.search) {
       let products = await ProductsModel.find({
