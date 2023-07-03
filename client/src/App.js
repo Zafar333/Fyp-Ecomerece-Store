@@ -46,7 +46,10 @@ function App() {
           <Route path="/tailor" element={<TailorRoot />}>
             <Route path="/tailor/login" element={<TailorLogin />} />
             <Route path="/tailor/register" element={<TailorRegister />} />
-            <Route path="/tailor/dashboard" element={<TailorDashboard />} />
+            <Route
+              path="/tailor/dashboard"
+              element={<TailorDashboard />}
+            ></Route>
           </Route>
           <Route path="/user" element={<UserRoot />}>
             <Route path="/user/login" element={<UserLogin />} />
