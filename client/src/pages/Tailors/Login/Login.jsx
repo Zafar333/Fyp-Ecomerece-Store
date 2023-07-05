@@ -6,10 +6,13 @@ import { TailorLoginAPI } from "../../../Utils/APIs/tailorApi.js";
 import { EmailValidator } from "../../../Utils/Validation.js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTailorProfile } from "../../../store/Slices/TailorAdmin/tailorAdminProfileSlice.js";
 
 const Login = () => {
   const [loginData, setlogin] = useState();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function handleData(e) {
     let { name, value } = e.target;
@@ -17,7 +20,6 @@ const Login = () => {
   }
 
   const tailorLogin = async () => {
-    console.log("Login data", loginData);
     let { email, password } = loginData;
     let emailCheck = EmailValidator(email);
 
@@ -27,8 +29,11 @@ const Login = () => {
           let obj = { email, password };
           let res = await TailorLoginAPI(obj);
           if (res?.data.status === 200) {
+            dispatch(setTailorProfile(res?.data?.data));
             localStorage.setItem("id", res?.data?.data._id);
-            localStorage.setItem("taliorToken", res?.data?.token);
+            localStorage.setItem("tailorToken", res?.data?.token);
+            localStorage.setItem("tailorName", res?.data?.data.name);
+            localStorage.setItem("tailorProfile", res?.data?.data.image);
             navigate("/tailor/dashboard");
             toast.success(
               res?.data?.message || "You are Login Successfully!!!"

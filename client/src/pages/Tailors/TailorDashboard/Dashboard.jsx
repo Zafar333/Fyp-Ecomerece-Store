@@ -1,17 +1,25 @@
 import React, { useEffect } from "react";
 import "./dashboard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-  const dispatch = useDispatch;
-  useEffect(() => {
-    dispatch();
-  }, []);
+  const tailorProfileDataState = useSelector(
+    (state) => state.tailoradminProfile
+  );
+  const tailorProfileName = localStorage.getItem("tailorName");
+  const tailorProfileimage = localStorage.getItem("tailorProfile");
   const [sidebar, setsidebarClose] = useState(false);
-
+  const navigate = useNavigate();
+  function tailorLogout() {
+    navigate("/tailor/login");
+    localStorage.removeItem("id");
+    localStorage.removeItem("tailorName");
+    localStorage.removeItem("tailorToken");
+    localStorage.removeItem("tailorProfile");
+  }
   return (
     <div className="dashboardMainContainer">
       <div
@@ -25,7 +33,9 @@ const Dashboard = () => {
             <Link className="optionText2">Orders</Link>
             <Link className="optionText3">Settings</Link>
           </div>
-          <button className="tailorDashboardBtn">Logout</button>
+          <button className="tailorDashboardBtn" onClick={tailorLogout}>
+            Logout
+          </button>
         </div>
       </div>
       <div className="tailorRightPanel">
@@ -39,9 +49,13 @@ const Dashboard = () => {
             />
           </div>
           <div className="tailorNavbarLeftContent">
-            <p>Arslan</p>
-            <img alt="" />
+            <p>{tailorProfileName}</p>
+            <img src={tailorProfileimage} alt="" />
           </div>
+        </div>
+        <h1>Tailor Dashboard</h1>
+        <div className="tailorShopContainer">
+          <button>Create A shop</button>
         </div>
       </div>
     </div>
