@@ -31,7 +31,7 @@ tailorAuthSchema.pre("save", async function (done) {
   this.password = await bcrypt.hash(this.password, salt);
   done();
 });
+tailorAuthSchema.methods.checkPassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
 export default mongoose.model("tailorAuth", tailorAuthSchema);
-
-//   adminAuthSchema.methods.checkPassword = async function (password) {
-//     return await bcrypt.compare(password, this.password);

@@ -1,0 +1,130 @@
+
+.dashboardMainContainer{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    border: 1px solid red;
+}
+.tailorLeftPanel{
+    flex: 1;
+    border:  1px solid black;
+}
+.tailorRightPanel{
+    flex: 4;
+    background-color: #e0e0e0;
+    border:  1px solid yellow;
+}
+.tailorSidebar{
+    display: flex;
+    width: 100%;
+    height: 99vh;
+    flex-direction: column;
+    border: 2px solid black;
+}
+.tailorSidebarTitle{
+    font-size: 30px;
+    text-align: center;
+    border:  1px solid black;
+    margin-bottom: 10%;
+}
+.tailorSidebarOptions{
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+.optionText1{
+    font-size: 18px;
+    padding: 1.5%;
+    text-decoration: none;
+}
+.optionText1:hover{
+    background-color: #e0e0e0;
+}
+.optionText2{
+    font-size: 18px;
+    padding: 1.5%;
+    text-decoration: none;
+
+}
+.optionText2:hover{
+    background-color: #e0e0e0;
+}
+.tailorDashboardBtn{
+    border: none;
+    position: relative;
+    top: 50%;
+    font-size: 25px;
+    height: 70px;
+    background:  linear-gradient(45deg, #df2bb4, #f8a029)
+}
+.optionText3{
+    font-size: 18px;
+    padding: 1.5%;
+    text-decoration: none;
+
+}
+.optionText3:hover{
+    background-color: #e0e0e0;
+}
+.tailorDashboardNavbar{
+    width: 100%;
+    background-color: rgb(149, 149, 149);
+    padding: 1.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+}
+.sidebarIcon{
+    cursor: pointer;
+}
+.tailorNavbarLeftContent{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: flex-end;
+    border: 1px solid palevioletred;
+    /* padding: 1; */
+}
+.tailorNavbarLeftContent img{
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    border:1px solid black;
+    border-radius: 50px;
+}
+.tailorShopContainer{
+    width: 90%;
+    height: 80vh;
+    margin: auto; 
+    background-color: #ffffff;
+}
+@media (max-width:1400px) {
+    .tailorSidebarTitle{
+        font-size: 25px;
+    }
+}
+@media (max-width:1100px) {
+    .tailorSidebarTitle{
+        font-size: 22px;
+    }
+    .tailorDashboardBtn{
+        font-size: 22px;
+    }
+}
+@media (max-width:900px) {
+    .optionText1{
+        font-size: 16px;
+    }
+    .tailorSidebarTitle{
+        font-size: 18px;
+    }
+}
+@media (max-width:700px) {
+   
+    .tailorSidebarTitle{
+        font-size: 17px;
+    }
+}
