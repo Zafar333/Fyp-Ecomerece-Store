@@ -7,6 +7,7 @@ import "./products.css";
 import { ProductsAPI } from "../../../../Utils/APIs/userAPI";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../../../store/Slices/Users/cartSlice";
+import { setSingleProduct } from "../../../../store/Slices/Users/SingleProduct";
 
 const Products = () => {
   const cartData = useSelector((state) => state.cart);
@@ -42,8 +43,13 @@ const Products = () => {
   const Cart = () => {
     navigate("/cart");
   };
-  const AddToCart = (item) => {
+  const AddToCart = (event, item) => {
+    event.stopPropagation();
     dispatch(setCart(item));
+  };
+  const SingleProduct = (item) => {
+    dispatch(setSingleProduct(item));
+    navigate(`/product/${item?._id}`);
   };
 
   products.length === 0 && <h2>No Products Found</h2>;
@@ -129,9 +135,12 @@ const Products = () => {
             {products.length !== 0 ? (
               products.map((item, index) => {
                 return (
-                  <div className="userProductCard" key={item._id}>
-                    <div className="userProductImg">
-                      <img src={item.profile} alt="" />
+                  <div className="userProductCard" key={item?._id}>
+                    <div
+                      className="userProductImg"
+                      onClick={() => SingleProduct(item)}
+                    >
+                      <img src={item?.profile} alt="" />
                     </div>
                     <p className="userProductname">{item?.name}</p>
                     <div className="userProductLower">
@@ -139,7 +148,7 @@ const Products = () => {
                         <p className="userProductPrice">Rs {item?.price}</p>
                         <p className="userProductCategory">{item?.category}</p>
                       </div>
-                      <button onClick={() => AddToCart(item)}>Add</button>
+                      <button onClick={(e) => AddToCart(e, item)}>Add</button>
                     </div>
                   </div>
                 );

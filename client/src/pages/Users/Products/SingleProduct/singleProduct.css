@@ -1,0 +1,64 @@
+.singleProduct {
+    display: flex;
+    gap: 20px;
+    max-width: 1280px;
+    height: 70vh;
+    margin: 40px auto;
+
+}
+
+.singleProductLeft {
+    width: 60%;
+    border: 1px solid gainsboro;
+}
+
+.singleProductLeft img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.singleProfuctRight {
+    width: 35%;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.singleProductName {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 36px;
+}
+
+.singleProductPrice {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+.shipDetail {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+}
+
+.singleProductCategory {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+}
+
+.singleProductCategory span {
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.singleProfuctRight button {
+    padding: 8px 20px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: #F47458;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
