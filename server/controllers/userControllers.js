@@ -1,6 +1,6 @@
 import UserAuthModel from "../database/models/usersModels/usersAuth.js";
+import ProductsModel from "../database/models/usersModels/productsModel.js";
 import { GenerateToken } from "../middlewares/Token.js";
-import ErrorResponse from "../utils/error.js";
 
 export const login = async (req, resp, next) => {
   let { email, password } = req.body;
@@ -29,6 +29,7 @@ export const login = async (req, resp, next) => {
     );
   } catch (error) {
     next(error);
+
     return;
   }
 };
@@ -48,6 +49,29 @@ export const register = async (req, resp, next) => {
       status: 200,
       message: "data saved successfully",
     });
+  } catch (error) {
+    next(error);
+  }
+};
+export const products = async (req, resp, next) => {
+  try {
+    if (req?.body?.search) {
+      let products = await ProductsModel.find({
+        $and: [
+          { name: { $regex: req.body.search } },
+
+          req?.body?.category === "all"
+            ? { $or: [{ category: "women" }, { category: "men" }] }
+            : { category: req?.body?.category },
+        ],
+      }).sort(req.body.pricesort);
+      return resp.json({ success: true, status: 200, data: products });
+    } else {
+      let products = await ProductsModel.find(
+        req?.body?.category === "all" ? {} : { category: req?.body?.category }
+      ).sort(req.body.pricesort);
+      return resp.json({ success: true, status: 200, data: products });
+    }
   } catch (error) {
     next(error);
   }

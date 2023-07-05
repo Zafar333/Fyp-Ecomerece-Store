@@ -18,6 +18,9 @@ import Dashboard from "./pages/Admin/AdminPanel/Dashboard/Dashboard";
 import AdminProducts from "./pages/Admin/AdminPanel/Products/AdminProducts";
 import NewProductAdmin from "./pages/Admin/AdminPanel/NewProduct/NewProductAdmin";
 import TailorDashboard from ".//pages/Tailors/TailorDashboard/Dashboard";
+import Cart from "./pages/Users/Cart/Cart";
+import SingleProduct from "./pages/Users/Products/SingleProduct/SingleProduct";
+
 
 function App() {
   return (
@@ -40,6 +43,10 @@ function App() {
                   path="/admin/panel/products/new"
                   element={<NewProductAdmin />}
                 />
+                <Route
+                  path="/admin/panel/products/edit/:id"
+                  element={<NewProductAdmin />}
+                />
               </Route>
             </Route>
           </Route>
@@ -56,6 +63,8 @@ function App() {
             <Route path="/user/register" element={<UserRegister />} />
           </Route>
           <Route path="/products" element={<Products />} />
+          <Route path="/product/:productID" element={<SingleProduct />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </div>

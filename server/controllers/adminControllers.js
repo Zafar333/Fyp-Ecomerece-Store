@@ -66,15 +66,24 @@ export const AdminProductAdd = async (req, resp, next) => {
     if (!profile && !name && !price && !desc && category) {
       return next({ message: "please provide data", statusCode: 401 });
     }
-    await AdminProductModel.create({ profile, name, price, desc, category });
+    await AdminProductModel.create({
+      profile,
+      name,
+      price: price * 1,
+      desc,
+      category,
+    });
     return resp.json({ success: true, status: 200, message: "product Added" });
   } catch (error) {
     next(error);
   }
 };
 export const AdminProductGet = async (req, resp, next) => {
+  let page = 1 || 1;
+  let limit = 10;
+  let skip = (page - 1) * limit;
   try {
-    let products = await AdminProductModel.find({});
+    let products = await AdminProductModel.find({}).skip(skip).limit(limit);
     resp.json({ success: true, status: 200, data: products });
   } catch (error) {
     next(error);
@@ -92,6 +101,28 @@ export const AdminProductDelete = async (req, resp, next) => {
       success: true,
       status: 200,
       message: "Product Deleted Successfully!",
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
+export const AdminProductUpdate = async (req, resp, next) => {
+  // console.log(req.body);
+  try {
+    let updateProduct = await AdminProductModel.updateOne(
+      {
+        _id: req.params.id,
+      },
+      { $set: req.body }
+    );
+    console.log(updateProduct);
+    if (updateProduct?.modifiedCount === 0) {
+      return next({ message: "Product not found", statusCode: "404" });
+    }
+    return resp.json({
+      success: true,
+      status: 200,
+      message: "Product Updated Successfully!",
     });
   } catch (error) {
     return next(error);
