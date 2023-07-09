@@ -1,0 +1,51 @@
+.cart {
+    width: 1000px;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.cartCheckout {
+    height: 60px;
+    width: 100%;
+    background-color: rgb(142, 150, 159);
+}
+
+.cartData {
+    align-self: center;
+    margin-top: 25px;
+    width: 100%;
+    border: 1px solid #EEEEEE;
+}
+
+.cartData thead {
+    background: #000;
+    color: white;
+}
+
+.cartData tbody td img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+}
+
+.cartData th,
+.cartData td {
+    padding: 12px;
+    text-align: center;
+}
+
+.cartData tbody .counter {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+}
+
+.cartData tbody .counter button {
+    padding: 5px;
+    font-size: 16px;
+}
