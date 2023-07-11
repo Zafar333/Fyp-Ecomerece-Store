@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./dashboard.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -20,6 +20,7 @@ const Dashboard = () => {
     localStorage.removeItem("tailorToken");
     localStorage.removeItem("tailorProfile");
   }
+
   return (
     <div className="dashboardMainContainer">
       <div
@@ -53,9 +54,9 @@ const Dashboard = () => {
             <img src={tailorProfileimage} alt="" />
           </div>
         </div>
-        <h1>Tailor Dashboard</h1>
+
         <div className="tailorShopContainer">
-          <button>Create A shop</button>
+          <Outlet />
         </div>
       </div>
     </div>

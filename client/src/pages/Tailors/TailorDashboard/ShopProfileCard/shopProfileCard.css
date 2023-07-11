@@ -1,0 +1,14 @@
+.shopViewContainer{
+    width: 90%;
+    height: 80vh;
+    background-color: #ffffff;
+    margin: auto;
+}
+.tailorShopBtn{
+    border: none;
+    width: 10%;
+    height: 6vh;
+    font-size: 18px;
+    background:  linear-gradient(45deg, #df2bb4, #f8a029);
+    border-top-left-radius: 12px;
+}
