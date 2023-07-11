@@ -1,0 +1,66 @@
+.createShopForm{
+    width: 90%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    margin: auto;
+}
+.uploadImageDiv{
+    
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        margin-right: 50px;
+        text-align: center,;
+        font-size: 18px;      
+}
+.workImageCard{
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+
+}
+.imgTag{
+    width: 100px;
+    height: 100px;
+}
+.shopImagesBlock{
+    display: flex;
+    border: 1px solid rgb(206, 13, 13);
+}
+.imageDeleteBtn{
+    font-size: 12px;
+    width: 40px;
+    color:#fff;
+    background-color: #fd9644;
+    border: none;
+
+}
+.inputForm{
+    margin-top: 3%;
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background:  linear-gradient(45deg, #df2bb4, #f8a029);
+
+    
+}
+.inputForm input{
+    width: 50%;
+    height: 35px;
+    margin-bottom: 3%;
+}
+.optionCategory{
+    width: 20%;
+    height: 3vh;
+}
+.inputForm .descriptionBox{
+    margin-top: 3%;
+    width: 70%;
+    background-color: #eee;
+    height: 10vh;
+    border: none;
+    margin-bottom: 2%;
+}

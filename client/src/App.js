@@ -20,7 +20,8 @@ import NewProductAdmin from "./pages/Admin/AdminPanel/NewProduct/NewProductAdmin
 import TailorDashboard from ".//pages/Tailors/TailorDashboard/Dashboard";
 import Cart from "./pages/Users/Cart/Cart";
 import SingleProduct from "./pages/Users/Products/SingleProduct/SingleProduct";
-
+import CreateShop from "./pages/Tailors/TailorDashboard/CreateShop/CreateShop";
+import ShopProfileCard from "./pages/Tailors/TailorDashboard/ShopProfileCard/ShopProfileCard";
 
 function App() {
   return (
@@ -53,10 +54,13 @@ function App() {
           <Route path="/tailor" element={<TailorRoot />}>
             <Route path="/tailor/login" element={<TailorLogin />} />
             <Route path="/tailor/register" element={<TailorRegister />} />
-            <Route
-              path="/tailor/dashboard"
-              element={<TailorDashboard />}
-            ></Route>
+            <Route path="/tailor/dashboard" element={<TailorDashboard />}>
+              <Route path="/tailor/dashboard/" element={<ShopProfileCard />} />
+              <Route
+                path="/tailor/dashboard/createShop"
+                element={<CreateShop />}
+              />
+            </Route>
           </Route>
           <Route path="/user" element={<UserRoot />}>
             <Route path="/user/login" element={<UserLogin />} />
