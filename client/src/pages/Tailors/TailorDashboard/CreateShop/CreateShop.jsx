@@ -1,28 +1,38 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./createShop.css";
 
 const CreateShop = () => {
+  const navigate = useNavigate();
   const [workimage, setimages] = useState([]);
+  useEffect(() => {
+    console.log("usestae", workimage);
+  }, [workimage]);
+  // upload multiple images function is start here
   function uploadWorkImages(event) {
     const selectedimages = event.target.files;
     let images = Array.from(selectedimages);
-
-    // console.log("selectedfiles", selectedFiles);
     const imageArray = images?.map((item) => {
       return URL.createObjectURL(item);
     });
     setimages([...workimage, ...imageArray]);
   }
-  useEffect(() => {
-    console.log("usestae", workimage);
-  }, [workimage]);
+  // upload multiple images function is end here
+
+  // Go back function is start here
+  function goBack() {
+    navigate("/tailor/dashboard");
+    console.log("i am back");
+  }
+  // Go back function is end here
+
   return (
     <>
       <h1>Create A Shop</h1>
       <div className="createShopForm">
         <div className="shopImagesBlock">
-          <label htmlFor="UploadImages">
-            <div className="uploadImageDiv">+ Add More Images</div>
+          <label htmlFor="UploadImages" className="imgLabelBlock">
+            <div className="uploadImageDiv">+ Add Project Images</div>
           </label>
           <input
             name="workimage"
@@ -80,6 +90,12 @@ const CreateShop = () => {
             type="text"
             className="descriptionBox"
           />
+          <div className="formBtnBox">
+            <button className="formCancelBtn" onClick={goBack}>
+              Cancel
+            </button>
+            <button className="formSubmitBtn">Submit</button>
+          </div>
         </div>
       </div>
     </>
