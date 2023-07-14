@@ -1,16 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./cart.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../../../components/Navbar";
+import { DecCart, IncCart } from "../../../store/Slices/Users/cartSlice";
 
 const Cart = () => {
   let cartData = useSelector((state) => state.cart);
-  const [count, setCount] = useState(1);
+  let [totalPrice, setTotalPrice] = useState(0);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    let count = 0;
+    cartData.map((item) => {
+      count += item.qty * item.price;
+    });
+    setTotalPrice(count);
+  }, [cartData]);
   return (
     <>
       <Navbar />
       <div className="cart">
-        <div className="cartCheckout"></div>
+        <div className="cartCheckout">
+          <div className="totalPrice">
+            <h3>Total Price: ${totalPrice}</h3>
+          </div>
+        </div>
         <table className="cartData">
           <thead>
             <tr>
@@ -32,9 +46,9 @@ const Cart = () => {
                   <td>Rs {item?.price}</td>
                   <td>
                     <div className="counter">
-                      <button onClick={() => setCount(count - 1)}>-</button>
-                      <p>{count}</p>
-                      <button onClick={() => setCount(count + 1)}>+</button>
+                      <button onClick={() => dispatch(DecCart(item))}>-</button>
+                      <p>{item?.qty}</p>
+                      <button onClick={() => dispatch(IncCart(item))}>+</button>
                     </div>
                   </td>
                   <td>
