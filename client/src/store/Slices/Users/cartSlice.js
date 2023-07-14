@@ -7,10 +7,35 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     setCart(state, action) {
-      return (state = [...state, action.payload]);
+      let res = state.findIndex((item) => item._id == action.payload._id);
+      if (res !== -1) {
+        state.splice(res, 1, { ...state[res], qty: state[res].qty + 1 });
+      } else {
+        let data = action.payload;
+        data.qty = 1;
+        return (state = [...state, data]);
+      }
+    },
+    IncCart(state, action) {
+      let res = state.findIndex((item) => item._id == action.payload._id);
+      if (res !== -1) {
+        state.splice(res, 1, { ...state[res], qty: state[res].qty + 1 });
+      } else {
+        let data = action.payload;
+        data.qty = 1;
+        return (state = [...state, data]);
+      }
+    },
+    DecCart(state, action) {
+      let res = state.findIndex((item) => item._id == action.payload._id);
+      if (state[res].qty > 1) {
+        state.splice(res, 1, { ...state[res], qty: state[res].qty - 1 });
+      } else {
+        state.splice(res, 1);
+      }
     },
   },
 });
 
-export const { setCart } = cartSlice.actions;
+export const { setCart, IncCart, DecCart } = cartSlice.actions;
 export default cartSlice.reducer;
