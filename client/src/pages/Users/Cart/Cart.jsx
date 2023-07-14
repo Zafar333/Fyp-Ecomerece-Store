@@ -6,12 +6,25 @@ import { DecCart, IncCart } from "../../../store/Slices/Users/cartSlice";
 
 const Cart = () => {
   let cartData = useSelector((state) => state.cart);
+  let [totalPrice, setTotalPrice] = useState(0);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    let count = 0;
+    cartData.map((item) => {
+      count += item.qty * item.price;
+    });
+    setTotalPrice(count);
+  }, [cartData]);
   return (
     <>
       <Navbar />
       <div className="cart">
-        <div className="cartCheckout"></div>
+        <div className="cartCheckout">
+          <div className="totalPrice">
+            <h3>Total Price: ${totalPrice}</h3>
+          </div>
+        </div>
         <table className="cartData">
           <thead>
             <tr>
