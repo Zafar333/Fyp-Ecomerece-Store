@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./singleProduct.css";
 import Navbar from "../../../../components/Navbar";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "../../../../store/Slices/Users/cartSlice";
+import { toast } from "react-toastify";
 
 const SingleProduct = () => {
   const { productID } = useParams();
   const product = useSelector((state) => state.singleProduct);
+  const dispatch = useDispatch();
+
+  const Cart = (item) => {
+    let obj = { ...item };
+    dispatch(setCart(obj));
+    toast.success("Product Added to Cart");
+  };
+
   return (
     <>
       <Navbar />
@@ -22,7 +32,9 @@ const SingleProduct = () => {
             <p className="singleProductCategory">
               Category: <span>{product?.category}</span>
             </p>
-            <button className="addToCartSingle">Add To Cart</button>
+            <button className="addToCartSingle" onClick={() => Cart(product)}>
+              Add To Cart
+            </button>
             <div className="singleProductDescription">
               <h4>Description:</h4>
               <p>{product?.desc}</p>
