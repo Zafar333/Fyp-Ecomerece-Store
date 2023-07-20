@@ -5,6 +5,8 @@ import cors from "cors";
 import Database from "./database/index.js";
 import Route from "./routes/index.js";
 import ErrorResponse from "./utils/error.js";
+import stripe from "stripe";
+export const st = stripe(process.env.STRIPE_PRIVATE_KEY);
 
 const app = express();
 const PORT = process.env.PORT || 4000;

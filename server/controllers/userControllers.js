@@ -1,6 +1,7 @@
 import UserAuthModel from "../database/models/usersModels/usersAuth.js";
 import ProductsModel from "../database/models/usersModels/productsModel.js";
 import { GenerateToken } from "../middlewares/Token.js";
+import { st } from "../server.js";
 
 export const login = async (req, resp, next) => {
   let { email, password } = req.body;
@@ -72,6 +73,39 @@ export const products = async (req, resp, next) => {
       ).sort(req.body.pricesort);
       return resp.json({ success: true, status: 200, data: products });
     }
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const CheckoutSession = async (req, resp, next) => {
+  try {
+    let res = await ProductsModel.find({
+      _id: { $in: req.body.map((item) => item.id) },
+    });
+
+    const session = await st.checkout.sessions.create({
+      payment_method_types: ["card"],
+      mode: "payment",
+      line_items: res?.map((item) => {
+        let priceInCents = item.price * 100;
+        let qant = req.body.filter((d) => item._id == d.id);
+        return {
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name: item?.name,
+            },
+
+            unit_amount: priceInCents,
+          },
+          quantity: qant[0].qty,
+        };
+      }),
+      success_url: process.env.SUCCESS_URL,
+      cancel_url: process.env.CANCEL_URL,
+    });
+    resp.json({ status: 200, success: true, url: session?.url });
   } catch (error) {
     next(error);
   }

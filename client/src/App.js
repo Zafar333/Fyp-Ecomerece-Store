@@ -22,6 +22,8 @@ import Cart from "./pages/Users/Cart/Cart";
 import SingleProduct from "./pages/Users/Products/SingleProduct/SingleProduct";
 import CreateShop from "./pages/Tailors/TailorDashboard/CreateShop/CreateShop";
 import ShopProfileCard from "./pages/Tailors/TailorDashboard/ShopProfileCard/ShopProfileCard";
+import Success from "./components/Payments/Success";
+import Cancel from "./components/Payments/Cancel";
 
 function App() {
   return (
@@ -30,6 +32,9 @@ function App() {
         <ToastContainer />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/cancel" element={<Cancel />} />
+
           <Route path="/admin">
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/register" element={<AdminRegister />} />
