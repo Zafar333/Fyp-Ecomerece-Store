@@ -18,3 +18,19 @@ export const TailorLoginAPI = async (data) => {
     return error.message;
   }
 };
+export const tailorShopCreateDataApi = async (data, id) => {
+  try {
+    let result = await axios.patch(`${base}/createShops/${id}`, data);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
+export const tailorShopData = async (id) => {
+  try {
+    let result = await axios.get(`${base}/tailorShopData/${id}`);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};

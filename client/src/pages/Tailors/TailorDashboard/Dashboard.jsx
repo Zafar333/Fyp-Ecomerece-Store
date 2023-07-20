@@ -39,6 +39,7 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
+
       <div className="tailorRightPanel">
         <div className="tailorDashboardNavbar">
           <div>
