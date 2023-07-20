@@ -1,0 +1,44 @@
+.success-card-main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-card-main_child {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.success-card_upper {
+    display: flex;
+    gap: 35px;
+    align-items: center;
+}
+
+.success-card-left p {
+    max-width: 30ch;
+    margin-top: 10px;
+    color: #000;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.success-card_lower button {
+    height: 35px;
+    width: fit-content;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: coral;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

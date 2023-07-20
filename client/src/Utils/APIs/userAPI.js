@@ -27,3 +27,12 @@ export const ProductsAPI = async (data) => {
     return error.message;
   }
 };
+
+export const PaymentAPI = async (data) => {
+  try {
+    let result = await axios.post(`${base}/create-checkout-session`, data);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};

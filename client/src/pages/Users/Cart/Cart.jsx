@@ -7,6 +7,9 @@ import {
   DeleteCartItem,
   IncCart,
 } from "../../../store/Slices/Users/cartSlice";
+import { PaymentAPI } from "../../../Utils/APIs/userAPI";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   let cartData = useSelector((state) => state.cart);
@@ -20,6 +23,21 @@ const Cart = () => {
     });
     setTotalPrice(count);
   }, [cartData]);
+
+  const Checkout = async () => {
+    let data = cartData.map((item) => {
+      return {
+        id: item._id,
+        qty: item.qty,
+      };
+    });
+    let res = await PaymentAPI(data);
+    if (res?.data?.status === 200) {
+      window.location.replace(res?.data?.url);
+    } else {
+      toast.error(res?.data?.message || res);
+    }
+  };
   return (
     <>
       <Navbar />
@@ -28,7 +46,10 @@ const Cart = () => {
           <div className="totalPrice">
             <h3>Total Price: ${totalPrice}</h3>
           </div>
-          <button disabled={cartData?.length === 0 ? true : false}>
+          <button
+            disabled={cartData?.length === 0 ? true : false}
+            onClick={Checkout}
+          >
             Checkout
           </button>
         </div>
