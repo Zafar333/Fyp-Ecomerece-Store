@@ -92,7 +92,7 @@ export const CheckoutSession = async (req, resp, next) => {
         let qant = req.body.filter((d) => item._id == d.id);
         return {
           price_data: {
-            currency: "usd",
+            currency: "pkr",
             product_data: {
               name: item?.name,
             },
