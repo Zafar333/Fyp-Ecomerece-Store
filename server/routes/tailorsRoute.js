@@ -1,11 +1,18 @@
 import express from "express";
-import { login, register } from "../controllers/tailorControllers.js";
+import {
+  login,
+  register,
+  createShop,
+  fetchTailorShopData,
+} from "../controllers/tailorControllers.js";
 
 const router = express.Router();
 
 const tailorRoute = () => {
   router.post("/login", login);
   router.post("/register", register);
+  router.patch("/createShops/:id", createShop);
+  router.get("/tailorShopData/:id", fetchTailorShopData);
   return router;
 };
 

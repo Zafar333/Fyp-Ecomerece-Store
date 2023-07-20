@@ -9,28 +9,31 @@
 .uploadImageDiv{
     
         width: 100px;
-        height: 100px;
-        margin-right: 50px;
+        height: 75px;
         text-align: center,;
         font-size: 18px;     
-        box-shadow: 1px 1px 5px 1px rgb(30, 32, 33);
 
 }
 .imgLabelBlock{
     width: 100px;
-    height: 100px;
+    height: 75px;
+    margin-right: 20px;
+    border: 1px solid lightskyblue;
+
+
 }
 
 .workImageCard{
     display: flex;
     flex-direction: column;
     margin-right: 30px;
+    margin-top: 8px;
 
 
 }
 .imgTag{
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 50px;
     box-shadow: 1px 1px 5px 1px rgb(30, 32, 33);
 
 }
@@ -42,11 +45,13 @@
     /* flex-wrap: wrap;  */
     /* border: 1px solid rgb(206, 13, 13); */
     overflow: auto;
+    margin: 10px;
+    /* padding: 2px; */
 }
 .imageDeleteBtn{
-    font-size: 12px;
-    width: 50px;
-    height: 21px;
+    font-size: 11px;
+    width: 45px;
+    height: 17px;
     color:#fff;
     background-color: #fd9644;
     border: none;
@@ -66,13 +71,13 @@
 }
 .inputForm input{
     width: 50%;
-    height: 35px;
+    height: 4vh;
     margin-bottom: 3%;
-    font-size: 14px;
+    font-size: 15px;
 }
 .optionCategory{
     width: 20%;
-    height: 3vh;
+    height: 3.5vh;
     font-size: 16px;
 }
 .inputForm .descriptionBox{
@@ -107,4 +112,10 @@
     margin-right: 3%;
     background-color: #000;
     color: #fff;
+}
+
+@media (max-width:2500px){
+    .inputForm{
+        justify-content: space-evenly;
+    }
 }

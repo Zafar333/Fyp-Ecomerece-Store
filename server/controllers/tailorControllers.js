@@ -47,6 +47,13 @@ export const register = async (req, resp, next) => {
       email,
       password,
       type: "tailor",
+      designImages: [],
+      shopName: "",
+      contactNumber: 0,
+      standardPrice: 0,
+      fancyPrice: 0,
+      description: "",
+      stitchCategory: "",
     });
     resp.json({
       success: true,
@@ -56,5 +63,66 @@ export const register = async (req, resp, next) => {
   } catch (error) {
     next(error);
     return;
+  }
+};
+
+export const createShop = async (req, res, next) => {
+  const id = req.params.id;
+  const {
+    designImages,
+    shopName,
+    contactNumber,
+    standardPrice,
+    fancyPrice,
+    description,
+    stitchCategory,
+  } = req.body;
+  if (
+    (!designImages,
+    !shopName,
+    !contactNumber,
+    !standardPrice,
+    !fancyPrice,
+    !description,
+    !stitchCategory)
+  ) {
+    return next({ message: "please provide data", statusCode: 401 });
+  }
+  try {
+    let data = await tailorAuthSchema.updateOne(
+      {
+        _id: id,
+      },
+      { $set: req.body }
+    );
+    if (!data?.modifiedCount === 0) {
+      return next({
+        message: "your Shop is not created due to invalid account",
+        statusCode: "404",
+      });
+    } else {
+      res.json({
+        success: true,
+        message: "Your data save sucessfully and shop is created",
+        status: 200,
+      });
+    }
+  } catch (error) {
+    next(error);
+    return;
+  }
+};
+export const fetchTailorShopData = async (req, res, next) => {
+  const id = req.params.id;
+  const data = await tailorAuthSchema.findOne({ _id: id });
+  if (!data) {
+    return next({ message: "Data not found", statusCode: 401 });
+  } else {
+    try {
+      res.json({ success: true, shopData: data, status: 200 });
+    } catch (error) {
+      next(error);
+      return;
+    }
   }
 };
