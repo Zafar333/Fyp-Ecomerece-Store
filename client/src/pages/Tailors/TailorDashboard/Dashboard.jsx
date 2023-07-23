@@ -29,8 +29,11 @@ const Dashboard = () => {
       >
         <div className="tailorSidebar">
           <p className="tailorSidebarTitle">Tailor Admin</p>
+          <hr></hr>
           <div className="tailorSidebarOptions">
-            <Link className="optionText1">Dashboard</Link>
+            <Link to="/tailor/dashboard" className="optionText1">
+              Dashboard
+            </Link>
             <Link className="optionText2">Orders</Link>
             <Link className="optionText3">Settings</Link>
           </div>
