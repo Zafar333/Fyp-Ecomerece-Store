@@ -91,7 +91,7 @@
 }
 .formBtnBox{
     width: 60%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: flex;
     justify-content: center;
 }
@@ -102,6 +102,7 @@
     border:none;
     margin-right: 10%;
     font-size: 18px;
+    cursor: pointer;
 }
 .formSubmitBtn{
     width:85px;
@@ -112,6 +113,8 @@
     margin-right: 3%;
     background-color: #000;
     color: #fff;
+    cursor: pointer;
+
 }
 
 @media (max-width:2500px){
@@ -137,10 +140,15 @@
    }
 }
 @media(max-width:600px){
-    .formSubmitBtn{font-size: 16px;}
-    .formCancelBtn{
+    .formSubmitBtn{
+        width: 75px;
         font-size: 16px;
     }
+    .formCancelBtn{
+        width: 75px;
+        font-size: 16px;
+    }
+    
 }
 @media(max-width:500px){
     .inputForm input{
@@ -153,4 +161,14 @@
         width: 50%;
         font-size: 12px;
        }
+       /* .formSubmitBtn{
+        font-size: 16px;
+       } */
+
+}
+@media(max-width:380px){
+    .inputForm input{
+        width: 90%;
+
+    }
 }

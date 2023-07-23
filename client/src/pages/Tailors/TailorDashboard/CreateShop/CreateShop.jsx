@@ -11,7 +11,6 @@ const CreateShop = () => {
   const [formData, setFormData] = useState([]);
   useEffect(() => {
     uploadWorkImages();
-    console.log("files", files);
   }, [files]);
 
   // upload multiple images function is start here

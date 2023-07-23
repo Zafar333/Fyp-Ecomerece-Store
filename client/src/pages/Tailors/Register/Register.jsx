@@ -28,7 +28,6 @@ const Register = () => {
   }
 
   const tailorSignup = async () => {
-    console.log("signup data", signupData);
     let { name, email, password } = signupData;
     let emailCheck = EmailValidator(email);
 
@@ -44,7 +43,7 @@ const Register = () => {
             toast.error(res?.data?.message || res);
           }
         } catch (error) {
-          console.log("dsfhsdkj");
+          toast.error(error.message);
         }
       } else {
         toast.error("email is not valid");

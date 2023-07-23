@@ -30,7 +30,6 @@ const ShopProfileCard = () => {
       toast.error(res.data.message);
     }
   };
-  console.log("array", shopCardArr);
 
   // Image Next crousel function code is start here
   function crouselImgNext() {
@@ -67,20 +66,17 @@ const ShopProfileCard = () => {
           <div className="crouselButtonBlock">
             <div className="crouselButtons">
               <div style={{ backgroundColor: "white" }}>
-                {" "}
                 <img
-                  width={"25px"}
-                  height={"25px"}
+                  style={{ width: "25px", height: "25px", cursor: "pointer" }}
                   src={arrowLeft}
                   onClick={crouselImgPrevious}
                 />
               </div>
               <div style={{ backgroundColor: "white" }}>
                 <img
-                  width={"25px"}
-                  height={"25px"}
                   src={arrowRight}
                   onClick={crouselImgNext}
+                  style={{ width: "25px", height: "25px", cursor: "pointer" }}
                 />
               </div>
             </div>
