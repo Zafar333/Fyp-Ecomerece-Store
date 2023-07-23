@@ -119,3 +119,38 @@
         justify-content: space-evenly;
     }
 }
+@media (max-width: 1000px){
+    .tailorLeftPanel{
+        display: none;
+     
+    }
+}
+@media (max-width:1200px){
+   .inputForm input{
+    width: 75%;
+   }
+   .inputForm .descriptionBox{
+    width: 75%;
+   }
+   .optionCategory{
+    width: 40%;
+   }
+}
+@media(max-width:600px){
+    .formSubmitBtn{font-size: 16px;}
+    .formCancelBtn{
+        font-size: 16px;
+    }
+}
+@media(max-width:500px){
+    .inputForm input{
+        font-size: 12px;
+    }
+    .inputForm .descriptionBox{
+        font-size: 12px;
+       }
+       .optionCategory{
+        width: 50%;
+        font-size: 12px;
+       }
+}
