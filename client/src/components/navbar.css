@@ -1,4 +1,64 @@
 .navbarMain {
-    background-color: rgb(149, 149, 149);
+    background-color: white;
     padding: 18px;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 5px;
+}
+
+.navbarContent {
+    max-width: 1280px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    align-items: center;
+}
+
+.navbarLinks {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navbarLinks a {
+    color: black;
+    text-decoration: none;
+    font-weight: bolder;
+
+}
+
+.userProfile {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.userProfile img {
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.navbarLogins {
+    margin-left: 35px;
+}
+
+.userLogout,
+.navbarSignup {
+    margin-left: 20px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    font-weight: normal !important;
+}
+
+.navbarSignup {
+    background-color: coral;
+    color: white !important;
+}
+
+.userLogout {
+    background-color: orangered;
+    color: white;
 }
