@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
 const userAuthSchema = new mongoose.Schema({
+  profile: { type: String },
   firstname: {
     type: String,
     required: [true, "Please provide firstname"],

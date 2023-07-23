@@ -9,11 +9,14 @@ import {
   EmailValidator,
   PasswordValidator,
 } from "../../../Utils/Validation";
+import Avatar from "../../../assets/avatar.jpg";
 
 const Register = () => {
+  const [profile, setProfile] = useState("");
   const [spin, setSpin] = useState(false);
   const navigate = useNavigate();
   const [values, setValues] = useState({
+    profile: "",
     firstname: "",
     lastname: "",
     email: "",
@@ -59,6 +62,20 @@ const Register = () => {
       toast.error("please fill all fields");
     }
   };
+  const Profile = (e) => {
+    let image = e.target.files[0];
+    if (!image) return;
+    const filereader = new FileReader();
+    filereader.readAsDataURL(image);
+    filereader.onload = () => {
+      let imageResult = filereader.result;
+      setProfile(imageResult);
+      setValues({ ...values, profile: imageResult });
+    };
+    filereader.onerror = (error) => {
+      console.log(error);
+    };
+  };
   return (
     <div className="userRegister">
       <div className="userRegisterLeft">
@@ -68,6 +85,18 @@ const Register = () => {
           <p>Create Your Account!</p>
         </div>
         <div className="form">
+          <div className="inputs">
+            <label htmlFor="AdminPic" className="file">
+              <img src={profile ? profile : Avatar} alt="avatar" />
+              <input
+                type="file"
+                name="AdminPic"
+                id="AdminPic"
+                onChange={Profile}
+                accept="image/*"
+              />
+            </label>
+          </div>
           <div className="inputs">
             <p>First Name</p>
             <input

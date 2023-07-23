@@ -15,6 +15,7 @@ const Cart = () => {
   let cartData = useSelector((state) => state.cart);
   let [totalPrice, setTotalPrice] = useState(0);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     let count = 0;
@@ -25,17 +26,22 @@ const Cart = () => {
   }, [cartData]);
 
   const Checkout = async () => {
-    let data = cartData.map((item) => {
-      return {
-        id: item._id,
-        qty: item.qty,
-      };
-    });
-    let res = await PaymentAPI(data);
-    if (res?.data?.status === 200) {
-      window.location.replace(res?.data?.url);
+    if (localStorage.getItem("userToken")) {
+      let data = cartData.map((item) => {
+        return {
+          id: item._id,
+          qty: item.qty,
+        };
+      });
+      let res = await PaymentAPI(data);
+      if (res?.data?.status === 200) {
+        window.location.replace(res?.data?.url);
+      } else {
+        toast.error(res?.data?.message || res);
+      }
     } else {
-      toast.error(res?.data?.message || res);
+      toast.error("Please Login to Proceed");
+      navigate("/user/login");
     }
   };
   return (

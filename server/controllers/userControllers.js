@@ -18,12 +18,15 @@ export const login = async (req, resp, next) => {
       next({ message: "Invalid Email or Password", statusCode: 401 });
       return;
     }
+    let respData = { ...checkEmail, password: "" };
+
     GenerateToken(
       checkEmail._id,
       {
         success: true,
         status: 200,
         message: "Login Successfull",
+        data: respData,
       },
       resp,
       next
@@ -35,10 +38,11 @@ export const login = async (req, resp, next) => {
   }
 };
 export const register = async (req, resp, next) => {
-  let { firstname, lastname, email, password } = req.body;
+  let { firstname, lastname, email, password, profile } = req.body;
 
   try {
     const user = await UserAuthModel.create({
+      profile,
       firstname,
       lastname,
       email,
@@ -48,7 +52,7 @@ export const register = async (req, resp, next) => {
     resp.json({
       success: true,
       status: 200,
-      message: "data saved successfully",
+      message: "Registered successfully",
     });
   } catch (error) {
     next(error);
