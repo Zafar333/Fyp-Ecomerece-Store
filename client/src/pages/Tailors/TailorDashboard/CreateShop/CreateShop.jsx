@@ -6,17 +6,26 @@ import { tailorShopCreateDataApi } from "../../../../Utils/APIs/tailorApi.js";
 
 const CreateShop = () => {
   const navigate = useNavigate();
+  const [files, setImgs] = useState([]);
   const [designImages, setimages] = useState([]);
   const [formData, setFormData] = useState([]);
+  useEffect(() => {
+    uploadWorkImages();
+    console.log("files", files);
+  }, [files]);
 
   // upload multiple images function is start here
-  function uploadWorkImages(event) {
-    const selectedimages = event.target.files;
-    let images = Array.from(selectedimages);
-    const imageArray = images?.map((item) => {
-      return URL.createObjectURL(item);
-    });
-    setimages([...designImages, ...imageArray]);
+  async function uploadWorkImages() {
+    let Temparr = [];
+    if (files.length > 0) {
+      for (let singleImage of files) {
+        let filereader = new FileReader();
+        filereader.readAsDataURL(singleImage);
+        await new Promise((resolve) => (filereader.onload = () => resolve()));
+        Temparr.push(filereader.result);
+      }
+      setimages([...designImages, ...Temparr]);
+    }
   }
   // upload multiple images function is end here
 
@@ -91,7 +100,7 @@ const CreateShop = () => {
           </label>
           <input
             name="designImages"
-            onChange={uploadWorkImages}
+            onChange={(e) => setImgs(e.target.files)}
             type="file"
             id="UploadImages"
             style={{ display: "none" }}
@@ -99,19 +108,20 @@ const CreateShop = () => {
             accept="image/*"
           />
 
-          {designImages?.map((item, index) => (
-            <div className="workImageCard" key={index}>
-              <img className="imgTag" src={item} alt="" />
-              <button
-                className="imageDeleteBtn"
-                onClick={() =>
-                  setimages(designImages.filter((arr) => arr !== item))
-                }
-              >
-                Delete
-              </button>
-            </div>
-          ))}
+          {designImages.length > 0 &&
+            designImages?.map((item, index) => (
+              <div className="workImageCard" key={index}>
+                <img className="imgTag" src={item} alt="" />
+                <button
+                  className="imageDeleteBtn"
+                  onClick={() =>
+                    setimages(designImages.filter((arr) => arr !== item))
+                  }
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
         </div>
         <div className="inputForm">
           <input

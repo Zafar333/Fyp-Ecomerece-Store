@@ -11,7 +11,7 @@ const Dashboard = () => {
   );
   const tailorProfileName = localStorage.getItem("tailorName");
   const tailorProfileimage = localStorage.getItem("tailorProfile");
-  const [sidebar, setsidebarClose] = useState(false);
+  const [sidebar, setsidebarClose] = useState(true);
   const navigate = useNavigate();
   function tailorLogout() {
     navigate("/tailor/login");
@@ -24,8 +24,8 @@ const Dashboard = () => {
   return (
     <div className="dashboardMainContainer">
       <div
-        className="tailorLeftPanel"
-        style={{ display: sidebar ? "none" : "flex" }}
+        className={sidebar ? "tailorLeftPanelNone" : "tailorLeftPanel"}
+        // style={{ display: sidebar ? "none" : "flex" }}
       >
         <div className="tailorSidebar">
           <p className="tailorSidebarTitle">Tailor Admin</p>

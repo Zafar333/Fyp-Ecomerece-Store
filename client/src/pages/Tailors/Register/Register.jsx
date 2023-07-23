@@ -64,16 +64,7 @@ const Register = () => {
 
           <label className="profileImgSec" htmlFor="profileImg-Tag ">
             {image ? (
-              <img
-                src={image}
-                style={{
-                  width: "60%",
-                  height: "11vh",
-                  borderRadius: "4px",
-                  objectFit: "cover",
-                  objectPosition: "middle",
-                }}
-              />
+              <img className="tailorProfileImg" src={image} />
             ) : (
               <div className="profileImgCard"></div>
             )}

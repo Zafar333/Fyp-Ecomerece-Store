@@ -100,6 +100,14 @@
   border: 1px solid red;
 
 }
+.tailorProfileImg{
+    width: 60%;
+    height: 11vh;
+    border-radius:4px;
+    object-fit: cover;
+    object-position: middle;
+
+}
 @media(max-width:1700px){
     .tailorSignupForm{
 
@@ -145,7 +153,7 @@
            .profileImgCard{
             height: 8vh;
            }
-           label img{
-            height: 8vh!important;
+           .tailorProfileImg{
+            height: 8vh;
            }
         }
