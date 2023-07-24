@@ -5,7 +5,9 @@ const AllTailors = () => {
   return (
     <>
       <Navbar />
-      <div className="AllTailorsContainer"></div>
+      <div className="AllTailorsContainer">
+        <h1>All Tailors Profile</h1>
+      </div>
     </>
   );
 };
