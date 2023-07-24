@@ -10,12 +10,10 @@
 .tailorSignupForm{
     width: 80%;
     /* border: 1px solid black; */
-
     height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
- 
 }
 .formImg{
     width: 40%;
