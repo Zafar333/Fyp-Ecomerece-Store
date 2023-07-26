@@ -124,3 +124,30 @@
 .rightPanel-comp {
     padding: 10px 20px;
 }
+
+.closeLeftPanelBtn {
+    display: none;
+}
+
+@media (max-width:1000px) {
+    .leftPanel {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 300px;
+    }
+
+    .closeLeftPanelBtn {
+        display: inline;
+    }
+}
+
+@media (max-width:468px) {
+    .leftPanel {
+        width: 100vw;
+    }
+
+    .rightPanel-comp {
+        padding: 10px 8px;
+    }
+}

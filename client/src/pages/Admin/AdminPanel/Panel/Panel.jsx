@@ -12,15 +12,24 @@ import MenuIcon from "@mui/icons-material/Menu";
 const Panel = () => {
   const navigate = useNavigate();
   const [ham, setHam] = useState(false);
+  const [adminProfile] = useState(
+    JSON.parse(localStorage.getItem("adminProfile"))
+  );
+  const [adminName] = useState(JSON.parse(localStorage.getItem("adminName")));
   const Logout = () => {
     localStorage.removeItem("adminToken");
+    localStorage.removeItem("adminProfile");
+    localStorage.removeItem("adminName");
     navigate("/admin/login");
   };
-  const state = useSelector((state) => state.adminProfile);
+
   return (
     <div className="panel">
       <div className="leftPanel" style={{ display: ham ? "none" : "flex" }}>
         <h1>Admin</h1>
+        <button onClick={() => setHam(!ham)} className="closeLeftPanelBtn">
+          close
+        </button>
         <hr />
         <div className="menus">
           <p className="title">Main</p>
@@ -63,8 +72,8 @@ const Panel = () => {
             }}
           />
           <div className="rightPanelProfile">
-            <span>{state.name}</span>
-            <img src={state?.profile} alt="" />
+            <span>{adminName}</span>
+            <img src={adminProfile} alt="" />
           </div>
         </div>
         <div className="rightPanel-comp">
