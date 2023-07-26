@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import Avatar from "../assets/avatar.jpg";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const Navbar = () => {
   const [userToken] = useState(localStorage.getItem("userToken"));
-  const userAuthData = useSelector((state) => state.userAuth);
+  const [userProfile, setUserProfile] = useState(
+    JSON.parse(localStorage.getItem("userProfile"))
+  );
+  const [userName, setUserName] = useState(
+    JSON.parse(localStorage.getItem("userName"))
+  );
   const [showModal, setShowModal] = useState(false);
 
   function Logout() {
@@ -39,18 +43,10 @@ const Navbar = () => {
                 <span className="userProfile">
                   <div className="navbarprofileData">
                     <img
-                      src={
-                        userAuthData
-                          ? userAuthData?.data?._doc?.profile
-                          : Avatar
-                      }
+                      src={userProfile ? userProfile : Avatar}
                       alt="avatar"
                     />
-                    <b>
-                      {userAuthData
-                        ? userAuthData?.data?._doc?.firstname
-                        : "unKnown"}
-                    </b>
+                    <b>{userName ? userName : "unKnown"}</b>
                   </div>
                   <button className="userLogout removeMargin" onClick={Logout}>
                     Logout
@@ -71,17 +67,8 @@ const Navbar = () => {
           <div className="navbarLogins">
             {userToken ? (
               <span className="userProfile">
-                <img
-                  src={
-                    userAuthData ? userAuthData?.data?._doc?.profile : Avatar
-                  }
-                  alt="avatar"
-                />
-                <b>
-                  {userAuthData
-                    ? userAuthData?.data?._doc?.firstname
-                    : "unKnown"}
-                </b>
+                <img src={userProfile ? userProfile : Avatar} alt="avatar" />
+                <b>{userName ? userName : "unKnown"}</b>
                 <button className="userLogout" onClick={Logout}>
                   Logout
                 </button>

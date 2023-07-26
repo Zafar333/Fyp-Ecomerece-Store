@@ -5,7 +5,6 @@ import { EmailValidator, isEmpty } from "../../../Utils/Validation";
 import { toast } from "react-toastify";
 import { UserLogin } from "../../../Utils/APIs/userAPI";
 import { useDispatch } from "react-redux";
-import { setUserAuthProfile } from "../../../store/Slices/Users/authDataSlice";
 
 const Login = () => {
   const [spin, setSpin] = useState(false);
@@ -29,7 +28,14 @@ const Login = () => {
         let res = await UserLogin(values);
         if (res?.data?.status === 200) {
           setSpin(false);
-          dispatch(setUserAuthProfile(res?.data));
+          localStorage.setItem(
+            "userProfile",
+            JSON.stringify(res?.data?.data?._doc?.profile)
+          );
+          localStorage.setItem(
+            "userName",
+            JSON.stringify(res?.data?.data?._doc?.firstname)
+          );
           localStorage.setItem("userToken", JSON.stringify(res?.data?.token));
           toast.success(res.data.message);
           navigate("/products");
