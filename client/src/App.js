@@ -24,6 +24,7 @@ import CreateShop from "./pages/Tailors/TailorDashboard/CreateShop/CreateShop";
 import ShopProfileCard from "./pages/Tailors/TailorDashboard/ShopProfileCard/ShopProfileCard";
 import Success from "./components/Payments/Success";
 import Cancel from "./components/Payments/Cancel";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   return (
@@ -74,6 +75,9 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/product/:productID" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
+
+          {/* this route should be at end */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
