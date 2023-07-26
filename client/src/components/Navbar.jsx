@@ -16,6 +16,8 @@ const Navbar = () => {
 
   function Logout() {
     localStorage.removeItem("userToken");
+    localStorage.removeItem("userProfile");
+    localStorage.removeItem("userName");
     window.location.reload();
   }
 
