@@ -107,7 +107,6 @@ export const AdminProductDelete = async (req, resp, next) => {
   }
 };
 export const AdminProductUpdate = async (req, resp, next) => {
-  // console.log(req.body);
   try {
     let updateProduct = await AdminProductModel.updateOne(
       {
