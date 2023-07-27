@@ -97,9 +97,28 @@
 .adminproduct-pagination {
     display: flex;
     padding: 8px 0;
-    gap: 5px;
+    gap: 12px;
     margin-left: auto;
     width: fit-content;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.prevPage,
+.nextPage,
+.PerPageNumber {
+    padding: 4px 8px;
+    background-color: rgb(61, 155, 193);
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.pages {
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }
 
 @media (min-width:1600px) {
@@ -113,6 +132,7 @@
     .adminproduct-products {
         grid-template-columns: 1fr 1fr 1fr 1fr;
         height: auto;
+        padding: 8px 0;
     }
 }
 
