@@ -6,7 +6,6 @@ import {
   AdminProductFetchAPI,
 } from "../../../../Utils/APIs/adminAPI";
 import { toast } from "react-toastify";
-import Pagination from "../../../../components/Pagination/Pagination";
 import { useDispatch } from "react-redux";
 import { setProfile } from "../../../../store/Slices/Admin/adminEditProductSlice";
 
@@ -23,9 +22,7 @@ const AdminProducts = () => {
     FetchProducts(pageNumber);
   }, [pageNumber]);
   useEffect(() => {
-    console.log("dfsd", TotalData);
     setTotalPage(Math.ceil(TotalData / 10));
-    console.log("cvcxv", TotalPage);
   }, [TotalData, TotalPage]);
   const FetchProducts = async (page) => {
     setSpin(true);
@@ -58,6 +55,17 @@ const AdminProducts = () => {
   };
   function SendPage(pagenum) {
     setPageNumber(pagenum);
+  }
+  function NextPage() {
+    // FetchProducts(pageNumber + 1);
+    if (pageNumber < TotalPage) {
+      setPageNumber(pageNumber + 1);
+    }
+  }
+  function PrevPage() {
+    if (pageNumber > 1) {
+      setPageNumber(pageNumber - 1);
+    }
   }
   return spin ? (
     <h3>Loading...</h3>
@@ -92,7 +100,9 @@ const AdminProducts = () => {
           })}
         </div>
         <div className="adminproduct-pagination">
-          <div className="prevPage">Prev</div>
+          <div className="prevPage" onClick={PrevPage}>
+            Prev
+          </div>
           <div className="pages">
             {TotalPage &&
               Array.from(Array(TotalPage), (item, ind) => {
@@ -100,13 +110,20 @@ const AdminProducts = () => {
                   <div
                     className="PerPageNumber"
                     onClick={() => SendPage(ind + 1)}
+                    style={{
+                      backgroundColor:
+                        pageNumber === ind + 1 ? "gainsboro" : "",
+                      color: pageNumber === ind + 1 ? "black" : "",
+                    }}
                   >
                     {ind + 1}
                   </div>
                 );
               })}
           </div>
-          <div className="nextPage">next</div>
+          <div className="nextPage" onClick={NextPage}>
+            next
+          </div>
         </div>
       </div>
     </div>
