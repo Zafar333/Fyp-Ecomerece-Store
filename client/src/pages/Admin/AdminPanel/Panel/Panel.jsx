@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
@@ -16,12 +16,23 @@ const Panel = () => {
     JSON.parse(localStorage.getItem("adminProfile"))
   );
   const [adminName] = useState(JSON.parse(localStorage.getItem("adminName")));
+  const [EmbedFunction, setEmbedFunction] = useState(false);
   const Logout = () => {
     localStorage.removeItem("adminToken");
     localStorage.removeItem("adminProfile");
     localStorage.removeItem("adminName");
     navigate("/admin/login");
   };
+  useEffect(() => {
+    if (window.innerWidth <= 1000) {
+      setEmbedFunction(true);
+    } else {
+      setEmbedFunction(false);
+    }
+  });
+  function CLoseSidebarFun() {
+    setHam(true);
+  }
 
   return (
     <div className="panel">
@@ -34,27 +45,47 @@ const Panel = () => {
         <div className="menus">
           <p className="title">Main</p>
 
-          <Link to="/admin/panel/dashboard" style={{ textDecoration: "none" }}>
+          <Link
+            to="/admin/panel/dashboard"
+            style={{ textDecoration: "none" }}
+            onClick={EmbedFunction ? CLoseSidebarFun : ""}
+          >
             <DashboardIcon className="icon" />
             <p>Dashboard</p>
           </Link>
-          <Link style={{ textDecoration: "none" }}>
+          <Link
+            style={{ textDecoration: "none" }}
+            onClick={EmbedFunction ? CLoseSidebarFun : ""}
+          >
             <PeopleAltIcon className="icon" />
             <p>Users</p>
           </Link>
-          <Link to="/admin/panel/products" style={{ textDecoration: "none" }}>
+          <Link
+            to="/admin/panel/products"
+            style={{ textDecoration: "none" }}
+            onClick={EmbedFunction ? CLoseSidebarFun : ""}
+          >
             <ProductionQuantityLimitsIcon className="icon" />
             <p>Products</p>
           </Link>
-          <Link style={{ textDecoration: "none" }}>
+          <Link
+            style={{ textDecoration: "none" }}
+            onClick={EmbedFunction ? CLoseSidebarFun : ""}
+          >
             <InventoryIcon className="icon" />
             <p>Orders</p>
           </Link>
-          <Link style={{ textDecoration: "none" }}>
+          <Link
+            style={{ textDecoration: "none" }}
+            onClick={EmbedFunction ? CLoseSidebarFun : ""}
+          >
             <BusinessIcon className="icon" />
             <p>Tailors</p>
           </Link>
-          <Link style={{ textDecoration: "none" }}>
+          <Link
+            style={{ textDecoration: "none" }}
+            onClick={EmbedFunction ? CLoseSidebarFun : ""}
+          >
             <PowerSettingsNewIcon className="icon" />
             <p>Settings</p>
           </Link>

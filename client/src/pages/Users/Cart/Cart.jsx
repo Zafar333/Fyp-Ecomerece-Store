@@ -27,6 +27,9 @@ const Cart = () => {
 
   const Checkout = async () => {
     if (localStorage.getItem("userToken")) {
+      if (totalPrice < 150)
+        return toast.error("You cannot Shop less than Rs 150");
+      console.log(totalPrice > 150);
       let data = cartData.map((item) => {
         return {
           id: item._id,
@@ -50,7 +53,7 @@ const Cart = () => {
       <div className="cart">
         <div className="cartCheckout">
           <div className="totalPrice">
-            <h3>Total Price: ${totalPrice}</h3>
+            <h3>Total Price: Rs: {totalPrice}</h3>
           </div>
           <button
             disabled={cartData?.length === 0 ? true : false}
