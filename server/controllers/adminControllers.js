@@ -79,12 +79,21 @@ export const AdminProductAdd = async (req, resp, next) => {
   }
 };
 export const AdminProductGet = async (req, resp, next) => {
-  let page = 1 || 1;
+  console.log(req.params.page);
+  let page = req?.params?.page || 1;
   let limit = 10;
   let skip = (page - 1) * limit;
   try {
+    let totalData = await AdminProductModel.find({}).count();
     let products = await AdminProductModel.find({}).skip(skip).limit(limit);
-    resp.json({ success: true, status: 200, data: products });
+    resp.json({
+      success: true,
+      status: 200,
+      data: products,
+      pagination: {
+        totalData,
+      },
+    });
   } catch (error) {
     next(error);
   }
