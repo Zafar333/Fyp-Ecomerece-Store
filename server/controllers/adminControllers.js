@@ -79,7 +79,6 @@ export const AdminProductAdd = async (req, resp, next) => {
   }
 };
 export const AdminProductGet = async (req, resp, next) => {
-  console.log(req.params.page);
   let page = req?.params?.page || 1;
   let limit = 10;
   let skip = (page - 1) * limit;
