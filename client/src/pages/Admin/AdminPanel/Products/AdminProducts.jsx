@@ -99,32 +99,34 @@ const AdminProducts = () => {
             );
           })}
         </div>
-        <div className="adminproduct-pagination">
-          <div className="prevPage" onClick={PrevPage}>
-            Prev
+        {TotalPage !== 0 && (
+          <div className="adminproduct-pagination">
+            <div className="prevPage" onClick={PrevPage}>
+              Prev
+            </div>
+            <div className="pages">
+              {TotalPage &&
+                Array.from(Array(TotalPage), (item, ind) => {
+                  return (
+                    <div
+                      className="PerPageNumber"
+                      onClick={() => SendPage(ind + 1)}
+                      style={{
+                        backgroundColor:
+                          pageNumber === ind + 1 ? "gainsboro" : "",
+                        color: pageNumber === ind + 1 ? "black" : "",
+                      }}
+                    >
+                      {ind + 1}
+                    </div>
+                  );
+                })}
+            </div>
+            <div className="nextPage" onClick={NextPage}>
+              next
+            </div>
           </div>
-          <div className="pages">
-            {TotalPage &&
-              Array.from(Array(TotalPage), (item, ind) => {
-                return (
-                  <div
-                    className="PerPageNumber"
-                    onClick={() => SendPage(ind + 1)}
-                    style={{
-                      backgroundColor:
-                        pageNumber === ind + 1 ? "gainsboro" : "",
-                      color: pageNumber === ind + 1 ? "black" : "",
-                    }}
-                  >
-                    {ind + 1}
-                  </div>
-                );
-              })}
-          </div>
-          <div className="nextPage" onClick={NextPage}>
-            next
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
