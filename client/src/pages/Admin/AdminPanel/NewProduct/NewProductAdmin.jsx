@@ -117,6 +117,7 @@ const NewProductAdmin = () => {
           <option value="">Select category</option>
           <option value="men">Men</option>
           <option value="women">Women</option>
+          <option value="kids">Kids</option>
         </select>
         <textarea
           name="desc"
