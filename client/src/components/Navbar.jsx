@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Avatar from "../assets/avatar.jpg";
 import MenuIcon from "@mui/icons-material/Menu";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [userToken] = useState(localStorage.getItem("userToken"));
+  const [cartSize, setCartSize] = useState(0);
+  const cartData = useSelector((state) => state.cart);
+  const navigate = useNavigate();
+
   const [userProfile, setUserProfile] = useState(
     JSON.parse(localStorage.getItem("userProfile"))
   );
@@ -24,6 +30,16 @@ const Navbar = () => {
   const ShowNavbarModal = () => {
     setShowModal(!showModal);
   };
+  const Cart = () => {
+    navigate("/cart");
+  };
+  useEffect(() => {
+    let count = 0;
+    cartData.map((item) => {
+      count += item?.qty;
+    });
+    setCartSize(count);
+  }, [cartData]);
 
   return (
     <div className="navbarMain">
@@ -31,8 +47,14 @@ const Navbar = () => {
         <div className="appName">
           <h1>Shop</h1>
         </div>
+
         <div className="navbar_hamburger_container">
+          <div className="userProductsCart" onClick={Cart}>
+            <ShoppingCartIcon className="cartIcon" />
+            <span className="userProductCartNum">{cartSize}</span>
+          </div>
           <MenuIcon className="navbar_hamburger" onClick={ShowNavbarModal} />
+
           <div
             className="navbar_links_inmodal"
             style={{ display: showModal ? "flex" : "none" }}
@@ -40,6 +62,7 @@ const Navbar = () => {
             <Link to="/">Home</Link>
             <Link to="/products">Products</Link>
             <Link>Tailors</Link>
+
             <div className="hnavbarLogins">
               {userToken ? (
                 <span className="userProfile">
@@ -66,6 +89,10 @@ const Navbar = () => {
           <Link to="/">Home</Link>
           <Link to="/products">Products</Link>
           <Link>Tailors</Link>
+          <div className="userProductsCart" onClick={Cart}>
+            <ShoppingCartIcon className="cartIcon" />
+            <span className="userProductCartNum">{cartSize}</span>
+          </div>
           <div className="navbarLogins">
             {userToken ? (
               <span className="userProfile">

@@ -4,15 +4,13 @@
 }
 
 .userProduct-upper {
-    display: flex;
-    justify-content: space-between;
     padding: 14px 6px;
     border-bottom: 1px solid gainsboro;
     align-self: center;
 }
 
 .userProduct-upper input {
-    padding: 8px 4px;
+    padding: 10px 4px;
     width: 500px;
 }
 
@@ -51,6 +49,7 @@
     flex: 1;
 }
 
+
 .userProductsCards {
     flex: 4;
     display: grid;
@@ -58,7 +57,7 @@
     column-gap: 25px;
     row-gap: 30px;
     margin-bottom: 20px;
-
+    padding: 0 18px;
 }
 
 .userProductImg {
@@ -134,7 +133,6 @@
     flex-direction: column;
     gap: 10px;
     border-right: 2px solid gainsboro;
-    /* border-top: 2px solid gainsboro; */
     padding: 8px 2px;
 }
 
@@ -173,7 +171,41 @@
     align-items: center;
 }
 
+
 .userProductCategorytype input {
     height: 18px;
     width: 18px;
+}
+
+@media (max-width:1350px) {
+    .userProductsMain-lower {
+        flex-direction: column;
+    }
+}
+
+@media (max-width:1280px) {
+    .userProductsCards {
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 10px;
+        row-gap: 20px;
+        padding: 0 8px;
+    }
+}
+
+@media (max-width:790px) {
+    .userProductsCards {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 8px;
+    }
+}
+
+@media (max-width:530px) {
+    .userProductsCards {
+        grid-template-columns: 1fr;
+        row-gap: 14px;
+    }
+
+    .userProduct-upper input {
+        width: 100%;
+    }
 }
