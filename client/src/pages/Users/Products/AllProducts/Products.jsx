@@ -119,6 +119,16 @@ const Products = () => {
                 />
                 <span>Womens</span>
               </div>
+              <div className="catItem">
+                <input
+                  type="radio"
+                  name="category"
+                  value="kids"
+                  checked={values.category === "kids"}
+                  onChange={ChangeValues}
+                />
+                <span>Kids</span>
+              </div>
             </div>
           </div>
           <div className="userProductsCards">
