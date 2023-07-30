@@ -34,3 +34,11 @@ export const tailorShopData = async (id) => {
     return error.message;
   }
 };
+export const alltailorsDataGetApi = async () => {
+  try {
+    let result = await axios.get(`${base}/alltailorData`);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};

@@ -1,0 +1,18 @@
+.singleTailorCardTextBlock{
+    width: 100%;
+    display: flex;
+    height: 20vh;
+    /* border: 1px solid rgb(76, 0, 255); */
+    flex-direction: column;
+    background: #fff;
+    justify-content: space-evenly;
+}
+.singleTailordivContainer{
+    width: 100%;
+    font-size: 25px;
+    margin-left: 2%;
+    
+}
+.singleTailordivContainer label{
+    font-size: 20px;
+}

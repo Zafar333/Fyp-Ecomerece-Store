@@ -126,3 +126,21 @@ export const fetchTailorShopData = async (req, res, next) => {
     }
   }
 };
+export const fetchAllTailorsData = async (req, res, next) => {
+  try {
+    const data = await tailorAuthSchema.find();
+    if (!data) {
+      return next({ message: "Data not found", statusCode: 401 });
+    } else {
+      res.json({
+        success: true,
+        allData: data,
+        status: 200,
+        message: "Data Sucessfully",
+      });
+    }
+  } catch (error) {
+    next(error);
+    return;
+  }
+};
