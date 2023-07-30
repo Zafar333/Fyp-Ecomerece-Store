@@ -54,9 +54,13 @@ const HomePage = () => {
                 <pre>Your</pre>
                 <pre>Hand</pre>{" "}
               </div>
-              <NavLink className="tailor-btn">Order Now</NavLink>
+              <NavLink to="/allTailors" className="tailor-btn">
+                Order Now
+              </NavLink>
             </div>
-            <NavLink className="tailor-btn2">Order Now</NavLink>
+            <NavLink to="/allTailors" className="tailor-btn2">
+              Order Now
+            </NavLink>
           </div>
         </div>
 

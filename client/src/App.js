@@ -24,6 +24,12 @@ import CreateShop from "./pages/Tailors/TailorDashboard/CreateShop/CreateShop";
 import ShopProfileCard from "./pages/Tailors/TailorDashboard/ShopProfileCard/ShopProfileCard";
 import Success from "./components/Payments/Success";
 import Cancel from "./components/Payments/Cancel";
+import AllTailors from "./pages/Users/AllTailorsProfile/AllTailor/AllTailors";
+import SingleTailorShop from "./pages/Users/AllTailorsProfile/SingleTailor/SingleTailorShop";
+import SingleTailorRoot from "./pages/Users/AllTailorsProfile/SingleTailor/SingleTailorRoot";
+import SingleTailorFormBasicPrice from "./pages/Users/AllTailorsProfile/SingleTailor/SingleTailorFormViews/BasicPriceDetail";
+import SingleTailorFormPremiumPrice from "./pages/Users/AllTailorsProfile/SingleTailor/SingleTailorFormViews/PremiumPriceDetail";
+import SingleTailorDetail from "./pages/Users/AllTailorsProfile/SingleTailor/SingleTailorFormViews/TailorDetail";
 
 function App() {
   return (
@@ -74,6 +80,27 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/product/:productID" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
+
+          <Route path="/allTailors" element={<AllTailors />} />
+          <Route path="/signleTailor" element={<SingleTailorRoot />}>
+            <Route
+              path="/signleTailor/viewShop/:id"
+              element={<SingleTailorShop />}
+            >
+              <Route
+                path="/signleTailor/viewShop/:id/SingleTailorInfoFormViewsBasicPrice/:id"
+                element={<SingleTailorFormBasicPrice />}
+              />
+              <Route
+                path="/signleTailor/viewShop/:id/SingleTailorInfoFormViewsPremiumPrice/:id"
+                element={<SingleTailorFormPremiumPrice />}
+              />
+              <Route
+                path="/signleTailor/viewShop/:id/SingleTailorInfoFormViewsDetailView/:id"
+                element={<SingleTailorDetail />}
+              />
+            </Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>
