@@ -4,6 +4,7 @@ import {
   register,
   createShop,
   fetchTailorShopData,
+  fetchAllTailorsData,
 } from "../controllers/tailorControllers.js";
 
 const router = express.Router();
@@ -13,6 +14,7 @@ const tailorRoute = () => {
   router.post("/register", register);
   router.patch("/createShops/:id", createShop);
   router.get("/tailorShopData/:id", fetchTailorShopData);
+  router.get("/alltailorData", fetchAllTailorsData);
   return router;
 };
 

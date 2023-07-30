@@ -13,6 +13,7 @@ const ShopProfileCard = () => {
   let id;
   const [shopCardArr, setshopCardArr] = useState();
   const [selectedImages, setSelectedImages] = useState(0);
+  // setSelectedImages(0);
   useEffect(() => {
     id = localStorage.getItem("id");
     getShopDataReq();
@@ -33,11 +34,11 @@ const ShopProfileCard = () => {
 
   // Image Next crousel function code is start here
   function crouselImgNext() {
-    if (selectedImages < shopCardArr.designImages.length - 1) {
+    if (selectedImages < shopCardArr?.designImages?.length - 1) {
       let increment = selectedImages + 1;
       setSelectedImages(increment);
     } else {
-      setSelectedImages(4);
+      setSelectedImages(shopCardArr?.designImages?.length - 1);
     }
   }
   // Image Next crousel function code is end here
@@ -61,13 +62,19 @@ const ShopProfileCard = () => {
         <button className="tailorShopBtn" onClick={OpenShop}>
           Create A shop
         </button>
+
         <hr />
+
         <div className="tailorShopCard">
           <div className="crouselButtonBlock">
             <div className="crouselButtons">
               <div style={{ backgroundColor: "white" }}>
                 <img
-                  style={{ width: "25px", height: "25px", cursor: "pointer" }}
+                  style={{
+                    width: "25px",
+                    height: "25px",
+                    cursor: "pointer",
+                  }}
                   src={arrowLeft}
                   onClick={crouselImgPrevious}
                 />
@@ -76,7 +83,11 @@ const ShopProfileCard = () => {
                 <img
                   src={arrowRight}
                   onClick={crouselImgNext}
-                  style={{ width: "25px", height: "25px", cursor: "pointer" }}
+                  style={{
+                    width: "25px",
+                    height: "25px",
+                    cursor: "pointer",
+                  }}
                 />
               </div>
             </div>

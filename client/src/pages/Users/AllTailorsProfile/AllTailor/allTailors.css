@@ -1,0 +1,113 @@
+.allTailorsWrapper{
+    max-width: 100%;
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    /* border:  1px solid black; */
+    background-color:#eeeee4;
+
+}
+.allTailorsContainer{
+    margin: auto;
+    width: 98%;
+    /* border: 1px solid green; */
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    gap: 3%;
+}
+.allTailorShopCard{
+    margin-top: 5%; 
+    margin-bottom: 5%;
+    /* width: 10%; */
+    height: 48vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 5px 1px rgb(30, 32, 33);
+    border-radius: 6px;
+
+}
+.allTailorCrouselButtonBlock{
+    width: 100%;
+    position: relative;
+}
+.allTailorCrouselButtons{
+    position: absolute;
+    top: 14vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+    /* border: 1px solid orange; */
+}
+.allTailorCardImgCrousel{
+    width: 100%;
+    height: 24vh;
+    /* object-fit: cover;
+    object-position:top; */
+    /* border: 1px solid rgb(102, 0, 255); */
+}
+.allTailorCardTextBlock{
+    display: flex;
+    height: 24.3vh;
+    /* border: 1px solid red; */
+    flex-direction: column;
+    background: #fff;
+    justify-content: space-between;
+}
+.allTailordivContainer{
+    width: 100%;
+    font-size: 20px;
+    margin-left: 2%;
+    
+}
+.allTailordivContainer label{
+    font-size: 23px;
+}
+.viewShopBtn{
+    height: 45px;
+    border: none;
+    background-color: #FF7F50;
+    /* background-color: #fd9644; */
+    font-size: 20px;
+}
+@media (max-width:2000px){
+    .allTailorsContainer{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media (max-width:1550px){
+    .allTailorsContainer{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width:950px){
+    .allTailorsContainer{
+        grid-template-columns: .8fr ;
+        /* align-items: center; */
+        justify-content: center;
+    }
+}
+@media (max-width:650px){
+    .allTailorsContainer{
+        grid-template-columns: 1fr ;
+        /* align-items: center; */
+        gap: .5%;
+        justify-content: center;
+    }
+}
+@media (max-width:500px){
+  
+    .allTailorsWrapper{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+@media (max-width:400px){
+  
+    .allTailorsWrapper{
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+}

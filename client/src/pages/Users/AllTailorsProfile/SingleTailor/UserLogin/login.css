@@ -1,0 +1,139 @@
+
+.userRegister {
+    display: grid;
+    grid-template-columns: 3fr 3fr;
+    width: 100%;
+    height: 100vh;
+}
+
+.userLogo {
+    color: #F47458;
+    font-weight: 600;
+    font-size: 36px;
+}
+
+.userRegisterLeft {
+    padding: 50px 100px 50px;
+    align-self: center;
+}
+
+.userRegisterLeft .head {
+    margin-bottom: 30px;
+}
+
+.userRegisterLeft .head h1 {
+    font-weight: 600;
+    font-size: 56px;
+}
+
+.userRegisterLeft .head p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.userRegisterLeft .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.userRegisterLeft .form .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.userRegisterLeft .form .inputs p {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 300;
+    font-size: 16px;
+    color: #000000;
+}
+
+.userRegisterLeft .form .inputs input {
+    padding: 12px 10px;
+    background: #FFF6F4;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+}
+
+.userRegisterLeft .form .inputs input:focus {
+    outline: 1px solid coral;
+}
+
+.userRegisterLeft .form .inputs::placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.userRegisterLeft .form button {
+    padding: 12px 20px;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: #F47458;
+    border-radius: 20px;
+    color: #FFFFFF;
+    align-self: center;
+    border: none;
+    cursor: pointer;
+}
+
+.userRegisterLeft .form .account {
+    align-self: center;
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    color: rgba(0, 0, 0, 0.342);
+}
+
+.userRegisterLeft .form .account a {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    color: #F47458;
+    text-decoration: none;
+}
+
+
+
+.userRegisterRight {
+    background-image: url("../../../../../assets/registerImg.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media (max-width:1200px) {
+    .userRegister {
+        grid-template-columns: 3fr 2fr;
+    }
+}
+
+@media (max-width:1024px) {
+    .userRegisterLeft {
+        padding: 10px 10px 10px;
+    }
+}
+
+@media (max-width:786px) {
+    .userRegister {
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+
+    .userRegisterRight {
+        display: none;
+
+    }
+}

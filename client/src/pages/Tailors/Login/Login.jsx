@@ -41,7 +41,9 @@ const Login = () => {
           } else {
             toast.error(res?.data?.message || res);
           }
-        } catch (error) {}
+        } catch (error) {
+          toast.error(error.message);
+        }
       } else {
         toast.error("email is not valid");
       }
