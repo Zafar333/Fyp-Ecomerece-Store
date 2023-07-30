@@ -62,3 +62,36 @@
     font-size: 18px;
     cursor: pointer;
 }
+
+
+@media (max-width:1280px) {
+    .singleProduct {
+        max-width: 900px;
+    }
+}
+
+@media (max-width:900px) {
+    .singleProduct {
+        max-width: 700px;
+    }
+}
+
+@media (max-width:780px) {
+    .singleProduct {
+        max-width: 100%;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .singleProductLeft {
+        width: 100%;
+    }
+
+    .singleProfuctRight {
+        align-self: flex-start;
+        width: 70%;
+    }
+
+
+}
