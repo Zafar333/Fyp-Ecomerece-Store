@@ -5,7 +5,6 @@ import { EmailValidator, isEmpty } from "../../../../../Utils/Validation";
 import { toast } from "react-toastify";
 import { UserLogin } from "../../../../../Utils/APIs/userAPI";
 import { useDispatch } from "react-redux";
-import { setUserAuthProfile } from "../../../../../store/Slices/Users/authDataSlice";
 
 const Login = ({ setLoginModal }) => {
   const [spin, setSpin] = useState(false);
