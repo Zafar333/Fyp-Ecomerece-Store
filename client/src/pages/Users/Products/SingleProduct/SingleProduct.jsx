@@ -14,7 +14,6 @@ const SingleProduct = () => {
   const Cart = (item) => {
     let obj = { ...item };
     dispatch(setCart(obj));
-    toast.success("Product Added to Cart");
   };
 
   return (
