@@ -6,7 +6,6 @@ import {
   AdminProductFetchAPI,
 } from "../../../../Utils/APIs/adminAPI";
 import { toast } from "react-toastify";
-import Pagination from "../../../../components/Pagination/Pagination";
 import { useDispatch } from "react-redux";
 import { setProfile } from "../../../../store/Slices/Admin/adminEditProductSlice";
 
@@ -14,18 +13,25 @@ const AdminProducts = () => {
   const [AdminProducts, setAdminProducts] = useState([]);
   const [spin, setSpin] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
+  const [TotalPage, setTotalPage] = useState(0);
+  const [TotalData, setTotalData] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    FetchProducts();
-  }, []);
-  const FetchProducts = async () => {
+    FetchProducts(pageNumber);
+  }, [pageNumber]);
+  useEffect(() => {
+    setTotalPage(Math.ceil(TotalData / 10));
+  }, [TotalData, TotalPage]);
+  const FetchProducts = async (page) => {
     setSpin(true);
-    let res = await AdminProductFetchAPI();
+    let res = await AdminProductFetchAPI(page);
 
     if (res?.data?.status === 200) {
       setSpin(false);
       setAdminProducts(res?.data?.data);
+      setTotalData(res?.data?.pagination?.totalData);
     } else {
       setSpin(false);
       toast.error(res?.data?.message || res);
@@ -47,6 +53,20 @@ const AdminProducts = () => {
     dispatch(setProfile(item));
     navigate(`/admin/panel/products/edit/${item._id}`);
   };
+  function SendPage(pagenum) {
+    setPageNumber(pagenum);
+  }
+  function NextPage() {
+    // FetchProducts(pageNumber + 1);
+    if (pageNumber < TotalPage) {
+      setPageNumber(pageNumber + 1);
+    }
+  }
+  function PrevPage() {
+    if (pageNumber > 1) {
+      setPageNumber(pageNumber - 1);
+    }
+  }
   return spin ? (
     <h3>Loading...</h3>
   ) : (
@@ -79,9 +99,34 @@ const AdminProducts = () => {
             );
           })}
         </div>
-        <div className="adminproduct-pagination">
-          <Pagination />
-        </div>
+        {TotalPage !== 0 && (
+          <div className="adminproduct-pagination">
+            <div className="prevPage" onClick={PrevPage}>
+              Prev
+            </div>
+            <div className="pages">
+              {TotalPage &&
+                Array.from(Array(TotalPage), (item, ind) => {
+                  return (
+                    <div
+                      className="PerPageNumber"
+                      onClick={() => SendPage(ind + 1)}
+                      style={{
+                        backgroundColor:
+                          pageNumber === ind + 1 ? "gainsboro" : "",
+                        color: pageNumber === ind + 1 ? "black" : "",
+                      }}
+                    >
+                      {ind + 1}
+                    </div>
+                  );
+                })}
+            </div>
+            <div className="nextPage" onClick={NextPage}>
+              next
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -27,6 +27,9 @@ const Cart = () => {
 
   const Checkout = async () => {
     if (localStorage.getItem("userToken")) {
+      if (totalPrice < 150)
+        return toast.error("You cannot Shop less than Rs 150");
+      console.log(totalPrice > 150);
       let data = cartData.map((item) => {
         return {
           id: item._id,
@@ -50,7 +53,7 @@ const Cart = () => {
       <div className="cart">
         <div className="cartCheckout">
           <div className="totalPrice">
-            <h3>Total Price: ${totalPrice}</h3>
+            <h3>Total Price: Rs: {totalPrice}</h3>
           </div>
           <button
             disabled={cartData?.length === 0 ? true : false}
@@ -59,56 +62,58 @@ const Cart = () => {
             Checkout
           </button>
         </div>
-        <table className="cartData">
-          <thead>
-            <tr>
-              <th>Picture</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cartData?.length ? (
-              cartData.map((item) => {
-                return (
-                  <tr>
-                    <td>
-                      <img src={item?.profile} alt="" />
-                    </td>
-                    <td>{item?.name}</td>
-                    <td>Rs {item?.price}</td>
-                    <td>
-                      <div className="counter">
-                        <button onClick={() => dispatch(DecCart(item))}>
-                          -
-                        </button>
-                        <p>{item?.qty}</p>
-                        <button onClick={() => dispatch(IncCart(item))}>
-                          +
-                        </button>
-                      </div>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => {
-                          dispatch(DeleteCartItem(item));
-                        }}
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })
-            ) : (
+        <div className="cartTableContainer">
+          <table className="cartData">
+            <thead>
               <tr>
-                <td colSpan={5}>No Item Selected</td>
+                <th>Picture</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Remove</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {cartData?.length ? (
+                cartData.map((item) => {
+                  return (
+                    <tr>
+                      <td>
+                        <img src={item?.profile} alt="" />
+                      </td>
+                      <td>{item?.name}</td>
+                      <td>Rs {item?.price}</td>
+                      <td>
+                        <div className="counter">
+                          <button onClick={() => dispatch(DecCart(item))}>
+                            -
+                          </button>
+                          <p>{item?.qty}</p>
+                          <button onClick={() => dispatch(IncCart(item))}>
+                            +
+                          </button>
+                        </div>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => {
+                            dispatch(DeleteCartItem(item));
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <tr>
+                  <td colSpan={5}>No Item Selected</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   );

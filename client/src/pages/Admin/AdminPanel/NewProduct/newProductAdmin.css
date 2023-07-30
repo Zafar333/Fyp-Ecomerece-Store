@@ -15,6 +15,7 @@
 
 .newadminproduct-main input {
     padding: 8px 5px;
+
 }
 
 .newadminproduct-main select {
@@ -43,4 +44,25 @@
 .adminproductbtns button:nth-child(2) {
     background-color: #F47458;
     color: white;
+}
+
+@media (max-width:520px) {
+    .newadminproduct-main input {
+        grid-column: span 2;
+
+    }
+
+    .newadminproduct-main select {
+        grid-column: span 2;
+    }
+
+    .adminproductbtns {
+        grid-column: span 2;
+    }
+
+    .adminproductbtns button {
+        padding: 14px 12px;
+        flex: 1;
+
+    }
 }

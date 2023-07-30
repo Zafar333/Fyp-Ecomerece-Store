@@ -1,0 +1,75 @@
+.notFoundMain {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.notFoundLeft {
+    background-color: #AEF2FF;
+    flex: 1;
+    display: flex;
+}
+
+.notFoundLeft img {
+    align-self: flex-end;
+    width: 100%;
+    height: auto;
+}
+
+.notFoundRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.notFoundRightContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.notFoundRightContent h1 {
+    color: #000;
+    text-align: center;
+    font-family: Concert One;
+    font-size: 202px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.notFoundRightContent p {
+    color: #000;
+    text-align: center;
+    font-family: Clash Grotesk;
+    font-size: 46px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.notFoundRightContent p:nth-child(4) {
+    color: #B0B0B0;
+    text-align: center;
+    font-family: Clash Grotesk;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.notFoundRightContent a {
+    background: #000;
+    color: #FFF;
+    text-align: center;
+    font-family: Clash Grotesk;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin-top: 20px;
+}

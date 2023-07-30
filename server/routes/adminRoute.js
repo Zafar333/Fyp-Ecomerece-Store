@@ -14,7 +14,7 @@ const adminRoute = () => {
   router.post("/login", login);
   router.post("/register", register);
   router.post("/adminproducts", AdminProductAdd);
-  router.get("/adminproducts", AdminProductGet);
+  router.get("/adminproducts/:page", AdminProductGet);
   router.delete("/adminproducts/:id", AdminProductDelete);
   router.put("/adminproducts/:id", AdminProductUpdate);
 

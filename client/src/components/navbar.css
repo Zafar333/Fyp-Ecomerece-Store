@@ -64,6 +64,10 @@
     color: white;
 }
 
+.navbar_hamburger_container {
+    display: none
+}
+
 .navbar_hamburger_container .navbar_hamburger {
     display: none;
     cursor: pointer;
@@ -90,6 +94,8 @@ button {
 
     .navbar_hamburger_container {
         position: relative;
+        display: flex;
+        gap: 14px;
     }
 
     .navbar_links_inmodal {

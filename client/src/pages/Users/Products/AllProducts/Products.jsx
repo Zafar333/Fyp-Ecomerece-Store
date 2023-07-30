@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { CheckToken } from "../../../../Utils/CheckToken";
 import { useNavigate } from "react-router-dom";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Navbar from "../../../../components/Navbar";
 import "./products.css";
 import { ProductsAPI } from "../../../../Utils/APIs/userAPI";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setCart } from "../../../../store/Slices/Users/cartSlice";
 import { setSingleProduct } from "../../../../store/Slices/Users/SingleProduct";
 
 const Products = () => {
-  const cartData = useSelector((state) => state.cart);
-  const [cartSize, setCartSize] = useState(0);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [spin, setSpin] = useState(false);
@@ -25,13 +21,6 @@ const Products = () => {
     AllProducts(values);
   }, [values]);
 
-  useEffect(() => {
-    let count = 0;
-    cartData.map((item) => {
-      count += item?.qty;
-    });
-    setCartSize(count);
-  }, [cartData]);
   const AllProducts = async (data) => {
     setSpin(true);
     let res = await ProductsAPI(data);
@@ -48,9 +37,6 @@ const Products = () => {
     setValues((val) => {
       return { ...val, [name]: value };
     });
-  };
-  const Cart = () => {
-    navigate("/cart");
   };
   const AddToCart = (event, item) => {
     event.stopPropagation();
@@ -75,10 +61,6 @@ const Products = () => {
               name="search"
               onChange={ChangeValues}
             />
-          </div>
-          <div className="userProductsCart" onClick={Cart}>
-            <ShoppingCartIcon className="cartIcon" />
-            <span className="userProductCartNum">{cartSize}</span>
           </div>
         </div>
         <div className="userProductsMain-lower">
@@ -136,6 +118,16 @@ const Products = () => {
                   onChange={ChangeValues}
                 />
                 <span>Womens</span>
+              </div>
+              <div className="catItem">
+                <input
+                  type="radio"
+                  name="category"
+                  value="kids"
+                  checked={values.category === "kids"}
+                  onChange={ChangeValues}
+                />
+                <span>Kids</span>
               </div>
             </div>
           </div>

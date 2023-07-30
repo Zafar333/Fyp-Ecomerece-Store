@@ -1,5 +1,5 @@
 .cart {
-    width: 1000px;
+    max-width: 1000px;
     margin: auto;
     margin-top: 50px;
     display: flex;
@@ -11,6 +11,11 @@
     height: 60px;
     width: 100%;
     background-color: rgb(142, 150, 159);
+}
+
+.cartTableContainer {
+
+    overflow: auto;
 }
 
 .cartData {

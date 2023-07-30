@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
@@ -12,40 +12,80 @@ import MenuIcon from "@mui/icons-material/Menu";
 const Panel = () => {
   const navigate = useNavigate();
   const [ham, setHam] = useState(false);
+  const [adminProfile] = useState(
+    JSON.parse(localStorage.getItem("adminProfile"))
+  );
+  const [adminName] = useState(JSON.parse(localStorage.getItem("adminName")));
+  const [EmbedFunction, setEmbedFunction] = useState(false);
   const Logout = () => {
     localStorage.removeItem("adminToken");
+    localStorage.removeItem("adminProfile");
+    localStorage.removeItem("adminName");
     navigate("/admin/login");
   };
-  const state = useSelector((state) => state.adminProfile);
+  useEffect(() => {
+    if (window.innerWidth <= 1000) {
+      setEmbedFunction(true);
+    } else {
+      setEmbedFunction(false);
+    }
+  });
+  function CLoseSidebarFun() {
+    setHam(true);
+  }
+
   return (
     <div className="panel">
       <div className="leftPanel" style={{ display: ham ? "none" : "flex" }}>
         <h1>Admin</h1>
+        <button onClick={() => setHam(!ham)} className="closeLeftPanelBtn">
+          close
+        </button>
         <hr />
         <div className="menus">
           <p className="title">Main</p>
 
-          <Link to="/admin/panel/dashboard" style={{ textDecoration: "none" }}>
+          <Link
+            to="/admin/panel/dashboard"
+            style={{ textDecoration: "none" }}
+            onClick={EmbedFunction ? CLoseSidebarFun : ""}
+          >
             <DashboardIcon className="icon" />
             <p>Dashboard</p>
           </Link>
-          <Link style={{ textDecoration: "none" }}>
+          <Link
+            style={{ textDecoration: "none" }}
+            onClick={EmbedFunction ? CLoseSidebarFun : ""}
+          >
             <PeopleAltIcon className="icon" />
             <p>Users</p>
           </Link>
-          <Link to="/admin/panel/products" style={{ textDecoration: "none" }}>
+          <Link
+            to="/admin/panel/products"
+            style={{ textDecoration: "none" }}
+            onClick={EmbedFunction ? CLoseSidebarFun : ""}
+          >
             <ProductionQuantityLimitsIcon className="icon" />
             <p>Products</p>
           </Link>
-          <Link style={{ textDecoration: "none" }}>
+          <Link
+            style={{ textDecoration: "none" }}
+            onClick={EmbedFunction ? CLoseSidebarFun : ""}
+          >
             <InventoryIcon className="icon" />
             <p>Orders</p>
           </Link>
-          <Link style={{ textDecoration: "none" }}>
+          <Link
+            style={{ textDecoration: "none" }}
+            onClick={EmbedFunction ? CLoseSidebarFun : ""}
+          >
             <BusinessIcon className="icon" />
             <p>Tailors</p>
           </Link>
-          <Link style={{ textDecoration: "none" }}>
+          <Link
+            style={{ textDecoration: "none" }}
+            onClick={EmbedFunction ? CLoseSidebarFun : ""}
+          >
             <PowerSettingsNewIcon className="icon" />
             <p>Settings</p>
           </Link>
@@ -63,8 +103,8 @@ const Panel = () => {
             }}
           />
           <div className="rightPanelProfile">
-            <span>{state.name}</span>
-            <img src={state?.profile} alt="" />
+            <span>{adminName}</span>
+            <img src={adminProfile} alt="" />
           </div>
         </div>
         <div className="rightPanel-comp">

@@ -32,6 +32,15 @@ const Login = () => {
         if (res?.data?.status === 200) {
           setSpin(false);
           localStorage.setItem("adminToken", JSON.stringify(res?.data?.token));
+          localStorage.setItem(
+            "adminName",
+            JSON.stringify(res?.data?.data?.name)
+          );
+          localStorage.setItem(
+            "adminProfile",
+            JSON.stringify(res?.data?.data?.profile)
+          );
+
           dispatch(setProfile(res?.data?.data));
           toast.success(res?.data?.message || "Login Successfully!!!");
           navigate("/admin/panel/dashboard");
@@ -68,7 +77,7 @@ const Login = () => {
           />
           <div className="inputs">
             <input
-              type="text"
+              type="password"
               name="password"
               placeholder="your password"
               onChange={FormData}

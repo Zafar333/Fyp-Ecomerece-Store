@@ -30,6 +30,7 @@ import SingleTailorRoot from "./pages/Users/AllTailorsProfile/SingleTailor/Singl
 import SingleTailorFormBasicPrice from "./pages/Users/AllTailorsProfile/SingleTailor/SingleTailorFormViews/BasicPriceDetail";
 import SingleTailorFormPremiumPrice from "./pages/Users/AllTailorsProfile/SingleTailor/SingleTailorFormViews/PremiumPriceDetail";
 import SingleTailorDetail from "./pages/Users/AllTailorsProfile/SingleTailor/SingleTailorFormViews/TailorDetail";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   return (
@@ -101,6 +102,8 @@ function App() {
               />
             </Route>
           </Route>
+          {/* this route should be at end */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
