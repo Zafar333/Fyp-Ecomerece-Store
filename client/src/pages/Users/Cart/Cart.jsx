@@ -12,8 +12,10 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Cart = () => {
-  let cartData = useSelector((state) => state.cart);
-  let [totalPrice, setTotalPrice] = useState(0);
+  const cartData = useSelector((state) => state.cart);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [isLoad, setIsLoad] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -29,7 +31,7 @@ const Cart = () => {
     if (localStorage.getItem("userToken")) {
       if (totalPrice < 150)
         return toast.error("You cannot Shop less than Rs 150");
-      console.log(totalPrice > 150);
+      setIsLoad(true);
       let data = cartData.map((item) => {
         return {
           id: item._id,
@@ -39,8 +41,10 @@ const Cart = () => {
       let res = await PaymentAPI(data);
       if (res?.data?.status === 200) {
         window.location.replace(res?.data?.url);
+        setIsLoad(false);
       } else {
         toast.error(res?.data?.message || res);
+        setIsLoad(false);
       }
     } else {
       toast.error("Please Login to Proceed");
@@ -59,7 +63,7 @@ const Cart = () => {
             disabled={cartData?.length === 0 ? true : false}
             onClick={Checkout}
           >
-            Checkout
+            {isLoad ? "Loading..." : "Checkout"}
           </button>
         </div>
         <div className="cartTableContainer">
