@@ -6,8 +6,9 @@ import { toast } from "react-toastify";
 import { UserLogin } from "../../../../../Utils/APIs/userAPI";
 import { useDispatch } from "react-redux";
 
-const Login = ({ setLoginModal }) => {
+const Login = ({ setLoginModal, setRegisterModal }) => {
   const [spin, setSpin] = useState(false);
+
   const dispatch = useDispatch();
   const [values, setValues] = useState({
     email: "",
@@ -50,6 +51,10 @@ const Login = ({ setLoginModal }) => {
       toast.error("please fill all fields!");
     }
   };
+  function hidingModals() {
+    setLoginModal(false);
+    setRegisterModal(true);
+  }
   return (
     <div className="userRegister">
       <div className="userRegisterLeft">
@@ -84,7 +89,7 @@ const Login = ({ setLoginModal }) => {
           </div>
           <button onClick={Login}>{!spin ? "Login" : "Loading..."}</button>
           <p className="account">
-            Don't have an account? <Link to="/user/register">Sign up</Link>
+            Don't have an account? <Link onClick={hidingModals}>Sign up</Link>
           </p>
         </div>
       </div>
