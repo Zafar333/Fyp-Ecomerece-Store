@@ -8,9 +8,11 @@ import { tailorShopData } from "../../../../Utils/APIs/tailorApi";
 import { useDispatch } from "react-redux";
 import { NavLink, useNavigate, Outlet, useParams } from "react-router-dom";
 import UserLogin from "./UserLogin/Login";
+import UserRegister from "./UserRegister/Register";
 
 const SingleTailorShop = () => {
-  // className={!modalView ? "modalLoginnHide" : "modalLoginn"}
+  const [registerModal, setRegisterModal] = useState(false);
+
   const [loginModal, setLoginModal] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -88,7 +90,16 @@ const SingleTailorShop = () => {
   return (
     <>
       <div className={!loginModal ? "modalLoginnHide" : "modalLoginn"}>
-        <UserLogin setLoginModal={setLoginModal} />
+        <UserLogin
+          setLoginModal={setLoginModal}
+          setRegisterModal={setRegisterModal}
+        />
+      </div>
+      <div className={!registerModal ? "modalRegisterrHide" : "modalRegisterr"}>
+        <UserRegister
+          setLoginModal={setLoginModal}
+          setRegisterModal={setRegisterModal}
+        />
       </div>
       <div className="singleTailorShopContainer">
         <div className="singleTailorShopView">
