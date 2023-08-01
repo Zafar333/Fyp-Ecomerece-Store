@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
-import InventoryIcon from "@mui/icons-material/Inventory";
 import BusinessIcon from "@mui/icons-material/Business";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import "./panel.css";
@@ -68,13 +67,6 @@ const Panel = () => {
           >
             <ProductionQuantityLimitsIcon className="icon" />
             <p>Products</p>
-          </Link>
-          <Link
-            style={{ textDecoration: "none" }}
-            onClick={EmbedFunction ? CLoseSidebarFun : ""}
-          >
-            <InventoryIcon className="icon" />
-            <p>Orders</p>
           </Link>
           <Link
             style={{ textDecoration: "none" }}
