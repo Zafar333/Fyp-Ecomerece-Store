@@ -16,6 +16,20 @@
 .modalLoginnHide{
     display: none;
 }
+.modalRegisterr{
+    display: block;
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: #fff;
+}
+.modalRegisterrHide{
+    display: none;
+}
+
 .singleTailorShopView{
     width: 90%;
     height: 90.7vh;
