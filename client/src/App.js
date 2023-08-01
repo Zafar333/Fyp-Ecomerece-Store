@@ -32,6 +32,7 @@ import SingleTailorFormPremiumPrice from "./pages/Users/AllTailorsProfile/Single
 import SingleTailorDetail from "./pages/Users/AllTailorsProfile/SingleTailor/SingleTailorFormViews/TailorDetail";
 import NotFound from "./components/NotFound/NotFound";
 import Users from "./pages/Admin/AdminPanel/Users/Users";
+import AllTailorsData from "./pages/Admin/AdminPanel/Tailors/AllTailorsData";
 
 function App() {
   return (
@@ -62,6 +63,10 @@ function App() {
                   element={<NewProductAdmin />}
                 />
                 <Route path="/admin/panel/users" element={<Users />} />
+                <Route
+                  path="/admin/panel/tailors"
+                  element={<AllTailorsData />}
+                />
               </Route>
             </Route>
           </Route>

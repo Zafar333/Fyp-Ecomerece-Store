@@ -69,6 +69,7 @@ const Panel = () => {
             <p>Products</p>
           </Link>
           <Link
+            to="/admin/panel/tailors"
             style={{ textDecoration: "none" }}
             onClick={EmbedFunction ? CLoseSidebarFun : ""}
           >
