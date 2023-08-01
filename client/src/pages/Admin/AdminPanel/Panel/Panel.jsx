@@ -54,6 +54,7 @@ const Panel = () => {
             <p>Dashboard</p>
           </Link>
           <Link
+            to="/admin/panel/users"
             style={{ textDecoration: "none" }}
             onClick={EmbedFunction ? CLoseSidebarFun : ""}
           >

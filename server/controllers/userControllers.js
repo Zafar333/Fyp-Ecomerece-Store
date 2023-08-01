@@ -114,3 +114,26 @@ export const CheckoutSession = async (req, resp, next) => {
     next(error);
   }
 };
+
+export const GetALLUsers = async (req, resp, next) => {
+  try {
+    let allUsers = await UserAuthModel.find({});
+    resp.json({ status: 200, data: allUsers });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const DeleteUser = async (req, resp, next) => {
+  try {
+    let deleteData = await UserAuthModel.deleteOne({ _id: req?.params?.id });
+    console.log(deleteData);
+    if (deleteData?.deletedCount === 0) {
+      return next({ message: "User not Found", statusCode: "404" });
+    } else {
+      return resp.json({ message: "User Deleted Successfully", status: 200 });
+    }
+  } catch (error) {
+    next(error);
+  }
+};

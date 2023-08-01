@@ -36,3 +36,20 @@ export const PaymentAPI = async (data) => {
     return error.message;
   }
 };
+export const GetAllUsersAPI = async () => {
+  try {
+    let result = await axios.get(`${base}/getallusers`);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+export const DeleteUserAPI = async (id) => {
+  try {
+    let result = await axios.delete(`${base}/${id}`);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};

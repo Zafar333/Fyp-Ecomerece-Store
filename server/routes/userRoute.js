@@ -1,6 +1,8 @@
 import express from "express";
 import {
   CheckoutSession,
+  DeleteUser,
+  GetALLUsers,
   login,
   products,
   register,
@@ -13,6 +15,8 @@ const userRoute = () => {
   router.post("/register", register);
   router.post("/products", products);
   router.post("/create-checkout-session", CheckoutSession);
+  router.get("/getallusers", GetALLUsers);
+  router.delete("/:id", DeleteUser);
   return router;
 };
 
