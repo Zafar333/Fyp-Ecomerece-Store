@@ -5,12 +5,14 @@ import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantity
 import BusinessIcon from "@mui/icons-material/Business";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import "./panel.css";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import MenuIcon from "@mui/icons-material/Menu";
+
 const Panel = () => {
   const navigate = useNavigate();
   const [ham, setHam] = useState(false);
+  let activeStyle = { backgroundColor: "#ece8ff" };
   const [adminProfile] = useState(
     JSON.parse(localStorage.getItem("adminProfile"))
   );
@@ -44,45 +46,46 @@ const Panel = () => {
         <div className="menus">
           <p className="title">Main</p>
 
-          <Link
+          <NavLink
             to="/admin/panel/dashboard"
-            style={{ textDecoration: "none" }}
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
             onClick={EmbedFunction ? CLoseSidebarFun : ""}
           >
             <DashboardIcon className="icon" />
             <p>Dashboard</p>
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/admin/panel/users"
-            style={{ textDecoration: "none" }}
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
             onClick={EmbedFunction ? CLoseSidebarFun : ""}
           >
             <PeopleAltIcon className="icon" />
             <p>Users</p>
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/admin/panel/products"
-            style={{ textDecoration: "none" }}
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
             onClick={EmbedFunction ? CLoseSidebarFun : ""}
           >
             <ProductionQuantityLimitsIcon className="icon" />
             <p>Products</p>
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/admin/panel/tailors"
-            style={{ textDecoration: "none" }}
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
             onClick={EmbedFunction ? CLoseSidebarFun : ""}
           >
             <BusinessIcon className="icon" />
             <p>Tailors</p>
-          </Link>
-          <Link
-            style={{ textDecoration: "none" }}
+          </NavLink>
+          <NavLink
+            to="/admin/panel/settings"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
             onClick={EmbedFunction ? CLoseSidebarFun : ""}
           >
             <PowerSettingsNewIcon className="icon" />
             <p>Settings</p>
-          </Link>
+          </NavLink>
         </div>
         <div className="leftPanel_logout">
           <button onClick={Logout}>logout</button>

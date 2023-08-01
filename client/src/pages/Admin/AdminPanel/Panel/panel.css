@@ -40,6 +40,7 @@
     padding: 5px;
     gap: 10px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .leftPanel .menus a:hover {
