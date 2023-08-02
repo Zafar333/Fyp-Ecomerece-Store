@@ -2,6 +2,7 @@ import adminAuth from "../database/models/adminModels/adminAuth.js";
 import AdminAuthModel from "../database/models/adminModels/adminAuth.js";
 import AdminProductModel from "../database/models/usersModels/productsModel.js";
 import { GenerateToken } from "../middlewares/Token.js";
+import TailorsModel from "../database/models/tailorsModels/tailorsAuth.js";
 
 export const login = async (req, resp, next) => {
   let { email, password } = req.body;
@@ -133,5 +134,14 @@ export const AdminProductUpdate = async (req, resp, next) => {
     });
   } catch (error) {
     return next(error);
+  }
+};
+
+export const GetAllTailorsData = async (req, resp, next) => {
+  try {
+    let allTailors = await TailorsModel.find({});
+    resp.json({ status: 200, data: allTailors });
+  } catch (error) {
+    next(error);
   }
 };
