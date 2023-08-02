@@ -14,7 +14,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Products from "./pages/Users/Products/AllProducts/Products";
 import Panel from "./pages/Admin/AdminPanel/Panel/Panel";
-import Dashboard from "./pages/Admin/AdminPanel/Dashboard/Dashboard";
 import AdminProducts from "./pages/Admin/AdminPanel/Products/AdminProducts";
 import NewProductAdmin from "./pages/Admin/AdminPanel/NewProduct/NewProductAdmin";
 import TailorDashboard from ".//pages/Tailors/TailorDashboard/Dashboard";
@@ -49,7 +48,6 @@ function App() {
             <Route path="/admin/register" element={<AdminRegister />} />
             <Route path="/admin/panel" element={<Root />}>
               <Route path="/admin/panel" element={<Panel />}>
-                <Route path="/admin/panel/dashboard" element={<Dashboard />} />
                 <Route
                   path="/admin/panel/products"
                   element={<AdminProducts />}

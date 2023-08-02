@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import BusinessIcon from "@mui/icons-material/Business";
-import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import "./panel.css";
-import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import MenuIcon from "@mui/icons-material/Menu";
 
@@ -47,14 +45,6 @@ const Panel = () => {
           <p className="title">Main</p>
 
           <NavLink
-            to="/admin/panel/dashboard"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={EmbedFunction ? CLoseSidebarFun : ""}
-          >
-            <DashboardIcon className="icon" />
-            <p>Dashboard</p>
-          </NavLink>
-          <NavLink
             to="/admin/panel/users"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
             onClick={EmbedFunction ? CLoseSidebarFun : ""}
@@ -77,14 +67,6 @@ const Panel = () => {
           >
             <BusinessIcon className="icon" />
             <p>Tailors</p>
-          </NavLink>
-          <NavLink
-            to="/admin/panel/settings"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={EmbedFunction ? CLoseSidebarFun : ""}
-          >
-            <PowerSettingsNewIcon className="icon" />
-            <p>Settings</p>
           </NavLink>
         </div>
         <div className="leftPanel_logout">
