@@ -5,6 +5,7 @@ import cartSlice from "./Slices/Users/cartSlice";
 import adminEditProductSlice from "./Slices/Admin/adminEditProductSlice";
 import singleProductSlice from "./Slices/Users/SingleProduct";
 import allTailorsDataSlice from "./Slices/TailorAdmin/allTailorsData";
+import changeCategorySlice from "./Slices/Users/ChangeCategory";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     adminEditProduct: adminEditProductSlice,
     singleProduct: singleProductSlice,
     allTailorsDatas: allTailorsDataSlice,
+    changeCategory: changeCategorySlice,
   },
 });
 export default store;

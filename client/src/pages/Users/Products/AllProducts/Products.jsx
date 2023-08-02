@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../../../../components/Navbar";
 import "./products.css";
 import { ProductsAPI } from "../../../../Utils/APIs/userAPI";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../../../store/Slices/Users/cartSlice";
 import { setSingleProduct } from "../../../../store/Slices/Users/SingleProduct";
 
@@ -12,6 +12,7 @@ const Products = () => {
   const dispatch = useDispatch();
   const [spin, setSpin] = useState(false);
   const [products, setProducts] = useState([]);
+  const categoryState = useSelector((state) => state.changeCategory);
   const [values, setValues] = useState({
     search: "",
     pricesort: "price",
@@ -20,6 +21,10 @@ const Products = () => {
   useEffect(() => {
     AllProducts(values);
   }, [values]);
+
+  useEffect(() => {
+    setValues({ ...values, category: categoryState });
+  }, [categoryState]);
 
   const AllProducts = async (data) => {
     setSpin(true);

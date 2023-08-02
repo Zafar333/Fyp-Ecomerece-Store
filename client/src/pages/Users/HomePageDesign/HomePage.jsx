@@ -2,10 +2,19 @@ import React from "react";
 import "./homePage.css";
 import Banner from "./Banner";
 import Footer from "../../../components/Footer";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Navbar from "../../../components/Navbar";
+import { useDispatch } from "react-redux";
+import { setCategory } from "../../../store/Slices/Users/ChangeCategory";
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  function Navigation(value) {
+    dispatch(setCategory(value));
+    navigate("/products");
+  }
   return (
     <>
       {/* <header className="navbar"></header> */}
@@ -21,21 +30,39 @@ const HomePage = () => {
               <div className="card">
                 <div className="cardImg1"></div>
                 <div className="cardTitle">
-                  <p className="titleText">Women Collection</p>
+                  <p
+                    className="titleText"
+                    onClick={() => Navigation("women")}
+                    style={{ cursor: "pointer" }}
+                  >
+                    Women Collection
+                  </p>
                 </div>
               </div>
 
               <div className="card">
                 <div className="cardImg2"></div>
                 <div className="cardTitle2">
-                  <p className="titleText">Men Collection</p>
+                  <p
+                    className="titleText"
+                    onClick={() => Navigation("men")}
+                    style={{ cursor: "pointer" }}
+                  >
+                    Men Collection
+                  </p>
                 </div>
               </div>
 
               <div className="card">
                 <div className="cardImg3"></div>
                 <div className="cardTitle3">
-                  <p className="titleText">Kids Collection</p>
+                  <p
+                    className="titleText"
+                    onClick={() => Navigation("kids")}
+                    style={{ cursor: "pointer" }}
+                  >
+                    Kids Collection
+                  </p>
                 </div>
               </div>
             </div>
