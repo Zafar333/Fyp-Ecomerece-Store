@@ -4,6 +4,7 @@ import {
   AdminProductDelete,
   AdminProductGet,
   AdminProductUpdate,
+  GetAllTailorsData,
   login,
   register,
 } from "../controllers/adminControllers.js";
@@ -17,6 +18,7 @@ const adminRoute = () => {
   router.get("/adminproducts/:page", AdminProductGet);
   router.delete("/adminproducts/:id", AdminProductDelete);
   router.put("/adminproducts/:id", AdminProductUpdate);
+  router.get("/alltailors", GetAllTailorsData);
 
   return router;
 };

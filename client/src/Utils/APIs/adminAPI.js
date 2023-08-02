@@ -51,3 +51,12 @@ export const AdminProductEditAPI = async (id, values) => {
     return error.message;
   }
 };
+
+export const AdminGetAllTailorsAPI = async () => {
+  try {
+    let result = await axios.get(`${base}/alltailors`);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};

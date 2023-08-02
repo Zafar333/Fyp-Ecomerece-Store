@@ -8,8 +8,9 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { DeleteUserAPI, GetAllUsersAPI } from "../../../../Utils/APIs/userAPI";
+import { DeleteUserAPI } from "../../../../Utils/APIs/userAPI";
 import { toast } from "react-toastify";
+import { AdminGetAllTailorsAPI } from "../../../../Utils/APIs/adminAPI";
 
 const AllTailorsData = () => {
   const [userData, setUserData] = useState([]);
@@ -20,7 +21,7 @@ const AllTailorsData = () => {
 
   const GetAllUsers = async () => {
     setIsLoading(true);
-    let result = await GetAllUsersAPI();
+    let result = await AdminGetAllTailorsAPI();
     if (result?.data?.status === 200) {
       setUserData(result?.data?.data);
       setIsLoading(false);
@@ -60,13 +61,19 @@ const AllTailorsData = () => {
                 align="right"
                 style={{ color: "white", textAlign: "center" }}
               >
-                Lastname
+                Phone#
               </TableCell>
               <TableCell
                 align="right"
                 style={{ color: "white", textAlign: "center" }}
               >
                 email
+              </TableCell>
+              <TableCell
+                align="right"
+                style={{ color: "white", textAlign: "center" }}
+              >
+                shop name
               </TableCell>
               <TableCell
                 align="right"
@@ -85,7 +92,7 @@ const AllTailorsData = () => {
                 >
                   <TableCell component="th" scope="row">
                     <img
-                      src={row?.profile}
+                      src={row?.image}
                       alt="profile"
                       style={{
                         width: "45px",
@@ -96,13 +103,16 @@ const AllTailorsData = () => {
                     />
                   </TableCell>
                   <TableCell align="right" style={{ textAlign: "center" }}>
-                    {row?.firstname}
+                    {row?.name}
                   </TableCell>
                   <TableCell align="right" style={{ textAlign: "center" }}>
-                    {row?.lastname}
+                    {row?.contactNumber}
                   </TableCell>
                   <TableCell align="right" style={{ textAlign: "center" }}>
                     {row?.email}
+                  </TableCell>
+                  <TableCell align="right" style={{ textAlign: "center" }}>
+                    {row?.shopName}
                   </TableCell>
                   <TableCell align="right" style={{ textAlign: "center" }}>
                     <Button
