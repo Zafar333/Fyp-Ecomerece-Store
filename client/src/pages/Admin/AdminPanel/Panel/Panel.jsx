@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import BusinessIcon from "@mui/icons-material/Business";
@@ -45,14 +44,6 @@ const Panel = () => {
         <div className="menus">
           <p className="title">Main</p>
 
-          <NavLink
-            to="/admin/panel/dashboard"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={EmbedFunction ? CLoseSidebarFun : ""}
-          >
-            <DashboardIcon className="icon" />
-            <p>Dashboard</p>
-          </NavLink>
           <NavLink
             to="/admin/panel/users"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
