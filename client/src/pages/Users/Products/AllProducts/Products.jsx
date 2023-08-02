@@ -6,6 +6,7 @@ import { ProductsAPI } from "../../../../Utils/APIs/userAPI";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../../../store/Slices/Users/cartSlice";
 import { setSingleProduct } from "../../../../store/Slices/Users/SingleProduct";
+import { setCategory } from "../../../../store/Slices/Users/ChangeCategory";
 
 const Products = () => {
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ const Products = () => {
     setValues((val) => {
       return { ...val, [name]: value };
     });
+    dispatch(setCategory("all"));
   };
   const AddToCart = (event, item) => {
     event.stopPropagation();
