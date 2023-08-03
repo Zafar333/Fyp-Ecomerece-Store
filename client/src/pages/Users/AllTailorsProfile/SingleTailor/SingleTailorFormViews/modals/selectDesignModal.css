@@ -1,0 +1,78 @@
+
+.suitDesignContainer{
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    /* border: 1px solid green; */
+}
+.suitDesignImages{
+    width: 100%;
+    display: flex;
+    max-height: 20vh;
+    flex-wrap: wrap;
+    gap: 10%;
+    overflow: auto;
+    /* background-color: aliceblue; */
+    height: 30vh;
+    /* border: 1px solid rgb(21, 0, 255); */
+    background-color: #eeeee4;
+
+    
+
+}
+.inputbox{
+    width: 30px;
+    height: 30px;
+    border: none;
+    outline:  4px solid rgb(247, 74, 6);
+}
+.suitDesignImagesBox{
+    margin-top: 1.2%;
+    margin-left: 1%;
+    display: flex;
+    /* flex-direction: column; */
+}
+.uploadDesignImages
+{
+    width: 100%;
+    max-height: 20vh;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    gap: 5%;
+    height: 30vh;
+    /* border: 1px solid red */
+    background-color: #eeeee4;
+}
+.labelBlock{
+    width: 230px;
+    height: 50px;
+    display: flex;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    background-color: orange;
+    border: 1px solid black;
+}
+.btnContainer{
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.btnContainerCancelBtn{
+    width: 100px;
+    height: 50px;
+    border-radius: 6px;
+    font-size: 20px;
+
+}
+.btnContainerNextBtn{
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 6px;
+
+}

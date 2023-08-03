@@ -9,9 +9,15 @@ import { useDispatch } from "react-redux";
 import { NavLink, useNavigate, Outlet, useParams } from "react-router-dom";
 import UserLogin from "./UserLogin/Login";
 import UserRegister from "./UserRegister/Register";
+import SelectDesignModal from "./SingleTailorFormViews/modals/SelectDesignModal";
+import MeasurementsModal from "./SingleTailorFormViews/modals/MeasurementsModal";
+import UserContactFormModal from "./SingleTailorFormViews/modals/UserContactFormModal";
 
 const SingleTailorShop = () => {
   const [registerModal, setRegisterModal] = useState(false);
+  const [suitDesignModal, setSuitDesignModal] = useState(false);
+  const [measurementModal, setMeasurementModal] = useState(false);
+  const [userContactFormModal, setUsercontactFormModal] = useState(false);
 
   const [loginModal, setLoginModal] = useState(false);
   const navigate = useNavigate();
@@ -63,7 +69,6 @@ const SingleTailorShop = () => {
   }
 
   function opnBasicDetailView(tailorId) {
-    console.log("idz", tailorId);
     navigate(
       `/signleTailor/viewShop/:id/SingleTailorInfoFormViewsBasicPrice/${tailorId}`
     );
@@ -80,8 +85,9 @@ const SingleTailorShop = () => {
     );
   }
   function placeOrder() {
-    if (localStorage.getItem("tailorUserToken")) {
-      toast.success("User Already login");
+    let UserToken = localStorage.getItem("userToken");
+    if (UserToken) {
+      setSuitDesignModal(true);
     } else {
       setLoginModal(true);
     }
@@ -93,6 +99,7 @@ const SingleTailorShop = () => {
         <UserLogin
           setLoginModal={setLoginModal}
           setRegisterModal={setRegisterModal}
+          setSuitDesignModal={setSuitDesignModal}
         />
       </div>
       <div className={!registerModal ? "modalRegisterrHide" : "modalRegisterr"}>
@@ -101,6 +108,40 @@ const SingleTailorShop = () => {
           setRegisterModal={setRegisterModal}
         />
       </div>
+
+      <div
+        className={
+          !suitDesignModal ? "suitDesignModalHide" : "suitDesignModalOpn"
+        }
+      >
+        <SelectDesignModal
+          setSuitDesignModal={setSuitDesignModal}
+          setMeasurementModal={setMeasurementModal}
+        />
+      </div>
+
+      <div
+        className={
+          !measurementModal ? "measurementModalHide" : "measurementModalOpn"
+        }
+      >
+        <MeasurementsModal
+          setMeasurementModal={setMeasurementModal}
+          setUsercontactFormModal={setUsercontactFormModal}
+        />
+      </div>
+      <div
+        className={
+          !userContactFormModal
+            ? "userContactFormModalHide"
+            : "userContactFormModalOpn"
+        }
+      >
+        <UserContactFormModal
+          setUsercontactFormModal={setUsercontactFormModal}
+        />
+      </div>
+
       <div className="singleTailorShopContainer">
         <div className="singleTailorShopView">
           <div className="singleTailorShopCard">

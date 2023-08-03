@@ -79,6 +79,7 @@ const CreateShop = () => {
           navigate("/tailor/dashboard");
           toast.success(res?.data.message);
         } else {
+          toast.error(res?.data?.message);
         }
       } catch (error) {
         toast.error(error.message);

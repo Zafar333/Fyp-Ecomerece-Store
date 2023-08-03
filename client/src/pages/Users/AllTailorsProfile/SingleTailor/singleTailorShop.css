@@ -1,6 +1,6 @@
 .singleTailorShopContainer{
     width: 100%;
-    height: 90.8vh;
+    height: 90.7vh;
     border: 2px solid red;
 }
 .modalLoginn{
@@ -10,7 +10,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 1;
     background-color: #fff;
 }
 .modalLoginnHide{
@@ -23,18 +23,65 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 2;
     background-color: #fff;
 }
 .modalRegisterrHide{
     display: none;
 }
+.suitDesignModalOpn{
+    width: 90%;
+    height: 70vh;
+    display: block;
+    position: fixed;
+    top:9.5%;
+    right: 0;
+    left: 5%;
+    bottom: 0;
+    box-shadow: 1px 1px 5px 1px rgb(30, 32, 33);
+    background-color: #fff;
+    z-index: 3;
+}
+.suitDesignModalHide{
+    display: none;
+}
+.measurementModalOpn{
+    display: block;
+    position: fixed;
+    top:0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 4;
+}
+.measurementModalHide{
+    display: none;
+}
+.userContactFormModalOpn{
+    display: block;
+    position: fixed;
+    top:0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 4;
+}
+.userContactFormModalHide{
+    display: none;
+}
 
 .singleTailorShopView{
     width: 90%;
-    height: 90.7vh;
+    height: 90.6vh;
     display: flex;
-    justify-content:  space-between;
     margin: auto;
     border:1px solid black
 }
@@ -44,6 +91,7 @@
     width: 40%;
     height: 50vh;
     display: flex;
+    margin-right: 30%;
     flex-direction: column;
     box-shadow: 1px 1px 5px 1px rgb(30, 32, 33);
     border-radius: 6px;
@@ -72,7 +120,8 @@
 }
 .outletView{
     display: flex;
-    height: 22vh;
+    height: 23.4vh;
+
     border: 1px solid red;
     background: #fff;
 }
@@ -80,7 +129,7 @@
 .singleTailorOrderBtn{
     border: none;
     width: 100%; 
-    height: 100px;
+    height: 6.3vh;
     font-size: 25px;
     font-weight: bold;
 }
@@ -103,8 +152,90 @@
     border: 1px solid black;
 
 }
-/* .singleTailorOptionBtns:hover{
-    background-color: red;
-
+@media(max-width:2000px){
     
-} */
+  
+     .singleTailorShopCard{
+        margin-right: 10%;
+        width: 60%;
+    } 
+    .singleTailorInfoForm{
+        width: 45%;
+    }
+}
+@media(max-width:1700px){
+   
+    .singleTailorShopCard{
+        width: 55%;
+    }
+   
+   
+}
+
+@media(max-width:1390px){
+   
+    .singleTailorShopCard{
+        width: 75%;
+        margin-right: 0;
+        margin-top: 0;
+    }
+    .singleTailorShopView{
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .singleTailorInfoForm{
+        width: 55%;
+    }
+   
+   
+}
+@media(max-width:1200px){
+    .singleTailorShopCard{
+        width: 90%;
+        margin: 0;
+        height:40vh;
+    }
+    .singleTailorCardImgCrousel{
+        height: 40vh;
+    }
+    .singleTailorShopView{
+        justify-content: space-around;
+    }
+    .singleTailorInfoForm{
+        width: 70%;
+    }
+    
+}
+@media(max-width:900px){
+    .singleTailorInfoForm{
+        width: 90%;
+    }
+}
+@media(max-width:650px){
+    .singleTailorInfoForm{
+        width: 100%;
+    }
+    .singleTailorShopCard{
+        width: 100%;
+       
+    }
+}
+
+@media(max-width:550px){
+    .singleTailorShopView{
+        width: 100%;
+    }
+  
+    .singleTailorInfoForm{
+        width: 97%;
+    }
+    .singleTailorShopCard{
+        width: 97%;
+        height: 35vh;
+       
+    }
+    .singleTailorCardImgCrousel{
+        height: 35vh;
+    }
+}

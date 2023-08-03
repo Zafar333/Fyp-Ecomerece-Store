@@ -42,3 +42,29 @@ export const alltailorsDataGetApi = async () => {
     return error.message;
   }
 };
+
+export const userOrderDataApi = async (data) => {
+  try {
+    let result = await axios.post(`${base}/orders`, data);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
+export const userMeasurementDataApi = async (data, id) => {
+  try {
+    let result = await axios.patch(`${base}/orderMeasurement/${id}`, data);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+export const userContactDetailsApi = async (data, id) => {
+  try {
+    let result = await axios.patch(`${base}/orderContactDetails/${id}`, data);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};

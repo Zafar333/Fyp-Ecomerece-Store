@@ -6,7 +6,11 @@ import {
   fetchTailorShopData,
   fetchAllTailorsData,
 } from "../controllers/tailorControllers.js";
-
+import {
+  tailorUserOrder,
+  userMeasurement,
+  userContactDetails,
+} from "../controllers/tailorUserOrder.js";
 const router = express.Router();
 
 const tailorRoute = () => {
@@ -15,6 +19,9 @@ const tailorRoute = () => {
   router.patch("/createShops/:id", createShop);
   router.get("/tailorShopData/:id", fetchTailorShopData);
   router.get("/alltailorData", fetchAllTailorsData);
+  router.post("/orders", tailorUserOrder);
+  router.patch("/orderMeasurement/:id", userMeasurement);
+  router.patch("/orderContactDetails/:id", userContactDetails);
   return router;
 };
 
