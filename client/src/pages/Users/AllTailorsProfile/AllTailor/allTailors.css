@@ -1,15 +1,16 @@
 .allTailorsWrapper{
     max-width: 100%;
-    margin-top: 5%;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 5%;
+    overflow: auto;
+    margin-top: 3%;
     /* border:  1px solid black; */
     background-color:#eeeee4;
 
 }
 .allTailorsContainer{
     margin: auto;
+    height: 85vh;
     width: 98%;
     /* border: 1px solid green; */
     display: grid;

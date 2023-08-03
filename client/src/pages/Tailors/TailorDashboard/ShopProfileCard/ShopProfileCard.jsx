@@ -65,55 +65,59 @@ const ShopProfileCard = () => {
 
         <hr />
 
-        <div className="tailorShopCard">
-          <div className="crouselButtonBlock">
-            <div className="crouselButtons">
-              <div style={{ backgroundColor: "white" }}>
-                <img
-                  style={{
-                    width: "25px",
-                    height: "25px",
-                    cursor: "pointer",
-                  }}
-                  src={arrowLeft}
-                  onClick={crouselImgPrevious}
-                />
+        {shopCardArr?.designImages?.length > 0 ? (
+          <div className="tailorShopCard">
+            <div className="crouselButtonBlock">
+              <div className="crouselButtons">
+                <div style={{ backgroundColor: "white" }}>
+                  <img
+                    style={{
+                      width: "25px",
+                      height: "25px",
+                      cursor: "pointer",
+                    }}
+                    src={arrowLeft}
+                    onClick={crouselImgPrevious}
+                  />
+                </div>
+                <div style={{ backgroundColor: "white" }}>
+                  <img
+                    src={arrowRight}
+                    onClick={crouselImgNext}
+                    style={{
+                      width: "25px",
+                      height: "25px",
+                      cursor: "pointer",
+                    }}
+                  />
+                </div>
               </div>
-              <div style={{ backgroundColor: "white" }}>
-                <img
-                  src={arrowRight}
-                  onClick={crouselImgNext}
-                  style={{
-                    width: "25px",
-                    height: "25px",
-                    cursor: "pointer",
-                  }}
-                />
+            </div>
+            <img
+              className="CardImgCrousel"
+              src={shopCardArr?.designImages[selectedImages]}
+              alt=""
+            />
+            <div className="cardTextBlock">
+              <div className="shopName divContainer">
+                <label> ShopName:</label> {shopCardArr?.shopName}
               </div>
+              <div className="stitchCategory  divContainer">
+                <label>Stitch Category:</label> {shopCardArr?.stitchCategory}
+              </div>
+              <div className="description divContainer">
+                <label>Description:</label> {shopCardArr?.description}
+              </div>
+              <div className="standardPrice divContainer">
+                <label>Start At PKR:</label> {shopCardArr?.standardPrice}
+              </div>
+              {/* <button className="shopDeleteBtn">Delete</button> */}
             </div>
-          </div>
-          <img
-            className="CardImgCrousel"
-            src={shopCardArr?.designImages[selectedImages]}
-            alt=""
-          />
-          <div className="cardTextBlock">
-            <div className="shopName divContainer">
-              <label> ShopName:</label> {shopCardArr?.shopName}
-            </div>
-            <div className="stitchCategory  divContainer">
-              <label>Stitch Category:</label> {shopCardArr?.stitchCategory}
-            </div>
-            <div className="description divContainer">
-              <label>Description:</label> {shopCardArr?.description}
-            </div>
-            <div className="standardPrice divContainer">
-              <label>Start At PKR:</label> {shopCardArr?.standardPrice}
-            </div>
-            <button className="shopDeleteBtn">Delete</button>
             <button className="shopEditBtn">Edit</button>
           </div>
-        </div>
+        ) : (
+          <h1>Shop is Not Created</h1>
+        )}
       </div>
     </>
   );

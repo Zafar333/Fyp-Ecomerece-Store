@@ -24,7 +24,7 @@ const Dashboard = () => {
   return (
     <div className="dashboardMainContainer">
       <div
-        className={sidebar ? "tailorLeftPanelNone" : "tailorLeftPanel"}
+        className={sidebar ? "tailorLeftPanel" : "tailorLeftPanelNone"}
         // style={{ display: sidebar ? "none" : "flex" }}
       >
         <div className="tailorSidebar">
