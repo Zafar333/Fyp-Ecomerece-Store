@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { UserLogin } from "../../../../../Utils/APIs/userAPI";
 import { useDispatch } from "react-redux";
 
-const Login = ({ setLoginModal, setRegisterModal }) => {
+const Login = ({ setLoginModal, setRegisterModal, setSuitDesignModal }) => {
   const [spin, setSpin] = useState(false);
 
   const dispatch = useDispatch();
@@ -40,6 +40,7 @@ const Login = ({ setLoginModal, setRegisterModal }) => {
           localStorage.setItem("userToken", JSON.stringify(res?.data?.token));
           toast.success(res.data.message);
           setLoginModal(false);
+          setSuitDesignModal(true);
         } else {
           setSpin(false);
           toast.error(res?.data?.message || res);

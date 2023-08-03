@@ -39,7 +39,7 @@ const Login = () => {
               res?.data?.message || "You are Login Successfully!!!"
             );
           } else {
-            toast.error(res?.data?.message || res);
+            toast.error(res?.data?.message);
           }
         } catch (error) {
           toast.error(error.message);

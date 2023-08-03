@@ -8,7 +8,9 @@
 .tailorLeftPanel{
     flex: 1;
     height: 100vh;
-    /* border:  7px solid black; */
+    /* border:  1px solid black; */
+    box-shadow: 1px 1px 5px 1px rgb(30, 32, 33);
+
 }
 .tailorRightPanel{
     flex: 4;
@@ -130,11 +132,7 @@
         font-size: 22px;
     }
 }
-/* @media (max-width:1000px){
-  .tailorLeftPanel{
-    display: none!important
-  }
-} */
+
 @media (max-width:900px) {
     .optionText1{
         font-size: 16px;
@@ -148,7 +146,16 @@
     }
    
     .tailorLeftPanel{
-        display: none;
+        flex: none;
+        width: 50%;
+        position: fixed;
+        top: 5%;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 100;
+        background-color: #fff;
+        height: 95vh;
      
     }
    

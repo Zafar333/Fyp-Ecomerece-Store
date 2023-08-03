@@ -39,28 +39,28 @@ const AllTailors = () => {
   }
 
   // Image Next crousel function code is start here
-  function ImgNext(item, ind) {
-    console.log("index", ind);
-    console.log("item", item);
+  // function ImgNext(item, ind) {
+  //   console.log("index", ind);
+  //   console.log("item", item);
 
-    if (countImg < item?.designImages.length - 1) {
-      let increment = countImg + 1;
-      setCountImg(increment);
-    } else {
-      setCountImg(item?.designImages.length - 1);
-    }
-  }
+  //   if (countImg < item?.designImages.length - 1) {
+  //     let increment = countImg + 1;
+  //     setCountImg(increment);
+  //   } else {
+  //     setCountImg(item?.designImages.length - 1);
+  //   }
+  // }
   // Image Next crousel function code is end here
 
   // Image previous crousel function code is start here
-  function ImgPrevious() {
-    if (countImg > 1) {
-      let decrement = countImg - 1;
-      setCountImg(decrement);
-    } else {
-      setCountImg(0);
-    }
-  }
+  // function ImgPrevious() {
+  //   if (countImg > 1) {
+  //     let decrement = countImg - 1;
+  //     setCountImg(decrement);
+  //   } else {
+  //     setCountImg(0);
+  //   }
+  // }
   // Image previous crousel function code is end here
 
   // this Function is go to single tailor page view start here
@@ -74,11 +74,11 @@ const AllTailors = () => {
       <Navbar />
       <div className="allTailorsWrapper">
         <div className="allTailorsContainer">
-          {Datas?.length != 0 ? (
+          {Datas?.length > 0 ? (
             Datas?.map((item, ind) => (
               <div className="allTailorShopCard" key={ind}>
                 <div className="allTailorCrouselButtonBlock">
-                  <div className="allTailorCrouselButtons">
+                  {/* <div className="allTailorCrouselButtons">
                     <div style={{ backgroundColor: "white" }}>
                       <img
                         style={{
@@ -101,7 +101,7 @@ const AllTailors = () => {
                         }}
                       />
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <img
                   className="allTailorCardImgCrousel"

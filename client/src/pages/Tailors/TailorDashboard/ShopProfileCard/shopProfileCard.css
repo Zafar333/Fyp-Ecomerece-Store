@@ -19,8 +19,8 @@
     /* margin:auto; */
     margin-top: 3.5%;
     margin-left: 5%;
-    width: 30%;
-    height: 65vh;
+    width: 25%;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     box-shadow: 1px 1px 5px 1px rgb(30, 32, 33);
@@ -51,7 +51,7 @@
 }
 .cardTextBlock{
     display: flex;
-    height: 35vh;
+    height: 31.8vh;
     /* border: 1px solid red; */
     flex-direction: column;
     justify-content: space-around;
@@ -76,11 +76,19 @@
     font-size: 20px;
     background-color: #e0e0e0;
     border: none;
+    border-radius: 4px;
 
+}
+@media (max-width:1700px){
+    .tailorShopCard{
+        width:40% ;
+    }
+   
+  
 }
 @media (max-width:1400px){
     .tailorShopCard{
-        width:60% ;
+        width:50% ;
     }
     .tailorShopBtn{
         width: 20%;
@@ -113,6 +121,7 @@
 @media (max-width:450px){
     .tailorShopCard{
         width: 90%;
+        height: 45vh;
     }
     .divContainer{
         font-size: 15px;

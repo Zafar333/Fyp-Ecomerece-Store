@@ -1,0 +1,90 @@
+.userContactForm{
+    width: 70%;
+    height: 60vh;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #fff;
+    border: 1px solid black;
+
+}
+.userContactFormBox{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.userContactFormBox input{
+    border: none;
+    font-size: 20px;
+    height: 4vh;
+    outline: 3px solid skyblue;
+    /* height: 3vh; */
+    width: 60%;
+
+}
+.userContactFormBox label{
+    /* text-align: center; */
+    width: 13%;
+    /* border: 1px solid black; */
+    font-size:25px ;
+}
+.contactFormBtns{
+    width: 80%;
+    /* border:  1px solid black; */
+    display: flex;
+    justify-content: space-evenly;
+}
+.contactFormNextBtn{
+    width: 90px;
+    height: 35px;
+    font-size: 20px;
+}
+.contactFormCancelBtn{
+    width: 90px;
+    height: 35px;
+    font-size: 20px;
+}
+@media(max-width:1100px){
+    .userContactForm{
+        width: 85%;
+    }
+}
+@media(max-width:800px){
+    .userContactForm{
+        width: 95%;
+        height: 50vh;
+    }
+    .userContactFormBox{
+        justify-content: space-around;
+    }
+    .userContactFormBox label{
+        font-size: 18px;
+
+    }
+    .userContactFormBox input{
+        height: 3vh;
+        font-size: 14px;
+
+    }
+}
+@media(max-width:550px){
+    .userContactForm{
+        height: 40vh;
+    }
+    .userContactFormBox input{
+        height: 2vh;
+    }
+    .contactFormCancelBtn{
+        font-size: 16px;
+        width: 80px;
+    }
+    .contactFormNextBtn{
+        font-size: 16px;
+        width: 80px;
+    }
+    .contactFormBtns{
+        justify-content:  space-around;
+    }
+
+}
