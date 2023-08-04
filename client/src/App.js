@@ -88,6 +88,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
 
           <Route path="/allTailors" element={<AllTailors />} />
+
           <Route path="/signleTailor" element={<SingleTailorRoot />}>
             <Route
               path="/signleTailor/viewShop/:id"
