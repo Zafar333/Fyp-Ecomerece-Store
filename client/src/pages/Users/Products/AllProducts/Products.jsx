@@ -19,6 +19,7 @@ const Products = () => {
     pricesort: "price",
     category: "all",
   });
+
   useEffect(() => {
     AllProducts(values);
   }, [values]);
@@ -43,7 +44,14 @@ const Products = () => {
     setValues((val) => {
       return { ...val, [name]: value };
     });
-    // dispatch(setCategory("all"));
+    if (
+      value === "all" ||
+      value === "men" ||
+      value === "women" ||
+      value === "kids"
+    ) {
+      dispatch(setCategory(value));
+    }
   };
   const AddToCart = (event, item) => {
     event.stopPropagation();
