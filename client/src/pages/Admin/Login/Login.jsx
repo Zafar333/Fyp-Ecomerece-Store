@@ -43,7 +43,7 @@ const Login = () => {
 
           dispatch(setProfile(res?.data?.data));
           toast.success(res?.data?.message || "Login Successfully!!!");
-          navigate("/admin/panel/dashboard");
+          navigate("/admin/panel/users");
         } else {
           setSpin(false);
           toast.error(res?.data?.message || res);
@@ -57,7 +57,7 @@ const Login = () => {
   };
   useEffect(() => {
     if (adminToken) {
-      navigate("/admin/panel");
+      navigate("/admin/panel/users");
     } else {
       return;
     }
