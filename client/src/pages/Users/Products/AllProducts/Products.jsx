@@ -43,7 +43,7 @@ const Products = () => {
     setValues((val) => {
       return { ...val, [name]: value };
     });
-    dispatch(setCategory("all"));
+    // dispatch(setCategory("all"));
   };
   const AddToCart = (event, item) => {
     event.stopPropagation();
