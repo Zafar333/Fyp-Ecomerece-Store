@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./navbar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Avatar from "../assets/avatar.jpg";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -11,6 +11,7 @@ const Navbar = () => {
   const [cartSize, setCartSize] = useState(0);
   const cartData = useSelector((state) => state.cart);
   const navigate = useNavigate();
+  const activeStyle = { color: "coral" };
 
   const [userProfile, setUserProfile] = useState(
     JSON.parse(localStorage.getItem("userProfile"))
@@ -59,9 +60,24 @@ const Navbar = () => {
             className="navbar_links_inmodal"
             style={{ display: showModal ? "flex" : "none" }}
           >
-            <Link to="/">Home</Link>
-            <Link to="/products">Products</Link>
-            <Link>Tailors</Link>
+            <NavLink
+              to="/"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/products"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              Products
+            </NavLink>
+            <NavLink
+              to="/allTailors"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              Tailors
+            </NavLink>
 
             <div className="hnavbarLogins">
               {userToken ? (
@@ -86,9 +102,24 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbarLinks">
-          <Link to="/">Home</Link>
-          <Link to="/products">Products</Link>
-          <Link>Tailors</Link>
+          <NavLink
+            to="/"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/products"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Products
+          </NavLink>
+          <NavLink
+            to="/allTailors"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Tailors
+          </NavLink>
           <div className="userProductsCart" onClick={Cart}>
             <ShoppingCartIcon className="cartIcon" />
             <span className="userProductCartNum">{cartSize}</span>
