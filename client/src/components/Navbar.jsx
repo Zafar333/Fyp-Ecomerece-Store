@@ -46,7 +46,11 @@ const Navbar = () => {
     <div className="navbarMain">
       <div className="navbarContent">
         <div className="appName">
-          <h1>Shop</h1>
+          <h1>
+            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+              Shop
+            </Link>
+          </h1>
         </div>
 
         <div className="navbar_hamburger_container">
