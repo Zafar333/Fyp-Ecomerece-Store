@@ -91,6 +91,9 @@ export const CheckoutSession = async (req, resp, next) => {
     const session = await st.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
+      shipping_address_collection: {
+        allowed_countries: ["PK"],
+      },
       line_items: res?.map((item) => {
         let priceInCents = item.price * 100;
         let qant = req.body.filter((d) => item._id == d.id);
@@ -100,7 +103,6 @@ export const CheckoutSession = async (req, resp, next) => {
             product_data: {
               name: item?.name,
             },
-
             unit_amount: priceInCents,
           },
           quantity: qant[0].qty,
