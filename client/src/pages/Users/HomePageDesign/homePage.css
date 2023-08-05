@@ -3,22 +3,23 @@
     height: 6rem;
     border: 2px solid red;
 } */
-.main-wrapper{
+.main-wrapper {
     max-width: 100%;
     /* border: 1px solid green; */
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 5%;
-      
+
 }
-.sectionCategory{
+
+.sectionCategory {
     background-color: #eeeee4;
     border-radius: 15px;
 
 }
 
 /* css of collection catagorie card css start here */
-.card-block{
+.card-block {
     width: 100%;
     height: 50vh;
     display: flex;
@@ -26,12 +27,14 @@
     align-items: center;
     /* border: 1px solid black; */
 }
-.sectionTitle{
+
+.sectionTitle {
     text-align: center;
     font-size: 30px;
 
 }
-.card{
+
+.card {
     width: 23%;
     height: 80%;
     display: flex;
@@ -41,7 +44,8 @@
     box-shadow: 1px 1px 5px 1px rgb(30, 32, 33);
 
 }
-.cardImg1{
+
+.cardImg1 {
     margin: auto;
     width: 60%;
     height: 60%;
@@ -50,9 +54,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     border: 1px solid black;
- 
+
 }
-.cardImg2{
+
+.cardImg2 {
     margin: auto;
     width: 60%;
     height: 60%;
@@ -61,9 +66,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     border: 1px solid black;
- 
+
 }
-.cardImg3{
+
+.cardImg3 {
     margin: auto;
     width: 60%;
     height: 60%;
@@ -72,17 +78,19 @@
     background-size: cover;
     background-repeat: no-repeat;
     border: 1px solid black;
- 
+
 }
-.cardTitle{
+
+.cardTitle {
     width: 100%;
     height: 15%;
-    background-color:#fd9644;
+    background-color: #fd9644;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.cardTitle2{
+
+.cardTitle2 {
     width: 100%;
     height: 15%;
     display: flex;
@@ -91,7 +99,8 @@
     background-color: #6B696E;
 
 }
-.cardTitle3{
+
+.cardTitle3 {
     width: 100%;
     height: 15%;
     background-color: #EBA08E;
@@ -99,26 +108,29 @@
     align-items: center;
     justify-content: center;
 }
-.titleText{
+
+.titleText {
     font-size: 30px;
-    
+
 }
+
 /* css of collection catagorie card css end here */
 
 /* css of tailor secction  css start here */
-.tailorBlock{
-        /* display: flex; */
-        /* justify-content: space-evenly; */
-        width: 100%;
-        height: 70vh;
-        /* border: 1px solid black; */
-        display: flex;
-        border-radius: 10px;
-        align-items: center;
+.tailorBlock {
+    /* display: flex; */
+    /* justify-content: space-evenly; */
+    width: 100%;
+    height: 70vh;
+    /* border: 1px solid black; */
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
 
-    
+
 }
-.tailorImg{
+
+.tailorImg {
     background-image: url("../../../assets/HeropageImages/tailorCoverPic.jpeg");
     width: 60%;
     background-repeat: no-repeat;
@@ -128,7 +140,8 @@
     border-radius: 4px;
     height: 70vh;
 }
-.tailor-btn{
+
+.tailor-btn {
     text-decoration: none;
     color: black;
     width: 70%;
@@ -140,7 +153,8 @@
     padding: 18px;
     border: none;
 }
-.tailorContent{
+
+.tailorContent {
     width: 30%;
     height: 50vh;
     margin: auto;
@@ -154,16 +168,18 @@
     /* box-shadow: 1px 1px 5px 1px rgb(30, 32, 33); */
 
 }
-.tailorContentTitle{
+
+.tailorContentTitle {
     font-size: 70px;
-    color:#6B696E
+    color: #6B696E
+}
+
+.tailorSection {
+    background: #6B696E;
 
 }
-.tailorSection{
-    background:  #6B696E;
-   
-}
-.tailor-btn2{
+
+.tailor-btn2 {
     text-align: center;
     text-decoration: none;
     width: 44%;
@@ -175,9 +191,10 @@
     color: black;
 
 }
+
 /* css of tailor secction  css end here */
 /* css of tailor Profile secction  css start here */
-.tailorProfileBlock{
+.tailorProfileBlock {
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -185,30 +202,32 @@
     height: 70vh;
     background: #eeeee4;
 }
-.profileContent{
+
+.profileContent {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     width: 40%;
     height: 60vh;
-    background:  linear-gradient(45deg, #df2bb4, #f8a029)
-    
-
+    background: linear-gradient(45deg, #df2bb4, #f8a029)
 }
-.profileImgBlock{
+
+.profileImgBlock {
     display: flex;
     width: 40%;
     height: 60vh;
     background: #ffffff;
-    box-shadow: 1px 1px 5px 1px rgb(30, 32, 33);    
+    box-shadow: 1px 1px 5px 1px rgb(30, 32, 33);
 }
-.tailorProfileBtn{
+
+.tailorProfileBtn {
     width: 70%;
     display: flex;
     justify-content: space-around;
 }
-.signupBtn{
+
+.signupBtn {
     width: 130px;
     padding: 12px;
     color: black;
@@ -216,12 +235,13 @@
     border-radius: 10px;
     text-align: center;
     border: 1px solid black;
-    background:#fd9644;
+    background: #fd9644;
     border: none;
     font-size: 27px;
 
 }
-.loginBtn{
+
+.loginBtn {
     width: 130px;
     padding: 12px;
     text-align: center;
@@ -235,11 +255,15 @@
     font-size: 27px;
 
 }
-.profileText{
+
+.profileText {
     font-size: 17px;
     color: #ffffff;
+    text-align: justify;
+    padding: 0 12px;
 }
-.profileimg1{
+
+.profileimg1 {
     width: 35%;
     margin: auto;
     height: 30vh;
@@ -248,9 +272,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     border-top-left-radius: 25px;
-    
+
 }
-.profileimg2{
+
+.profileimg2 {
     width: 35%;
     margin: auto;
     height: 30vh;
@@ -262,261 +287,315 @@
 
 
 }
-.tailorProfileTitle{
+
+.tailorProfileTitle {
     font-size: 30px;
 
 }
+
 /* css of tailor profile secction  css end here */
 
 
 
-@media(max-width:1700px){
-    .card{
+@media(max-width:1700px) {
+    .card {
         width: 29%;
 
     }
-    .profileimg1{
-        width:40% ;
+
+    .profileimg1 {
+        width: 40%;
     }
-    .profileimg2{
-        width:40% ;
+
+    .profileimg2 {
+        width: 40%;
     }
-    
+
 }
 
 
-@media(max-width:1500px){
-    .tailorProfileBtn{
+@media(max-width:1500px) {
+    .tailorProfileBtn {
         width: 80%;
     }
 }
 
-@media(max-width:1400px){
-    .card{
+@media(max-width:1400px) {
+    .card {
         width: 30%;
         height: 75%;
 
     }
-    .card-block{
-        height:45vh ;
+
+    .card-block {
+        height: 45vh;
     }
-    .tailor-btn{
+
+    .tailor-btn {
         font-size: 23px;
     }
-    .tailorContentTitle{
+
+    .tailorContentTitle {
         font-size: 60px;
     }
-    .profileContent{
+
+    .profileContent {
         width: 46%;
     }
-    .profileImgBlock{
+
+    .profileImgBlock {
         width: 46%;
     }
-   .tailorProfileBtn{
-    width: 90%;
-   }
-   .profileimg1{
-    width: 45%;
-   }
-   .profileimg2{
-    width: 45%;
-   }
+
+    .tailorProfileBtn {
+        width: 90%;
+    }
+
+    .profileimg1 {
+        width: 45%;
+    }
+
+    .profileimg2 {
+        width: 45%;
+    }
 }
 
 
 
-@media(max-width:1200px){
-    .titleText{
+@media(max-width:1200px) {
+    .titleText {
         font-size: 25px;
 
     }
-    .tailor-btn{
+
+    .tailor-btn {
         font-size: 20px;
     }
-    .tailorContent{
+
+    .tailorContent {
         height: 40vh;
     }
 }
-@media(max-width:1100px){
-    .card{
+
+@media(max-width:1100px) {
+    .card {
         height: 70%;
 
     }
-    .card-block{
-        height:37vh ;
+
+    .card-block {
+        height: 37vh;
     }
-    .titleText{
+
+    .titleText {
         font-size: 22px;
 
     }
-    .tailorProfileBlock{
+
+    .tailorProfileBlock {
         flex-direction: column;
         height: 125vh;
     }
-    .profileContent{
+
+    .profileContent {
         width: 75%;
     }
-    .profileText{
+
+    .profileText {
         font-size: 20px;
+
     }
-    .profileImgBlock{
-        height:50vh ;
+
+    .profileImgBlock {
+        height: 50vh;
         width: 75%;
     }
 }
-   
-    @media(max-width:1000px){
-        
-        .card-block{
-            flex-direction: column;
-            height: 120vh;
-        }
-        .card{
-            width: 60%;
-            height: 30%;
-        }
-        .tailor-btn{
-            font-size: 18px;
-        }
-        .tailorContent{
-            height: 30vh;
-        }
-        .tailorContentTitle{
-            font-size: 40px;
-        }
-        
-        
+
+@media(max-width:1000px) {
+
+    .card-block {
+        flex-direction: column;
+        height: 120vh;
+    }
+
+    .card {
+        width: 60%;
+        height: 30%;
+    }
+
+    .tailor-btn {
+        font-size: 18px;
+    }
+
+    .tailorContent {
+        height: 30vh;
+    }
+
+    .tailorContentTitle {
+        font-size: 40px;
+    }
+
+
 }
-@media(max-width:850px){
-    .tailor-btn{
+
+@media(max-width:850px) {
+    .tailor-btn {
         font-size: 22px;
         border-radius: 0;
         width: 100%;
     }
-    .tailorContent{
+
+    .tailorContent {
         justify-content: space-between;
         padding-top: 5%;
     }
 }
 
-@media(max-width:760px){
-    .tailorImg{
+@media(max-width:760px) {
+    .tailorImg {
         display: none;
     }
-    .tailorBlock{
+
+    .tailorBlock {
         background-image: url("../../../assets/HeropageImages/tailorCoverPic.jpeg");
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
-        
+
     }
-    .tailorContent{
+
+    .tailorContent {
         display: none;
     }
-    .tailor-btn2{
+
+    .tailor-btn2 {
         position: relative;
         top: 22%;
         left: 27%;
         display: block;
         font-size: 25px;
     }
-    .profileText{
+
+    .profileText {
         font-size: 18px;
     }
-    .profileContent{
+
+    .profileContent {
         width: 85%;
     }
-    .profileImgBlock{
+
+    .profileImgBlock {
         width: 85%;
     }
-    .loginBtn{
+
+    .loginBtn {
         font-size: 25px;
         height: 45px;
         padding: 6px;
     }
-    .signupBtn{
+
+    .signupBtn {
         font-size: 25px;
         height: 45px;
         padding: 6px;
-        
+
     }
 }
-@media(max-width:600px){
-        
-    .card-block{
+
+@media(max-width:600px) {
+
+    .card-block {
         height: 90vh;
     }
-    .card{
+
+    .card {
         height: 27%;
     }
-    .tailor-btn2{
+
+    .tailor-btn2 {
         width: 50%;
         left: 23%;
     }
-    .profileContent{
+
+    .profileContent {
         height: 50vh;
     }
-    .tailorProfileBlock{
+
+    .tailorProfileBlock {
         height: 110vh;
     }
 }
+
 @media (max-width:570px) {
-    .main-wrapper{
+    .main-wrapper {
         margin-left: 0;
         margin-right: 0;
     }
-    .cardImg1{
+
+    .cardImg1 {
         width: 70%;
         background-size: cover;
         background-position: center;
     }
-    .cardImg2{
+
+    .cardImg2 {
         width: 70%;
         background-size: cover;
         background-position: top;
     }
-    .cardImg3{
+
+    .cardImg3 {
         width: 70%;
         background-size: cover;
         background-position: center;
     }
-    .titleText{
+
+    .titleText {
         font-size: 24px;
     }
-    .profileimg1{
+
+    .profileimg1 {
         width: 42%;
     }
-    .profileimg2{
+
+    .profileimg2 {
         width: 42%;
     }
-    
+
 }
-@media(max-width:470px){
-    .tailor-btn2{
+
+@media(max-width:470px) {
+    .tailor-btn2 {
         width: 60%;
         left: 18%;
     }
-    .profileContent{
+
+    .profileContent {
         width: 90%;
     }
-    .profileImgBlock{
+
+    .profileImgBlock {
         width: 90%;
     }
 
 }
-@media(max-width:450px){
-        
-    .card-block{
+
+@media(max-width:450px) {
+
+    .card-block {
         height: 70vh;
     }
-    .card{
+
+    .card {
         width: 70%;
     }
-    
-    
+
+
 }
-@media(max-width:370px){
-    .profileText{
+
+@media(max-width:370px) {
+    .profileText {
         font-size: 16px;
     }
 }
