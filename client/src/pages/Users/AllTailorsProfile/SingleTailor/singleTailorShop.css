@@ -30,17 +30,20 @@
     display: none;
 }
 .suitDesignModalOpn{
-    width: 90%;
-    height: 70vh;
     display: block;
     position: fixed;
-    top:9.5%;
+    top:0;
     right: 0;
-    left: 5%;
+    left: 0;
     bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: 1px 1px 5px 1px rgb(30, 32, 33);
     background-color: #fff;
     z-index: 3;
+    background-color: rgba(0, 0, 0, 0.8);
+
 }
 .suitDesignModalHide{
     display: none;
@@ -84,6 +87,7 @@
     display: flex;
     margin: auto;
     box-shadow: 1px 1px 5px 1px rgb(30, 32, 33);
+    padding: 20px;
 
 
     /* border:1px solid black */
@@ -186,12 +190,15 @@
    
     .singleTailorShopCard{
         width: 75%;
+        height:45vh;
         margin-right: 0;
         margin-top: 0;
     }
     .singleTailorShopView{
+        /* padding-top: 10px;
+        padding-bottom: 10px; */
         align-items: center;
-        justify-content: center;
+        /* justify-content: center; */
         flex-direction: column;
     }
     .singleTailorInfoForm{

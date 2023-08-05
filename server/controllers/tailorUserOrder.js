@@ -13,8 +13,9 @@ export const tailorUserOrder = async (req, res, next) => {
     trouserLength,
     tailorName,
     tailorEmail,
+    tailorId,
   } = req.body;
-  if (orderDesignImgs && tailorName && tailorEmail) {
+  if (orderDesignImgs && tailorName && tailorEmail && tailorId) {
     try {
       const orders = await tailorOrderSchema.create({
         orderDesignImgs,
@@ -29,6 +30,7 @@ export const tailorUserOrder = async (req, res, next) => {
         trouserLength,
         tailorName,
         tailorEmail,
+        tailorId,
       });
       if (orders) {
         res.json({
@@ -120,6 +122,62 @@ export const userContactDetails = async (req, res, next) => {
         success: true,
         message: "Your Order is done Sucessfully",
         status: 200,
+      });
+    }
+  } catch (error) {
+    next(error);
+    return;
+  }
+};
+
+export const allOrders = async (req, res, next) => {
+  const id = req.params.id;
+  if (!id) {
+    return next({ message: "Invalid Request", statusCode: 401 });
+  }
+  try {
+    let data = await tailorOrderSchema.find({
+      tailorId: id,
+    });
+    if (data) {
+      res.json({
+        success: true,
+        message: "order data send successfully",
+        status: 200,
+        orders: data,
+      });
+    } else {
+      return next({
+        message: "No Order is yet",
+        statusCode: 404,
+      });
+    }
+  } catch (error) {
+    next(error);
+    return;
+  }
+};
+
+export const SingleViewOrder = async (req, res, next) => {
+  const id = req.params.id;
+  if (!id) {
+    return next({ message: "Invalid Request", statusCode: 401 });
+  }
+  try {
+    let data = await tailorOrderSchema.findById({
+      _id: id,
+    });
+    if (data) {
+      res.json({
+        success: true,
+        message: "order data send successfully",
+        status: 200,
+        orders: data,
+      });
+    } else {
+      return next({
+        message: "Not find",
+        statusCode: 404,
       });
     }
   } catch (error) {

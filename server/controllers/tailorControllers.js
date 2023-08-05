@@ -77,6 +77,7 @@ export const createShop = async (req, res, next) => {
     fancyPrice,
     description,
     stitchCategory,
+    address,
   } = req.body;
   if (
     (!designImages,
@@ -85,7 +86,8 @@ export const createShop = async (req, res, next) => {
     !standardPrice,
     !fancyPrice,
     !description,
-    !stitchCategory)
+    !stitchCategory,
+    !address)
   ) {
     return next({ message: "please provide data", statusCode: 401 });
   }

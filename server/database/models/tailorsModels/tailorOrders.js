@@ -48,5 +48,8 @@ const tailorOrderSchema = new mongoose.Schema({
   tailorEmail: {
     type: String,
   },
+  tailorId: {
+    type: String,
+  },
 });
 export default mongoose.model("tailorsOrders", tailorOrderSchema);

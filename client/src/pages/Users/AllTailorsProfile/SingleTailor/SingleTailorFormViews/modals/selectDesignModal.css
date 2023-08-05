@@ -1,11 +1,14 @@
 
 .suitDesignContainer{
-    width: 100%;
+    width: 80%;
     height: 70vh;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
+    background-color: #fff;
     /* border: 1px solid green; */
+    padding: 20px;
+    border-radius: 6px;
 }
 .suitDesignImages{
     width: 100%;

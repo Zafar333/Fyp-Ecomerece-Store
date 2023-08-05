@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { TailorRegisterAPI } from "../../../Utils/APIs/tailorApi";
 import { EmailValidator } from "../../../Utils/Validation";
+import Navbar from "../../../components/Navbar";
 
 const Register = () => {
   const [image, setimage] = useState(null);
@@ -54,60 +55,63 @@ const Register = () => {
   };
 
   return (
-    <div className="tailorSignupContainer">
-      <div className="tailorSignupForm">
-        <div className="formImg"></div>
-        <div className="formContent">
-          <p className="tailorlogo">Tailor SignUp</p>
-          <p className="tailorText">Signup in to your Account</p>
+    <>
+      <Navbar />
+      <div className="tailorSignupContainer">
+        <div className="tailorSignupForm">
+          <div className="formImg"></div>
+          <div className="formContent">
+            <p className="tailorlogo">Tailor SignUp</p>
+            <p className="tailorText">Signup in to your Account</p>
 
-          <label className="profileImgSec" htmlFor="profileImg-Tag ">
-            {image ? (
-              <img className="tailorProfileImg" src={image} />
-            ) : (
-              <div className="profileImgCard"></div>
-            )}
-          </label>
-          <input
-            type="file"
-            id="profileImg-Tag "
-            style={{ display: "none" }}
-            name="image"
-            onChange={profileHandleImg}
-            accept="image/*"
-          />
+            <label className="profileImgSec" htmlFor="profileImg-Tag ">
+              {image ? (
+                <img className="tailorProfileImg" src={image} />
+              ) : (
+                <div className="profileImgCard"></div>
+              )}
+            </label>
+            <input
+              type="file"
+              id="profileImg-Tag "
+              style={{ display: "none" }}
+              name="image"
+              onChange={profileHandleImg}
+              accept="image/*"
+            />
 
-          <label>UserName:</label>
-          <input
-            className=""
-            type="text"
-            name="name"
-            placeholder="Enter Your Name"
-            onChange={handleData}
-          ></input>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter Your Email"
-            onChange={handleData}
-          ></input>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter Your Password"
-            onChange={handleData}
-          ></input>
-          <button className="tailorSignupBtn" onClick={tailorSignup}>
-            Signup
-          </button>
-          <NavLink className="hintText" to="/tailor/login">
-            If You have an account Login?{" "}
-          </NavLink>
+            <label>UserName:</label>
+            <input
+              className=""
+              type="text"
+              name="name"
+              placeholder="Enter Your Name"
+              onChange={handleData}
+            ></input>
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter Your Email"
+              onChange={handleData}
+            ></input>
+            <label>Password:</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter Your Password"
+              onChange={handleData}
+            ></input>
+            <button className="tailorSignupBtn" onClick={tailorSignup}>
+              Signup
+            </button>
+            <NavLink className="hintText" to="/tailor/login">
+              If You have an account Login?{" "}
+            </NavLink>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

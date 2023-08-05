@@ -68,17 +68,18 @@ const SelectDesignModal = ({ setSuitDesignModal, setMeasurementModal }) => {
   }
 
   async function sendSelectedImgs() {
-    const { name, email } = selectedTailorData;
+    const { name, email, _id } = selectedTailorData;
     let tailorName = name;
     let tailorEmail = email;
+    let tailorId = _id;
     let orderDesignImgs = [...uploadDesign, ...userSelectedDesign];
-    let data = { orderDesignImgs, tailorName, tailorEmail };
+    let data = { orderDesignImgs, tailorName, tailorEmail, tailorId };
 
-    if (orderDesignImgs?.length > 0 && tailorEmail && tailorName) {
+    if (orderDesignImgs?.length > 0) {
       try {
         const res = await userOrderDataApi(data);
         if (res?.data?.status == 200) {
-          toast.success(res?.data?.message);
+          // toast.success(res?.data?.message);
           localStorage.setItem("userOrderId", res.data.user);
           setSuitDesignModal(false);
           setMeasurementModal(true);
@@ -116,7 +117,7 @@ const SelectDesignModal = ({ setSuitDesignModal, setMeasurementModal }) => {
           ))}
         </div>
         <hr></hr>
-        <h1>Upload Your Design</h1>
+        <h2>Upload Your Design</h2>
         <div className=" uploadDesignImages">
           <label className="labelBlock" htmlFor="uploadDesigns">
             Upload Images

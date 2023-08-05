@@ -68,3 +68,20 @@ export const userContactDetailsApi = async (data, id) => {
     return error.message;
   }
 };
+export const allOrdersGetApi = async (id) => {
+  try {
+    let result = await axios.get(`${base}/getOrdersData/${id}`);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+export const singleViewOrdersGetApi = async (id) => {
+  try {
+    let result = await axios.get(`${base}/getSingleViewOrderData/${id}`);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};

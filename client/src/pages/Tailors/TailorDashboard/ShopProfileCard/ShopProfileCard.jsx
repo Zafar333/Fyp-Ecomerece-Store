@@ -109,11 +109,18 @@ const ShopProfileCard = () => {
                 <label>Description:</label> {shopCardArr?.description}
               </div>
               <div className="standardPrice divContainer">
+                <label>Address:</label> {shopCardArr?.address}
+              </div>
+              <div className="standardPrice divContainer">
+                <label>#Phn No:</label> {shopCardArr?.contactNumber}
+              </div>
+              <div className="standardPrice divContainer">
                 <label>Start At PKR:</label> {shopCardArr?.standardPrice}
               </div>
+
               {/* <button className="shopDeleteBtn">Delete</button> */}
             </div>
-            <button className="shopEditBtn">Edit</button>
+            {/* <button className="shopEditBtn">Edit</button> */}
           </div>
         ) : (
           <h1>Shop is Not Created</h1>

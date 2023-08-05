@@ -44,47 +44,54 @@ const CreateShop = () => {
   // submit form data function is start here
   const submitFormData = async () => {
     let id = localStorage.getItem("id");
-    const {
-      shopName,
-      contactNumber,
-      standardPrice,
-      fancyPrice,
-      description,
-      stitchCategory,
-    } = formData;
+    if (formData) {
+      const {
+        shopName,
+        contactNumber,
+        standardPrice,
+        fancyPrice,
+        description,
+        stitchCategory,
+        address,
+      } = formData;
 
-    let sendData = {
-      designImages,
-      shopName,
-      contactNumber,
-      standardPrice,
-      fancyPrice,
-      description,
-      stitchCategory,
-    };
+      let sendData = {
+        designImages,
+        shopName,
+        contactNumber,
+        standardPrice,
+        fancyPrice,
+        description,
+        stitchCategory,
+        address,
+      };
 
-    if (
-      designImages &&
-      shopName &&
-      contactNumber &&
-      standardPrice &&
-      fancyPrice &&
-      description &&
-      stitchCategory
-    )
-      try {
-        const res = await tailorShopCreateDataApi(sendData, id);
+      if (
+        designImages &&
+        shopName &&
+        contactNumber &&
+        standardPrice &&
+        fancyPrice &&
+        description &&
+        stitchCategory &&
+        address
+      )
+        try {
+          const res = await tailorShopCreateDataApi(sendData, id);
 
-        if (res?.data.status == 200) {
-          navigate("/tailor/dashboard");
-          toast.success(res?.data.message);
-        } else {
-          toast.error(res?.data?.message);
+          if (res?.data.status == 200) {
+            navigate("/tailor/dashboard");
+            toast.success(res?.data.message);
+          } else {
+            toast.error(res?.data?.message);
+          }
+        } catch (error) {
+          toast.error(error.message);
         }
-      } catch (error) {
-        toast.error(error.message);
+      else {
+        toast.error("Please fill all fields");
       }
-    else {
+    } else {
       toast.error("Please fill all fields");
     }
   };
@@ -124,24 +131,39 @@ const CreateShop = () => {
             ))}
         </div>
         <div className="inputForm">
+          <p>ShopName</p>
           <input
             name="shopName"
             type="text"
             placeholder="Please Enter Your Shop Name"
             onChange={handleInput}
           />
+          <p>Contact Number</p>
+
           <input
             name="contactNumber"
             type="text"
             placeholder="Please Enter Your Contact number"
             onChange={handleInput}
           />
+          <p>Address</p>
+
+          <input
+            name="address"
+            type="text"
+            placeholder="Please Enter Your Address"
+            onChange={handleInput}
+          />
+          <p>Standar Price</p>
+
           <input
             name="standardPrice"
             type="number"
             placeholder="Enter Your Standard Suit Stitch Price"
             onChange={handleInput}
           />
+          <p>Fancy Price</p>
+
           <input
             name="fancyPrice"
             type="number"
@@ -159,6 +181,8 @@ const CreateShop = () => {
             <option>Only Female Dress Stitch</option>
             <option>Both Male&Female Dress Stitch</option>
           </select>
+          <p>Description</p>
+
           <textarea
             placeholder="Enter Your Profile Description"
             type="text"

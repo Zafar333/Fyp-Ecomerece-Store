@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./dashboard.css";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -34,7 +34,9 @@ const Dashboard = () => {
             <Link to="/tailor/dashboard" className="optionText1">
               Dashboard
             </Link>
-            <Link className="optionText2">Orders</Link>
+            <Link className="optionText2" to="/tailor/dashboard/tailorOrders">
+              Orders
+            </Link>
             <Link className="optionText3">Settings</Link>
           </div>
           <button className="tailorDashboardBtn" onClick={tailorLogout}>

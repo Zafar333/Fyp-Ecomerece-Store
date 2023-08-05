@@ -23,50 +23,54 @@ const MeasurementsModal = ({
 
   //   sendata Function is start here
   async function sendFormData() {
-    const {
-      shoulder,
-      chest,
-      hip,
-      sleeves,
-      daman,
-      armHole,
-      bicep,
-      shirtLength,
-      trouserLength,
-    } = formData;
-    let data = {
-      shoulder,
-      chest,
-      hip,
-      sleeves,
-      daman,
-      armHole,
-      bicep,
-      shirtLength,
-      trouserLength,
-    };
-    if (
-      shoulder &&
-      chest &&
-      hip &&
-      sleeves &&
-      daman &&
-      armHole &&
-      bicep &&
-      shirtLength &&
-      trouserLength
-    ) {
-      try {
-        const res = await userMeasurementDataApi(data, id);
-        if (res.data.status == 200) {
-          toast.success(res.data.message);
-          setMeasurementModal(false);
-          setUsercontactFormModal(true);
-        } else {
-          toast.error(res.data.message);
+    if (formData) {
+      const {
+        shoulder,
+        chest,
+        hip,
+        sleeves,
+        daman,
+        armHole,
+        bicep,
+        shirtLength,
+        trouserLength,
+      } = formData;
+      let data = {
+        shoulder,
+        chest,
+        hip,
+        sleeves,
+        daman,
+        armHole,
+        bicep,
+        shirtLength,
+        trouserLength,
+      };
+      if (
+        shoulder &&
+        chest &&
+        hip &&
+        sleeves &&
+        daman &&
+        armHole &&
+        bicep &&
+        shirtLength &&
+        trouserLength
+      ) {
+        try {
+          const res = await userMeasurementDataApi(data, id);
+          if (res.data.status == 200) {
+            // toast.success(res.data.message);
+            setMeasurementModal(false);
+            setUsercontactFormModal(true);
+          } else {
+            toast.error(res.data.message);
+          }
+        } catch (error) {
+          toast.error(error.message);
         }
-      } catch (error) {
-        toast.error(error.message);
+      } else {
+        toast.error("please fill all fields");
       }
     } else {
       toast.error("please fill all fields");
