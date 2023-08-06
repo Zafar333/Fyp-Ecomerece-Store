@@ -33,6 +33,7 @@ const Login = ({ setLoginModal, setRegisterModal, setSuitDesignModal }) => {
             "userProfile",
             JSON.stringify(res?.data?.data?._doc?.profile)
           );
+
           localStorage.setItem(
             "userName",
             JSON.stringify(res?.data?.data?._doc?.firstname)

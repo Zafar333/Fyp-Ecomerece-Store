@@ -61,11 +61,16 @@ const Products = () => {
     dispatch(setSingleProduct(item));
     navigate(`/product/${item?._id}`);
   };
+  function goBack() {
+    navigate("/");
+  }
 
   products.length === 0 && <h2>No Products Found</h2>;
   return (
     <>
       <Navbar />
+      <div className="backIcon" onClick={goBack}></div>
+
       <div className="userProjectsMain">
         <div className="userProduct-upper">
           <div className="searchbar">

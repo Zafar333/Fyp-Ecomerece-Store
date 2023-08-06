@@ -32,6 +32,9 @@ import SingleTailorDetail from "./pages/Users/AllTailorsProfile/SingleTailor/Sin
 import NotFound from "./components/NotFound/NotFound";
 import Users from "./pages/Admin/AdminPanel/Users/Users";
 import AllTailorsData from "./pages/Admin/AdminPanel/Tailors/AllTailorsData";
+import TailorOrders from "./pages/Tailors/TailorDashboard/TailorOrders";
+import ViewOrderDetails from "./pages/Tailors/TailorDashboard/ViewOrderDetails";
+import ThanksOrderPage from "./pages/Users/AllTailorsProfile/SingleTailor/ThanksOrderPage";
 
 function App() {
   return (
@@ -68,14 +71,23 @@ function App() {
               </Route>
             </Route>
           </Route>
+          <Route path="/tailor/login" element={<TailorLogin />} />
+          <Route path="/tailor/register" element={<TailorRegister />} />
           <Route path="/tailor" element={<TailorRoot />}>
-            <Route path="/tailor/login" element={<TailorLogin />} />
-            <Route path="/tailor/register" element={<TailorRegister />} />
             <Route path="/tailor/dashboard" element={<TailorDashboard />}>
               <Route path="/tailor/dashboard/" element={<ShopProfileCard />} />
+
               <Route
                 path="/tailor/dashboard/createShop"
                 element={<CreateShop />}
+              />
+              <Route
+                path="/tailor/dashboard/tailorOrders"
+                element={<TailorOrders />}
+              />
+              <Route
+                path="/tailor/dashboard/viewOrderDetails"
+                element={<ViewOrderDetails />}
               />
             </Route>
           </Route>
@@ -107,6 +119,10 @@ function App() {
                 element={<SingleTailorDetail />}
               />
             </Route>
+            <Route
+              path="/signleTailor/thanksPage/"
+              element={<ThanksOrderPage />}
+            />
           </Route>
           {/* this route should be at end */}
           <Route path="*" element={<NotFound />} />

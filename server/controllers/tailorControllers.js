@@ -77,15 +77,19 @@ export const createShop = async (req, res, next) => {
     fancyPrice,
     description,
     stitchCategory,
+    name,
+    address,
   } = req.body;
   if (
     (!designImages,
     !shopName,
+    !name,
     !contactNumber,
     !standardPrice,
     !fancyPrice,
     !description,
-    !stitchCategory)
+    !stitchCategory,
+    !address)
   ) {
     return next({ message: "please provide data", statusCode: 401 });
   }
@@ -138,6 +142,27 @@ export const fetchAllTailorsData = async (req, res, next) => {
         allData: data,
         status: 200,
         message: "Data Sucessfully",
+      });
+    }
+  } catch (error) {
+    next(error);
+    return;
+  }
+};
+
+export const deleteTailor = async (req, res, next) => {
+  let id = req.params.id;
+  try {
+    const data = await tailorAuthSchema.deleteOne({
+      _id: id,
+    });
+    if (!data) {
+      return next({ message: "Tailor not found", statusCode: 401 });
+    } else {
+      res.json({
+        success: true,
+        status: 200,
+        message: "Your Account is Deleted Sucessfully",
       });
     }
   } catch (error) {

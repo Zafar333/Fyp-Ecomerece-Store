@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./userContactFormModal.css";
 import { toast } from "react-toastify";
 import { userContactDetailsApi } from "../../../../../../Utils/APIs/tailorApi";
+import { useNavigate } from "react-router-dom";
+import { orderDeleteApi } from "../../../../../../Utils/APIs/tailorApi";
 
 const UserContactFormModal = ({ setUsercontactFormModal }) => {
-  const [contactFormData, setContactFormData] = useState();
+  const navigate = useNavigate();
+  const [contactFormData, setContactFormData] = useState([]);
+  const [data, setData] = useState();
   let id = localStorage.getItem("userOrderId");
 
   function fieldOnchange(e) {
@@ -13,24 +17,29 @@ const UserContactFormModal = ({ setUsercontactFormModal }) => {
   }
 
   async function sendContactFormData() {
-    const { name, email, phnNo, address } = contactFormData;
-    let data = {
-      name,
-      email,
-      phnNo,
-      address,
-    };
-    if (name && email && phnNo && address) {
-      try {
-        const res = await userContactDetailsApi(data, id);
-        if (res.data.status == 200) {
-          toast.success(res.data.message);
-          setUsercontactFormModal(false);
-        } else {
-          toast.error(res.data.message);
+    if (contactFormData) {
+      const { name, email, phnNo, address } = contactFormData;
+      let data = {
+        name,
+        email,
+        phnNo,
+        address,
+      };
+      if (name && email && phnNo && address) {
+        try {
+          const res = await userContactDetailsApi(data, id);
+          if (res.data.status == 200) {
+            toast.success(res.data.message);
+            setUsercontactFormModal(false);
+            navigate("/signleTailor/thanksPage/");
+          } else {
+            toast.error(res.data.message);
+          }
+        } catch (error) {
+          toast.error(error.message);
         }
-      } catch (error) {
-        toast.error(error.message);
+      } else {
+        toast.error("please fill all fields");
       }
     } else {
       toast.error("please fill all fields");
@@ -38,7 +47,22 @@ const UserContactFormModal = ({ setUsercontactFormModal }) => {
   }
   function closeModal() {
     setUsercontactFormModal(false);
+    userOrderDelete(localStorage.getItem("userOrderId"));
   }
+
+  async function userOrderDelete(id) {
+    const res = await orderDeleteApi(id);
+    try {
+      if (res?.data?.status == 200) {
+        // toast.success(res?.data?.message);
+      } else {
+        toast.error(res?.data?.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
+
   return (
     <>
       <div className="userContactForm">

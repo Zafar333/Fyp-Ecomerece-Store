@@ -21,7 +21,6 @@ const AllTailors = () => {
   }, []);
   useEffect(() => {
     setData(allTailorsData);
-    console.log("i am array", Datas);
   }, [allTailorsData]);
 
   async function getAllTailorsData() {
@@ -29,7 +28,7 @@ const AllTailors = () => {
     try {
       if (res?.data.status == 200) {
         dispatch(setAlltailorsData(res?.data?.allData));
-        toast.success(res?.data?.message);
+        // toast.success(res?.data?.message);
       } else {
         toast.error(res?.data?.message);
       }
@@ -38,71 +37,25 @@ const AllTailors = () => {
     }
   }
 
-  // Image Next crousel function code is start here
-  // function ImgNext(item, ind) {
-  //   console.log("index", ind);
-  //   console.log("item", item);
-
-  //   if (countImg < item?.designImages.length - 1) {
-  //     let increment = countImg + 1;
-  //     setCountImg(increment);
-  //   } else {
-  //     setCountImg(item?.designImages.length - 1);
-  //   }
-  // }
-  // Image Next crousel function code is end here
-
-  // Image previous crousel function code is start here
-  // function ImgPrevious() {
-  //   if (countImg > 1) {
-  //     let decrement = countImg - 1;
-  //     setCountImg(decrement);
-  //   } else {
-  //     setCountImg(0);
-  //   }
-  // }
-  // Image previous crousel function code is end here
-
   // this Function is go to single tailor page view start here
   function goSingleTailorView(id) {
     navigate(`/signleTailor/viewShop/${id}`);
   }
   // this Function is go to single tailor page view end here
 
+  function goBack() {
+    navigate("/");
+  }
+
   return (
     <>
       <Navbar />
+      <div className="backIcon" onClick={goBack}></div>
       <div className="allTailorsWrapper">
         <div className="allTailorsContainer">
           {Datas?.length > 0 ? (
             Datas?.map((item, ind) => (
               <div className="allTailorShopCard" key={ind}>
-                <div className="allTailorCrouselButtonBlock">
-                  {/* <div className="allTailorCrouselButtons">
-                    <div style={{ backgroundColor: "white" }}>
-                      <img
-                        style={{
-                          width: "25px",
-                          height: "25px",
-                          cursor: "pointer",
-                        }}
-                        src={arrowLeft}
-                        onClick={() => ImgPrevious(item, ind)}
-                      />
-                    </div>
-                    <div style={{ backgroundColor: "white" }}>
-                      <img
-                        src={arrowRight}
-                        onClick={() => ImgNext(item, ind)}
-                        style={{
-                          width: "25px",
-                          height: "25px",
-                          cursor: "pointer",
-                        }}
-                      />
-                    </div>
-                  </div> */}
-                </div>
                 <img
                   className="allTailorCardImgCrousel"
                   src={item.designImages[countImg]}
@@ -112,12 +65,16 @@ const AllTailors = () => {
                   <div className="shopName allTailordivContainer">
                     <label> ShopName:</label> {item.shopName}
                   </div>
+                  <div className="shopName allTailordivContainer">
+                    <label> Tailor Name:</label> {item.name}
+                  </div>
                   <div className="stitchCategory  allTailordivContainer">
                     <label>Stitch Category:</label> {item.stitchCategory}
                   </div>
-                  <div className="description allTailordivContainer">
-                    <label>Description:</label> {item.description}
+                  <div className="stitchCategory  allTailordivContainer">
+                    <label>#Phn No:</label> {item.contactNumber}
                   </div>
+
                   <div className="standardPrice allTailordivContainer">
                     <label>Start At PKR:</label> {item.standardPrice}
                   </div>

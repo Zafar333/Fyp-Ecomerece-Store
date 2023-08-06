@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTailorProfile } from "../../../store/Slices/TailorAdmin/tailorAdminProfileSlice.js";
+import Navbar from "../../../components/Navbar";
 
 const Login = () => {
   const [loginData, setlogin] = useState();
@@ -51,46 +52,53 @@ const Login = () => {
       toast.error("please fill all fields");
     }
   };
-
+  function goBack() {
+    navigate("/");
+  }
   return (
-    <div className="tailorSignupContainer">
-      <div className="tailorSignupForm">
-        <div className="formImg"></div>
-        <div className="formContent">
-          <p className="tailorlogo">Tailor Login</p>
-          <p className="tailorText">Login to your Account</p>
+    <>
+      <Navbar />
+      <div className="backIcon" onClick={goBack}></div>
 
-          <label
-            className="profileImgSec"
-            htmlFor="profileImg-Tag "
-            style={{ visibility: "hidden" }}
-          >
-            <div className="profileImgCard"></div>
-          </label>
+      <div className="tailorSignupContainer">
+        <div className="tailorSignupForm">
+          <div className="formImg"></div>
+          <div className="formContent">
+            <p className="tailorlogo">Tailor Login</p>
+            <p className="tailorText">Login to your Account</p>
 
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter Your Email"
-            onChange={handleData}
-          ></input>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter Your Password"
-            onChange={handleData}
-          ></input>
-          <button className="tailorSignupBtn" onClick={tailorLogin}>
-            Login
-          </button>
-          <NavLink className="hintText" to="/tailor/register">
-            If You not have an account Signup?{" "}
-          </NavLink>
+            <label
+              className="profileImgSec"
+              htmlFor="profileImg-Tag "
+              style={{ visibility: "hidden" }}
+            >
+              <div className="profileImgCard"></div>
+            </label>
+
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter Your Email"
+              onChange={handleData}
+            ></input>
+            <label>Password:</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter Your Password"
+              onChange={handleData}
+            ></input>
+            <button className="tailorSignupBtn" onClick={tailorLogin}>
+              Login
+            </button>
+            <NavLink className="hintText" to="/tailor/register">
+              If You not have an account Signup?{" "}
+            </NavLink>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

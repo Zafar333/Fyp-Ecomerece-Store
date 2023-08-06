@@ -1,12 +1,12 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import { useState } from "react";
 
 const TailorRoot = () => {
-  return (
-    <>
-      <Outlet />
-    </>
+  const [tailorToken, SetTailorToken] = useState(
+    localStorage.getItem("tailorToken")
   );
+  return <>{tailorToken ? <Outlet /> : <Navigate to={"/tailor/login"} />}</>;
 };
 
 export default TailorRoot;

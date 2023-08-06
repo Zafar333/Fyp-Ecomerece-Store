@@ -18,7 +18,6 @@ const SelectDesignModal = ({ setSuitDesignModal, setMeasurementModal }) => {
   const [singleTailorDesign, setSingleTailorDesign] = useState();
 
   const id = params.id;
-  let filtered;
 
   useEffect(() => {
     let a = allTailorsData.filter((item, ind) => {
@@ -68,25 +67,35 @@ const SelectDesignModal = ({ setSuitDesignModal, setMeasurementModal }) => {
   }
 
   async function sendSelectedImgs() {
-    const { name, email } = selectedTailorData;
-    let tailorName = name;
-    let tailorEmail = email;
-    let orderDesignImgs = [...uploadDesign, ...userSelectedDesign];
-    let data = { orderDesignImgs, tailorName, tailorEmail };
+    if (selectedTailorData) {
+      const { name, email, _id } = selectedTailorData;
+      let tailorName = name;
+      let tailorEmail = email;
+      let tailorId = _id;
+      let orderDesignImgs = [...uploadDesign, ...userSelectedDesign];
+      let data = {
+        orderDesignImgs,
+        tailorName,
+        tailorEmail,
+        tailorId,
+      };
 
-    if (orderDesignImgs?.length > 0 && tailorEmail && tailorName) {
-      try {
-        const res = await userOrderDataApi(data);
-        if (res?.data?.status == 200) {
-          toast.success(res?.data?.message);
-          localStorage.setItem("userOrderId", res.data.user);
-          setSuitDesignModal(false);
-          setMeasurementModal(true);
-        } else {
-          toast.error(res?.data?.message);
+      if (orderDesignImgs?.length > 0) {
+        try {
+          const res = await userOrderDataApi(data);
+          if (res?.data?.status == 200) {
+            // toast.success(res?.data?.message);
+            localStorage.setItem("userOrderId", res.data.user);
+            setSuitDesignModal(false);
+            setMeasurementModal(true);
+          } else {
+            toast.error(res?.data?.message);
+          }
+        } catch (error) {
+          toast.error(error.message);
         }
-      } catch (error) {
-        toast.error(error.message);
+      } else {
+        toast.error("please select Images");
       }
     } else {
       toast.error("please select Images");
@@ -116,7 +125,7 @@ const SelectDesignModal = ({ setSuitDesignModal, setMeasurementModal }) => {
           ))}
         </div>
         <hr></hr>
-        <h1>Upload Your Design</h1>
+        <h2>Upload Your Design</h2>
         <div className=" uploadDesignImages">
           <label className="labelBlock" htmlFor="uploadDesigns">
             Upload Images

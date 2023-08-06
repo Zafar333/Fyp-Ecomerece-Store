@@ -29,6 +29,7 @@ const tailorAuthSchema = new mongoose.Schema({
   fancyPrice: Number,
   description: String,
   stitchCategory: String,
+  address: String,
 });
 tailorAuthSchema.pre("save", async function (done) {
   if (!this.isModified("password")) {

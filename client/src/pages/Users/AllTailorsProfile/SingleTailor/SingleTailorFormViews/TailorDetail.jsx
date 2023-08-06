@@ -30,7 +30,7 @@ const TailorDetail = () => {
     <>
       <div className="singleTailorCardTextBlock">
         <div className="standardPrice singleTailordivContainer">
-          <label>Tailor Detail</label>
+          <h5>Tailor Detail</h5>
         </div>
         <div className="description singleTailordivContainer">
           <label>Contact Number:</label> {singleTailorData?.contactNumber}
@@ -45,6 +45,7 @@ const TailorDetail = () => {
         </div>
         <div className="description singleTailordivContainer">
           <label>Address:</label>
+          {singleTailorData?.address}
         </div>
       </div>
     </>

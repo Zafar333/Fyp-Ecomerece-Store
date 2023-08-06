@@ -1,0 +1,49 @@
+.singleViewOrderImgCard{
+    /* width: fit-content; */
+    width: 90%;
+    box-shadow: 1px 1px 5px 1px rgb(30, 32, 33);
+
+}
+.orderImgViewCard{
+    margin-top: 5%;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10%;
+    background-color: #fff;
+    box-shadow: 1px 1px 5px 1px rgb(30, 32, 33);
+
+    width: 30%;
+    border-radius: 6px;
+}
+/* .viewOrderContainer{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    border: 7px solid black;
+} */
+@media(max-width:1700px){
+
+    .orderImgViewCard{
+        width: 65%;
+        border: 2px solid black;
+    }
+}
+@media(max-width:650px){
+
+    .orderImgViewCard{
+        width: 75%;
+        height: 35vh;
+    }
+}
+@media(max-width:450px){
+
+    .orderImgViewCard{
+        width: 80%;
+        height: 32vh;
+        border: 2px solid black;
+    }
+}

@@ -68,3 +68,37 @@ export const userContactDetailsApi = async (data, id) => {
     return error.message;
   }
 };
+export const allOrdersGetApi = async (id) => {
+  try {
+    let result = await axios.get(`${base}/getOrdersData/${id}`);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+export const singleViewOrdersGetApi = async (id) => {
+  try {
+    let result = await axios.get(`${base}/getSingleViewOrderData/${id}`);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+export const deleteTailorApi = async (id) => {
+  try {
+    let result = await axios.delete(`${base}/deleteTailor/${id}`);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
+export const orderDeleteApi = async (id) => {
+  try {
+    let result = await axios.delete(`${base}/deleteOrder/${id}`);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
