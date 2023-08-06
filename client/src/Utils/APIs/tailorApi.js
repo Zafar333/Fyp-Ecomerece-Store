@@ -85,3 +85,20 @@ export const singleViewOrdersGetApi = async (id) => {
     return error.message;
   }
 };
+
+export const deleteTailorApi = async (id) => {
+  try {
+    let result = await axios.delete(`${base}/deleteTailor/${id}`);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};
+export const orderDeleteApi = async (id) => {
+  try {
+    let result = await axios.delete(`${base}/deleteOrder/${id}`);
+    return result;
+  } catch (error) {
+    return error.message;
+  }
+};

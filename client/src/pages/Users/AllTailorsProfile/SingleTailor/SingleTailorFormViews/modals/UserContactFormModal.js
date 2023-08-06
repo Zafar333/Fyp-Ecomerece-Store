@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./userContactFormModal.css";
 import { toast } from "react-toastify";
 import { userContactDetailsApi } from "../../../../../../Utils/APIs/tailorApi";
+import { useNavigate } from "react-router-dom";
+import { orderDeleteApi } from "../../../../../../Utils/APIs/tailorApi";
 
 const UserContactFormModal = ({ setUsercontactFormModal }) => {
+  const navigate = useNavigate();
   const [contactFormData, setContactFormData] = useState([]);
   const [data, setData] = useState();
   let id = localStorage.getItem("userOrderId");
@@ -12,10 +15,6 @@ const UserContactFormModal = ({ setUsercontactFormModal }) => {
     const { name, value } = e.target;
     setContactFormData({ ...contactFormData, [name]: value });
   }
-  // useEffect(() => {
-  //   setContactFormData(data);
-  //   console.log("formdata", contactFormData);
-  // }, [data]);
 
   async function sendContactFormData() {
     if (contactFormData) {
@@ -32,6 +31,7 @@ const UserContactFormModal = ({ setUsercontactFormModal }) => {
           if (res.data.status == 200) {
             toast.success(res.data.message);
             setUsercontactFormModal(false);
+            navigate("/signleTailor/thanksPage/");
           } else {
             toast.error(res.data.message);
           }
@@ -47,7 +47,22 @@ const UserContactFormModal = ({ setUsercontactFormModal }) => {
   }
   function closeModal() {
     setUsercontactFormModal(false);
+    userOrderDelete(localStorage.getItem("userOrderId"));
   }
+
+  async function userOrderDelete(id) {
+    const res = await orderDeleteApi(id);
+    try {
+      if (res?.data?.status == 200) {
+        // toast.success(res?.data?.message);
+      } else {
+        toast.error(res?.data?.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
+
   return (
     <>
       <div className="userContactForm">

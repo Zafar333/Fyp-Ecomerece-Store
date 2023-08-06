@@ -19,18 +19,14 @@ const ViewOrderDetails = () => {
 
   useEffect(() => {
     let id = localStorage.getItem("userViewOrderDetailId");
-    console.log("idddd", id);
     ViewOrderDetails(id);
   }, []);
-  useEffect(() => {
-    console.log("ViewOrders", singleviewOrder);
-  }, [singleviewOrder]);
 
   async function ViewOrderDetails(id) {
     const res = await singleViewOrdersGetApi(id);
     try {
       if (res.data.status == 200) {
-        toast.success(res.data.message);
+        // toast.success(res.data.message);
         setSingleViewOrder([res.data.orders]);
       } else {
         toast.error(res.data.message);
@@ -76,7 +72,7 @@ const ViewOrderDetails = () => {
           >
             <TableHead style={{ backgroundColor: "black" }}>
               <TableRow>
-                <TableCell style={{ color: "white" }}>Profile</TableCell>
+                {/* <TableCell style={{ color: "white" }}>Profile</TableCell> */}
                 <TableCell
                   align="right"
                   style={{ color: "white", textAlign: "center" }}
@@ -152,9 +148,9 @@ const ViewOrderDetails = () => {
                     key={row?._id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    <TableCell component="th" scope="row">
+                    {/* <TableCell component="th" scope="row">
                       <img
-                        // src={row?.image}
+                        src={row?.userProfile}
                         alt="profile"
                         style={{
                           width: "45px",
@@ -163,7 +159,7 @@ const ViewOrderDetails = () => {
                           borderRadius: "50%",
                         }}
                       />
-                    </TableCell>
+                    </TableCell> */}
                     <TableCell align="right" style={{ textAlign: "center" }}>
                       {row?.name}
                     </TableCell>

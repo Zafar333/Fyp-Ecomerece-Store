@@ -4,6 +4,8 @@ import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { deleteTailorApi } from "../../../Utils/APIs/tailorApi";
 
 const Dashboard = () => {
   const tailorProfileDataState = useSelector(
@@ -19,6 +21,27 @@ const Dashboard = () => {
     localStorage.removeItem("tailorName");
     localStorage.removeItem("tailorToken");
     localStorage.removeItem("tailorProfile");
+  }
+
+  async function deleteTailorAccount() {
+    let id = localStorage.getItem("id");
+    if (id) {
+      try {
+        const res = await deleteTailorApi(id);
+        if (res.data.status == 200) {
+          toast.success(res.data.message);
+          navigate("/tailor/login");
+          localStorage.removeItem("id");
+          localStorage.removeItem("tailorName");
+          localStorage.removeItem("tailorToken");
+          localStorage.removeItem("tailorProfile");
+        } else {
+          toast.error(res.data.message);
+        }
+      } catch (error) {
+        toast.error(error.message);
+      }
+    }
   }
 
   return (
@@ -37,7 +60,9 @@ const Dashboard = () => {
             <Link className="optionText2" to="/tailor/dashboard/tailorOrders">
               Orders
             </Link>
-            <Link className="optionText3">Settings</Link>
+            <Link className="optionText3" onClick={deleteTailorAccount}>
+              Delete Account
+            </Link>
           </div>
           <button className="tailorDashboardBtn" onClick={tailorLogout}>
             Logout

@@ -5,8 +5,10 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../../../store/Slices/Users/cartSlice";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const SingleProduct = () => {
+  const navigate = useNavigate();
   const { productID } = useParams();
   const product = useSelector((state) => state.singleProduct);
   const dispatch = useDispatch();
@@ -15,10 +17,15 @@ const SingleProduct = () => {
     let obj = { ...item };
     dispatch(setCart(obj));
   };
+  function goBack() {
+    navigate("/products");
+  }
 
   return (
     <>
       <Navbar />
+      <div className="backIcon" onClick={goBack}></div>
+
       {productID == product?._id ? (
         <div className="singleProduct">
           <div className="singleProductLeft">

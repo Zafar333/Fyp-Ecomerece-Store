@@ -10,7 +10,7 @@
 }
 .allTailorsContainer{
     margin: auto;
-    height: 85vh;
+    /* height: 80vh; */
     width: 98%;
     /* border: 1px solid green; */
     display: grid;
@@ -72,6 +72,15 @@
     background-color: #FF7F50;
     /* background-color: #fd9644; */
     font-size: 20px;
+}
+.backIcon{
+    margin-left: 1px;
+    cursor: pointer;
+    width:55px;
+    /* border: 1px solid black; */
+    height: 55px;
+    background-size: cover;
+    background-image: url("../../../../assets/backicon.png");
 }
 @media (max-width:2000px){
     .allTailorsContainer{

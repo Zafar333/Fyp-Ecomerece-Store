@@ -21,7 +21,6 @@ const AllTailors = () => {
   }, []);
   useEffect(() => {
     setData(allTailorsData);
-    console.log("i am array", Datas);
   }, [allTailorsData]);
 
   async function getAllTailorsData() {
@@ -44,9 +43,14 @@ const AllTailors = () => {
   }
   // this Function is go to single tailor page view end here
 
+  function goBack() {
+    navigate("/");
+  }
+
   return (
     <>
       <Navbar />
+      <div className="backIcon" onClick={goBack}></div>
       <div className="allTailorsWrapper">
         <div className="allTailorsContainer">
           {Datas?.length > 0 ? (
@@ -61,12 +65,16 @@ const AllTailors = () => {
                   <div className="shopName allTailordivContainer">
                     <label> ShopName:</label> {item.shopName}
                   </div>
+                  <div className="shopName allTailordivContainer">
+                    <label> Tailor Name:</label> {item.name}
+                  </div>
                   <div className="stitchCategory  allTailordivContainer">
                     <label>Stitch Category:</label> {item.stitchCategory}
                   </div>
-                  <div className="description allTailordivContainer">
-                    <label>Description:</label> {item.description}
+                  <div className="stitchCategory  allTailordivContainer">
+                    <label>#Phn No:</label> {item.contactNumber}
                   </div>
+
                   <div className="standardPrice allTailordivContainer">
                     <label>Start At PKR:</label> {item.standardPrice}
                   </div>

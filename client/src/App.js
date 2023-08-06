@@ -34,6 +34,7 @@ import Users from "./pages/Admin/AdminPanel/Users/Users";
 import AllTailorsData from "./pages/Admin/AdminPanel/Tailors/AllTailorsData";
 import TailorOrders from "./pages/Tailors/TailorDashboard/TailorOrders";
 import ViewOrderDetails from "./pages/Tailors/TailorDashboard/ViewOrderDetails";
+import ThanksOrderPage from "./pages/Users/AllTailorsProfile/SingleTailor/ThanksOrderPage";
 
 function App() {
   return (
@@ -117,6 +118,10 @@ function App() {
                 element={<SingleTailorDetail />}
               />
             </Route>
+            <Route
+              path="/signleTailor/thanksPage/"
+              element={<ThanksOrderPage />}
+            />
           </Route>
           {/* this route should be at end */}
           <Route path="*" element={<NotFound />} />

@@ -53,10 +53,15 @@ const Register = () => {
       toast.error("please fill all fields");
     }
   };
+  function goBack() {
+    navigate("/");
+  }
 
   return (
     <>
       <Navbar />
+      <div className="backIcon" onClick={goBack}></div>
+
       <div className="tailorSignupContainer">
         <div className="tailorSignupForm">
           <div className="formImg"></div>

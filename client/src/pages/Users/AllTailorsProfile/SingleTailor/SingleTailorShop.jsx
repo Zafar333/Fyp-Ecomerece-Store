@@ -92,9 +92,14 @@ const SingleTailorShop = () => {
       setLoginModal(true);
     }
   }
+  function goBack() {
+    navigate("/allTailors");
+  }
 
   return (
     <>
+      <div className="backIcon" onClick={goBack}></div>
+
       <div className={!loginModal ? "modalLoginnHide" : "modalLoginn"}>
         <UserLogin
           setLoginModal={setLoginModal}
@@ -130,6 +135,7 @@ const SingleTailorShop = () => {
           setUsercontactFormModal={setUsercontactFormModal}
         />
       </div>
+
       <div
         className={
           !userContactFormModal
@@ -141,6 +147,8 @@ const SingleTailorShop = () => {
           setUsercontactFormModal={setUsercontactFormModal}
         />
       </div>
+
+      <h1>Welcome To Tailor Shop</h1>
 
       <div className="singleTailorShopContainer">
         <div className="singleTailorShopView">

@@ -6,7 +6,6 @@ const TailorRoot = () => {
   const [tailorToken, SetTailorToken] = useState(
     localStorage.getItem("tailorToken")
   );
-  console.log("tailortokennnn", tailorToken);
   return <>{tailorToken ? <Outlet /> : <Navigate to={"/tailor/login"} />}</>;
 };
 

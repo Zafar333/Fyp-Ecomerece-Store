@@ -12,39 +12,22 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { orderDeleteApi } from "../../../Utils/APIs/tailorApi";
 
 const TailorOrders = () => {
+  let tailordId;
   const navigate = useNavigate();
-  const [singleTailorinfoData, setSingleTailorinfoData] = useState([]);
   const [tailorOrders, setTailorOrders] = useState();
   useEffect(() => {
-    let tailordId = localStorage.getItem("id");
-    console.log("idddd", tailordId);
-    // getSignleTailorData(tailordId);
+    tailordId = localStorage.getItem("id");
     TailorOrdersData(tailordId);
   }, []);
 
-  // async function getSignleTailorData(id) {
-  //   const res = await tailorShopData(id);
-  //   if (res.data.status == 200) {
-  //     setSingleTailorinfoData({ ...res.data.shopData });
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   TailorOrdersData();
-  // }, [singleTailorinfoData]);
-
-  useEffect(() => {
-    console.log("data", tailorOrders);
-  }, [tailorOrders]);
-
   async function TailorOrdersData(tailordId) {
-    const { email } = singleTailorinfoData;
     const res = await allOrdersGetApi(tailordId);
     try {
       if (res.data.status == 200) {
-        toast.success(res.data.message);
+        // toast.success(res.data.message);
         setTailorOrders(res.data.orders);
       } else {
         toast.error(res.data.message);
@@ -57,12 +40,27 @@ const TailorOrders = () => {
     navigate("/tailor/dashboard/viewOrderDetails");
     localStorage.setItem("userViewOrderDetailId", id);
   }
+
+  async function orderDelete(id) {
+    const res = await orderDeleteApi(id);
+    try {
+      if (res.data.status == 200) {
+        toast.success(res.data.message);
+        TailorOrdersData(localStorage.getItem("id"));
+      } else {
+        toast.error(res.data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
+
   return (
     <div>
       <h1>Tailors Orders</h1>
 
       <TableContainer
-        sx={{ maxWidth: 2000 }}
+        sx={{ maxWidth: 1950 }}
         component={Paper}
         style={{ margin: "auto" }}
       >
@@ -72,7 +70,7 @@ const TailorOrders = () => {
         >
           <TableHead style={{ backgroundColor: "black" }}>
             <TableRow>
-              <TableCell style={{ color: "white" }}>Profile</TableCell>
+              {/* <TableCell style={{ color: "white" }}>Profile</TableCell> */}
               <TableCell
                 align="right"
                 style={{ color: "white", textAlign: "center" }}
@@ -118,9 +116,9 @@ const TailorOrders = () => {
                   key={row?._id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell component="th" scope="row">
+                  {/* <TableCell component="th" scope="row">
                     <img
-                      // src={row?.image}
+                      src={row?._doc?.userProfile}
                       alt="profile"
                       style={{
                         width: "45px",
@@ -129,7 +127,7 @@ const TailorOrders = () => {
                         borderRadius: "50%",
                       }}
                     />
-                  </TableCell>
+                  </TableCell> */}
                   <TableCell align="right" style={{ textAlign: "center" }}>
                     {row?.name}
                   </TableCell>
@@ -151,6 +149,14 @@ const TailorOrders = () => {
                       onClick={() => OrderDetail(row?._id)}
                     >
                       View Details
+                    </Button>
+                    <Button
+                      style={{ marginLeft: "15px" }}
+                      variant="outlined"
+                      startIcon={<DeleteIcon />}
+                      onClick={() => orderDelete(row?._id)}
+                    >
+                      Delete
                     </Button>
                   </TableCell>
                 </TableRow>

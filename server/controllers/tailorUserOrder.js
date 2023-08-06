@@ -2,15 +2,15 @@ import tailorOrderSchema from "../database/models/tailorsModels/tailorOrders.js"
 export const tailorUserOrder = async (req, res, next) => {
   const {
     orderDesignImgs,
-    shoulder,
-    chest,
-    hip,
-    sleeves,
-    daman,
-    armHole,
-    bicep,
-    shirtLength,
-    trouserLength,
+    // shoulder,
+    // chest,
+    // hip,
+    // sleeves,
+    // daman,
+    // armHole,
+    // bicep,
+    // shirtLength,
+    // trouserLength,
     tailorName,
     tailorEmail,
     tailorId,
@@ -19,15 +19,15 @@ export const tailorUserOrder = async (req, res, next) => {
     try {
       const orders = await tailorOrderSchema.create({
         orderDesignImgs,
-        shoulder,
-        chest,
-        hip,
-        sleeves,
-        daman,
-        armHole,
-        bicep,
-        shirtLength,
-        trouserLength,
+        // shoulder,
+        // chest,
+        // hip,
+        // sleeves,
+        // daman,
+        // armHole,
+        // bicep,
+        // shirtLength,
+        // trouserLength,
         tailorName,
         tailorEmail,
         tailorId,
@@ -37,6 +37,7 @@ export const tailorUserOrder = async (req, res, next) => {
           status: 200,
           success: true,
           user: orders?._id,
+          wovv: orders?.tailorName,
           message: "Your Design save sucefully",
         });
       }
@@ -178,6 +179,27 @@ export const SingleViewOrder = async (req, res, next) => {
       return next({
         message: "Not find",
         statusCode: 404,
+      });
+    }
+  } catch (error) {
+    next(error);
+    return;
+  }
+};
+
+export const deleteOrder = async (req, res, next) => {
+  let id = req.params.id;
+  try {
+    const data = await tailorOrderSchema.deleteOne({
+      _id: id,
+    });
+    if (!data) {
+      return next({ message: "Order not found", statusCode: 401 });
+    } else {
+      res.json({
+        success: true,
+        status: 200,
+        message: "Order Deleted Sucessfully",
       });
     }
   } catch (error) {

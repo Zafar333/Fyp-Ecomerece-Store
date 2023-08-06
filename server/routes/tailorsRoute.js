@@ -5,6 +5,7 @@ import {
   createShop,
   fetchTailorShopData,
   fetchAllTailorsData,
+  deleteTailor,
 } from "../controllers/tailorControllers.js";
 import {
   tailorUserOrder,
@@ -12,6 +13,7 @@ import {
   userContactDetails,
   allOrders,
   SingleViewOrder,
+  deleteOrder,
 } from "../controllers/tailorUserOrder.js";
 const router = express.Router();
 
@@ -26,6 +28,8 @@ const tailorRoute = () => {
   router.patch("/orderContactDetails/:id", userContactDetails);
   router.get("/getOrdersData/:id", allOrders);
   router.get("/getSingleViewOrderData/:id", SingleViewOrder);
+  router.delete("/deleteTailor/:id", deleteTailor);
+  router.delete("/deleteOrder/:id", deleteOrder);
 
   return router;
 };

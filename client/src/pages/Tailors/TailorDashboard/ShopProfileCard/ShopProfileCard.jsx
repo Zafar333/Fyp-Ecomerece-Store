@@ -102,12 +102,13 @@ const ShopProfileCard = () => {
               <div className="shopName divContainer">
                 <label> ShopName:</label> {shopCardArr?.shopName}
               </div>
+              <div className="shopName divContainer">
+                <label> Tailor Name:</label> {shopCardArr?.name}
+              </div>
               <div className="stitchCategory  divContainer">
                 <label>Stitch Category:</label> {shopCardArr?.stitchCategory}
               </div>
-              <div className="description divContainer">
-                <label>Description:</label> {shopCardArr?.description}
-              </div>
+
               <div className="standardPrice divContainer">
                 <label>Address:</label> {shopCardArr?.address}
               </div>

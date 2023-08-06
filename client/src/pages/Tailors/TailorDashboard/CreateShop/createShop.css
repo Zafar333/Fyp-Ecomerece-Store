@@ -67,7 +67,7 @@
     /* align-items: center; */
     /* margin: auto; */
     padding: 20px;
-    border: 7px solid black;
+    /* border: 7px solid black; */
     background:  linear-gradient(45deg, #df2bb4, #f8a029);
 
     
@@ -76,7 +76,7 @@
     width: 50%;
     height: 4vh;
     margin-bottom: 2%;
-    font-size: 15px;
+    font-size: 20px;
 }
 .inputForm p{
     font-size: 18px;

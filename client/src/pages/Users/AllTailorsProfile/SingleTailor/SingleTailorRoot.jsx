@@ -6,7 +6,6 @@ const SingleTailorRoot = () => {
   return (
     <>
       <Navbar />
-      <h1>Welcome To Tailor Shop</h1>
       <Outlet />
     </>
   );

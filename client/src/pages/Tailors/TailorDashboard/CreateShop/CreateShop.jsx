@@ -46,6 +46,7 @@ const CreateShop = () => {
     let id = localStorage.getItem("id");
     if (formData) {
       const {
+        name,
         shopName,
         contactNumber,
         standardPrice,
@@ -58,6 +59,7 @@ const CreateShop = () => {
       let sendData = {
         designImages,
         shopName,
+        name,
         contactNumber,
         standardPrice,
         fancyPrice,
@@ -68,6 +70,7 @@ const CreateShop = () => {
 
       if (
         designImages &&
+        name &&
         shopName &&
         contactNumber &&
         standardPrice &&
@@ -131,6 +134,13 @@ const CreateShop = () => {
             ))}
         </div>
         <div className="inputForm">
+          <p>Name</p>
+          <input
+            name="name"
+            type="text"
+            placeholder="Please Enter Your Name"
+            onChange={handleInput}
+          />
           <p>ShopName</p>
           <input
             name="shopName"
