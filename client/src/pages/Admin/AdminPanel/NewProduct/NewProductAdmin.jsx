@@ -59,7 +59,7 @@ const NewProductAdmin = () => {
     let res;
     let check = isEmpty(values);
     if (!check) {
-      toast.error("please fill all fields");
+      toast.error("please fill valid and all fields");
       return;
     }
     setSpin(true);
@@ -72,7 +72,7 @@ const NewProductAdmin = () => {
     if (res?.data?.status === 200) {
       setSpin(false);
       toast.success(
-        res?.data?.message || id?.id
+        res?.data?.message && id?.id
           ? "Product Updated Succesfully"
           : "Product Added Successfully!!!"
       );
