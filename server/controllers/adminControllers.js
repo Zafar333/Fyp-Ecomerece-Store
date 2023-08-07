@@ -123,7 +123,6 @@ export const AdminProductUpdate = async (req, resp, next) => {
       },
       { $set: req.body }
     );
-    console.log(updateProduct);
     if (updateProduct?.modifiedCount === 0) {
       return next({ message: "Product not found", statusCode: "404" });
     }
