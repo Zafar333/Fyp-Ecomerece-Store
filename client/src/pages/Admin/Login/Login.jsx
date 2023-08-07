@@ -62,39 +62,44 @@ const Login = () => {
       return;
     }
   }, [adminToken, navigate]);
+  function goBack() {
+    navigate("/");
+  }
 
   return (
-    <div className="AdminRegister">
-      <div className="main">
-        <h1>Log in</h1>
-        <p>Log in and start managing your candidates!</p>
-        <div className="form">
-          <input
-            type="text"
-            name="email"
-            placeholder="your email"
-            onChange={FormData}
-          />
-          <div className="inputs">
+    <>
+      <div className="AdminRegister">
+        <div className="main">
+          <h1>Log in</h1>
+          <p>Log in and start managing your candidates!</p>
+          <div className="form">
             <input
-              type="password"
-              name="password"
-              placeholder="your password"
+              type="text"
+              name="email"
+              placeholder="your email"
               onChange={FormData}
             />
-            <span>
-              <Link to="/">Forgot Password?</Link>
-            </span>
+            <div className="inputs">
+              <input
+                type="password"
+                name="password"
+                placeholder="your password"
+                onChange={FormData}
+              />
+              <span>
+                <Link to="/">Forgot Password?</Link>
+              </span>
+            </div>
+            <button onClick={AdminLogin}>
+              {!spin ? "Log in" : "Loading..."}
+            </button>
           </div>
-          <button onClick={AdminLogin}>
-            {!spin ? "Log in" : "Loading..."}
-          </button>
+          <p className="account">
+            Don't have an account? <Link to="/admin/register">Sign up</Link>
+          </p>
         </div>
-        <p className="account">
-          Don't have an account? <Link to="/admin/register">Sign up</Link>
-        </p>
       </div>
-    </div>
+    </>
   );
 };
 
