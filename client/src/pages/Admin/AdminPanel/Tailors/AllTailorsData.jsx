@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { DeleteUserAPI } from "../../../../Utils/APIs/userAPI";
+import { deleteTailorApi } from "../../../../Utils/APIs/tailorApi";
 import { toast } from "react-toastify";
 import { AdminGetAllTailorsAPI } from "../../../../Utils/APIs/adminAPI";
 
@@ -32,7 +32,7 @@ const AllTailorsData = () => {
   };
 
   async function DeleteUser(userId) {
-    let res = await DeleteUserAPI(userId);
+    let res = await deleteTailorApi(userId);
     if (res?.data?.status === 200) {
       toast.success(res?.data?.message);
       GetAllUsers();
