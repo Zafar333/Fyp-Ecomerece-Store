@@ -26,7 +26,7 @@ export const checkLength = (value, len) => {
 };
 
 export const EmailValidator = (email) => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[a-z][a-zA-Z0-9._-]*@[a-z0-9.-]+\.[a-z]{2,4}$/;
   if (emailRegex.test(email)) {
     return true;
   } else {
