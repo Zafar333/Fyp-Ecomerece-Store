@@ -45,4 +45,10 @@
       "last 1 safari version"
     ]
   }
+  "jest": {
+  "reporters": [
+    "default",
+    ["jest-junit", { "outputDirectory": "./reports", "outputName": "junit.xml" }]
+  ]
+}
 }
