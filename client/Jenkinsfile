@@ -1,0 +1,130 @@
+pipeline {
+    agent any
+    
+    environment{
+         GIT_REPO="https://github.com/Zafar333/Fyp-Ecomerece-Store.git"
+         FRONTEND_DIR="client"
+    }
+
+    stages {
+        // pull code from github code section is start from here
+        stage('pull code') {
+            steps {
+                echo "echo 'Pulling code from GitHub..."
+                git branch:"main", url:"${GIT_REPO}"
+            }
+            post{
+                success{echo "code pull from github is success"}
+                failure{echo "code pull from github is failure"}
+                
+            }
+        }
+        
+        // pull code from github code section is end here
+         
+        
+         
+        
+        
+        
+        // 
+        // install dependencis code section is start from here
+        // 
+        stage("install dependenceis of project"){
+            steps{
+                echo "dependeceis installation is start"
+                  dir("${FRONTEND_DIR}") {
+                    sh 'npm install'
+                }
+                
+            }
+            post{success {echo "dependenceis install sucessfully"}
+                failure{echo "depenceis installation is failed"}
+            }
+        } 
+        
+         // install dependencis code section is end from here
+         
+         
+         
+        
+        //  // make build of project code section is start from here
+        stage("make build of project"){
+            steps{
+                echo "build process is start"
+                  dir("${FRONTEND_DIR}") {
+                      sh '''set CI=false
+                             npm run build'''
+                }
+                
+            }
+            post{
+                success {echo "project build sucessfully"}
+                failure{echo "project build is failed"}
+            }
+        }
+        
+         // make build of project code section is end here
+         
+         
+        //  testing code section is start from here
+        stage("testing phase"){
+            steps{
+                echo "testing is start"
+                dir("${FRONTEND_DIR}"){
+               echo "🧪 Running React tests with JUnit output..."
+            //   sh 'npm install jest-junit --save-dev'
+                 echo "Running tests and generating JUnit report..."
+            
+                // run tests and ensure they pass even if none found
+                sh 'npm test -- --watchAll=false --passWithNoTests '
+            
+                }
+            }
+              post{
+              
+                //  always{ junit 'client/reports/junit/*.xml'} 
+                success {echo "testing is done sucessfully"}
+                failure{echo "testing is failed"}
+            }
+        }
+        //  testing code section is end here
+        
+        
+        // docker create image code section is start from here
+        stage("docker image"){
+            steps{
+                script{
+                echo "docker create image is start"
+                dir("${FRONTEND_DIR}"){
+                        // Define image details
+                    def imageName = "fypimage"
+                     sh """
+                    echo Building Docker image...
+                    docker build -t ${imageName} .
+                    """
+
+                   echo "✅ Docker image ${imageName}:${imageTag} built successfully."
+                }
+                }
+            }
+        
+             post{
+             
+                success {echo "docker image is created sucessfully"}
+                failure{echo "testing is failed"}
+            }
+        }
+        // docker create image code section is end here
+        
+        
+    }
+        post {
+        success {
+            echo "🎉 Pipeline completed successfully!"
+        }
+        failure {
+            echo "🚨 Pipeline failed!"
+        }
+    }
+}
