@@ -4,6 +4,7 @@ pipeline {
     environment{
          GIT_REPO="https://github.com/Zafar333/Fyp-Ecomerece-Store.git"
          FRONTEND_DIR="client"
+        imageName="fypimage"
     }
 
     stages {
@@ -92,19 +93,18 @@ pipeline {
         
         
         // docker create image code section is start from here
-        stage("docker image"){
+        stage("create docker image"){
             steps{
                 script{
                 echo "docker create image is start"
                 dir("${FRONTEND_DIR}"){
                         // Define image details
-                    def imageName = "fypimage"
                      sh """
                     echo Building Docker image...
                     docker build -t ${imageName} .
                     """
 
-                   echo "✅ Docker image ${imageName}:${imageTag} built successfully."
+                   echo "✅ Docker image ${imageName} built successfully."
                 }
                 }
             }
@@ -116,6 +116,68 @@ pipeline {
             }
         }
         // docker create image code section is end here
+
+    // image push section is start from here
+
+            stage('Docker Build & Push') {
+            // when {
+            //     expression { currentBuild.currentResult == 'SUCCESS' }
+            // }
+            steps {
+                script{
+                echo "🐳 Building Docker image..."
+                    dir("${FRONTEND_DIR}"){
+                
+                echo "🚀 Pushing image to Docker Hub..."
+                 sh '''
+                 // docker login -u <your-dockerhub-usernam -p <your-dockerhub-password>
+                 docker login -u arslanz499 -p arslan
+                 docker tag ${imageName} arslanz499/${imageName}
+                 docker push arslanz499/${imageName}
+                '''
+                    }
+                }
+            }
+            post {
+                 success {
+                    echo "Docker image push is success"
+                }
+                failure {
+                    echo "❌ Docker image push failed"
+                }
+            }
+        }
+
+        
+       // image push section is end here 
+
+        //deploy stage section is start from here it is optional
+
+         stage('Deploy') {
+            steps {
+                echo "🚀 Deploying container..."
+                sh '''
+                    docker stop appcontainer || true
+                    docker rm appcontainer || true
+                    docker run -d -p 3000:80 --name newcontainer ${imageName}
+                    // ssh user@yourserver "docker pull yourusername/alzire-app:v${BUILD_NUMBER} && docker stop app || true && docker rm app || true && docker run -d --name app -p 80:80 yourusername/alzire-app:v${BUILD_NUMBER}"
+                '''
+                echo "✅ Application deployed successfully at http://<your-ec2-public-ip>:3000"
+            }
+
+             post {
+                 success {
+                    echo "your app is deploy successfully"
+                }
+                failure {
+                    echo "❌ app deploy is failed"
+                }
+            }
+        }
+        //deploy stage section is and here it is optional
+
+        // send gmail to your ceo your app is deploy section is startfrom here
+        // send gmail to your ceo your app is deploy section is startfrom here
         
         
     }
@@ -124,7 +186,18 @@ pipeline {
             echo "🎉 Pipeline completed successfully!"
         }
         failure {
-            echo "🚨 Pipeline failed!"
+            echo 'Pipeline failed'
+            emailext (
+                subject: "❌ FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: """
+                    <h2>Build Failed</h2>
+                    <p>Job: ${env.JOB_NAME}</p>
+                    <p>Build Number: ${env.BUILD_NUMBER}</p>
+                    <p>Status: FAILED ❌</p>
+                    <p>Check console output: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+                """,
+                to: 'yourname@gmail.com'
+            )
         }
     }
 }
